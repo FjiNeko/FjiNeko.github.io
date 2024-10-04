@@ -1,0 +1,131 @@
+body, button {
+    font-family: 'Microsoft YaHei', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.explorer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.toolbar {
+    background-color: #0078D7;
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.toolbar h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.toolbar button {
+    background-color: white;
+    color: #0078D7;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toolbar button:hover {
+    background-color: #f1f1f1;
+}
+
+.file-container {
+    padding: 20px;
+}
+
+.file {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.file:hover {
+    background-color: #e6f7ff;
+}
+
+.file img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.file input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #e1e1e1;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #d1d1d1;
+}
+
+.back-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+#download-button {
+    display: none; /* Initially hidden */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#download-button:hover {
+    background-color: #218838;
+}
+
+#error-message {
+    color: red;
+    margin-top: 10px;
+    display: none; /* Initially hidden */
+}
+
+.file a {
+    text-decoration: none;
+    color: #0078D7;
+    font-size: 16px;
+    flex-grow: 1;
+}
+
+.file a:hover {
+    text-decoration: underline;
+}
+.copyright {
+    font-weight: lighter;
+    color: gray;
+    height: 26vh;
+    margin: 0 1rem;
+    text-align: center;
+}

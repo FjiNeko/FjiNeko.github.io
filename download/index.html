@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <title>Download</title>
+</head>
+<body>
+    <div class="explorer">
+        <div class="toolbar">
+            <h1 id="current-folder">root</h1>
+            <button onclick="selectAll()">选中所有</button>
+        </div>
+        <div id="error-message" align="center">Error0001: You can not download the folder, please select the file!</div>
+        <div class="file-container" id="file-list">
+            <!-- 文件和文件夹会动态生成 -->
+        </div>
+        <button id="download-button" onclick="downloadSelected()">下载选中的文件</button>
+    </div>
+
+    <script src="script.js"></script>
+        <p class="copyright">Copyright &#169; 2024 DayingNeko. All Rights Reserved.</p>
+
+</body>
+</html>
