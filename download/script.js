@@ -1,5 +1,5 @@
-  // 文件系统的层次结构
-  const fileSystem = {
+// 文件系统的层次结构
+const fileSystem = {
     'Files': [
         { name: '所有支持的文件', type: 'folder', content: [
             { name: '此页面内的文件均无法下载！请勿点击下载！', type: 'file', url: '此页面内的文件均无法下载！请勿点击下载.'},
@@ -17,6 +17,33 @@
         ]}
     ]
 };
+
+let hasAgreed = false;
+
+// 页面加载时显示公告
+window.onload = function() {
+    document.getElementById('announcement-overlay').style.display = 'block';
+    if (!localStorage.getItem('hasAgreed')) {
+        document.getElementById('agreement-overlay').style.display = 'block';
+    }
+};
+
+// 同意协议
+function agreeToTerms() {
+    hasAgreed = true;
+    localStorage.setItem('hasAgreed', true);
+    closeAgreement();
+}
+
+// 关闭协议窗口
+function closeAgreement() {
+    document.getElementById('agreement-overlay').style.display = 'none';
+}
+
+// 关闭公告窗口
+function closeAnnouncement() {
+    document.getElementById('announcement-overlay').style.display = 'none';
+}
 
 // 保存当前路径
 let currentPath = ['/root'];
@@ -56,7 +83,7 @@ function getIconUrl(file) {
         return 'https://s2.loli.net/2024/10/04/L7sHeXIk9KSchvE.webp';
     }
     if (file.name.endsWith('pdf')) {
-        return 'https://s2.loli.net/2024/10/04/gSi5RybGeH9sLCD.webp'
+        return 'https://s2.loli.net/2024/10/04/gSi5RybGeH9sLCD.webp';
     }
     return 'https://s2.loli.net/2024/10/04/FqxgDGORnl4ryCt.webp'; // 普通文件图标
 }
@@ -99,7 +126,7 @@ function updateFileList() {
 
         if (file.type === 'file') {
             fileDiv.innerHTML = `
-                <input type="checkbox" class="file-checkbox" data-type="file" onclick="updateDownloadButton()">
+                <input type="checkbox" class="file-checkbox" data-type="file" onclick="updateDownloadButton(this)">
                 <img src="${iconUrl}" alt="file icon">
                 <a href="${file.url}" download="${file.name}">${file.name}</a>
             `;
@@ -118,9 +145,11 @@ function updateFileList() {
 // 检查文件夹选中状态，阻止下载文件夹
 function handleCheckboxClick(checkbox) {
     const errorMessage = document.getElementById('error-message');
+    const overlay = document.getElementById('error-overlay');
     
     if (checkbox.getAttribute('data-type') === 'folder' && checkbox.checked) {
         checkbox.checked = false; // 禁止选择文件夹
+        overlay.style.display = 'block'; // 显示蒙版
         errorMessage.style.display = 'block'; // 显示错误提示
     } else {
         errorMessage.style.display = 'none'; // 隐藏错误提示
@@ -129,11 +158,45 @@ function handleCheckboxClick(checkbox) {
     updateDownloadButton(); // 更新下载按钮状态
 }
 
- // 更新下载按钮的显示
- function updateDownloadButton(checkbox) {
-    const downloadButton = checkbox.closest('.file').querySelector('.download-button');
-    downloadButton.style.display = checkbox.checked ? 'block' : 'none'; // 根据复选框状态显示或隐藏下载按钮
+// 关闭错误提示框
+document.querySelector('.close-button').addEventListener('click', closeError);
+
+function closeError() {
+    const errorMessage = document.getElementById('error-message');
+    const overlay = document.getElementById('error-overlay');
+    
+    errorMessage.style.display = 'none'; // 隐藏错误提示
+    overlay.style.display = 'none'; // 隐藏蒙版
 }
+
+        // 更新下载按钮的显示
+        function updateDownloadButton() {
+            const checkboxes = document.querySelectorAll('.file-checkbox');
+            const downloadButton = document.getElementById('download-button');
+
+            // 检查是否至少有一个复选框被选中
+            const selectedFiles = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+            // 显示或隐藏下载按钮
+            if (selectedFiles) {
+                downloadButton.style.display = 'block';
+            } else {
+                downloadButton.style.display = 'none';
+            }
+        }
+
+        // 下载选中的文件
+        function downloadSelected() {
+            const checkboxes = document.querySelectorAll('.file-checkbox');
+            checkboxes.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    const link = checkbox.nextElementSibling.nextElementSibling; // 获取下载链接
+                    if (link && link.tagName === 'A') {
+                        link.click(); // 自动触发点击进行下载
+                    }
+                }
+            });
+        }
 
 // 全选或取消全选
 function selectAll() {
