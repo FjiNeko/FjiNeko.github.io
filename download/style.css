@@ -256,3 +256,8 @@ body, button {
 .modal-footer {
     font-size: 0.5rem;
 }
+.thumbnail {
+    width: 50px; /* 控制缩略图宽度 */
+    height: auto; /* 保持比例 */
+    margin-right: 10px;
+}

@@ -1,0 +1,10 @@
+.policy__text_title {
+    text-align: center;
+    margin-bottom: 2rem;
+
+}
+.policy {
+    display: flex;
+    flex-direction: column;
+    ;
+}

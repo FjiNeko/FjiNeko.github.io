@@ -2,12 +2,12 @@
 const fileSystem = {
     'Files': [
         { name: '所有支持的文件', type: 'folder', content: [
-            { name: '此页面内的文件均无法下载！请勿点击下载！', type: 'file', url: '此页面内的文件均无法下载！请勿点击下载.'},
-            { name: '文本文档.txt', type: 'file', url: '1.txt'},
-            { name: '演示文稿.txt', type: 'file', url: '1.ppt'},
-            { name: 'word文档.docx', type: 'file', url: '1.docx'},
-            { name: '图片文件.jpg', type: 'file', url: '1.jpg'},
-            { name: '压缩文件.zip', type: 'file', url: '1.zip'},
+            { name: '此页面内的文件均无法下载！请勿点击下载！', type: 'file', url: '1.lnk'},
+            { name: '文本文档.txt', type: 'file', url: './Example_files/1.txt'},
+            { name: '演示文稿.ppt', type: 'file', url: './Example_files/1.pptx'},
+            { name: 'word文档.docx', type: 'file', url: './Example_files/1.docx'},
+            { name: '图片文件.png', type: 'image', url: './Example_files/图片文件.png'},
+            { name: '压缩文件.zip', type: 'file', url: './Example_files/1.zip'},
         ]},
         { name: '更新日志.txt', type: 'file', url: './更新日志.txt' },
         { name: 'Minecraft', type: 'folder', content: [
@@ -70,14 +70,11 @@ function getIconUrl(file) {
     if (file.name.endsWith('.txt')) {
         return 'https://s2.loli.net/2024/10/04/khtA2QGVEyRFjDz.webp';
     }
-    if (file.name.endsWith('.ppt')) {
+    if (file.name.endsWith('.ppt') || file.name.endsWith('.pptx')){
         return 'https://s2.loli.net/2024/10/04/mMoZrltjRzIXVbE.webp';
     }
     if (file.name.endsWith('.docx') || file.name.endsWith('.doc')) {
         return 'https://s2.loli.net/2024/10/04/Kg7Zj1hrBsckd8n.webp';
-    }
-    if (file.name.endsWith('.jpg') || file.name.endsWith('.png')) {
-        return 'https://s2.loli.net/2024/10/04/hBNZE36CWQDmJXU.webp';
     }
     if (file.name.endsWith('.zip') || file.name.endsWith('.rar')) {
         return 'https://s2.loli.net/2024/10/04/L7sHeXIk9KSchvE.webp';
@@ -137,6 +134,12 @@ function updateFileList() {
                 <img src="${iconUrl}" alt="folder icon">
                 <span>${file.name}</span>
             `;
+        } if (file.type === 'image') {
+            fileDiv.innerHTML = `
+            <input type="checkbox" class="file-checkbox" data-type="file" onclick="updateDownloadButton(this)">
+            <img src="${file.url}" alt="${file.name}" class="thumbnail">
+            <a href="${file.url}" download="${file.name}">${file.name}</a>
+            `
         }
         fileList.appendChild(fileDiv);
     });
