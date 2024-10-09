@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/download/style.css">
+    <title>Download</title>
+</head>
+<body>
+    <div id="error-overlay"></div>
+    <div id="error-message" class="error">
+        <div class="error-header">
+            <span>提示</span>
+            <button class="close-button" onclick="closeError()">×</button>
+        </div>
+        <div class="error-body">
+            <!-- <span>Oops: You can not download the folder, please select the file!</span> -->
+            <span>出错了: 你不可以下载文件夹，请选择文件!</span>
+        </div>
+    </div>
+
+    <!-- 同意协议窗口 -->
+    <div id="agreement-overlay" class="overlay">
+        <div id="agreement-message" class="modal">
+            <div class="modal-header">
+                <span>用户协议</span>
+                <button class="close-button" onclick="closeAgreement()">×</button>
+            </div>
+            <div class="modal-body">
+                <a href="/Privacy_Policy">用户协议</a>
+                <p>请仔细阅读用户协议...</p>
+                <button class="agree" onclick="agreeToTerms()">同意</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 公告窗口 -->
+    <div id="announcement-overlay" class="overlay">
+        <div id="announcement-message" class="modal">
+            <div class="modal-header">
+                <span>公告</span>
+                <button class="close-announcement-button close-button">×</button>
+            </div>
+            <div class="modal-body">
+                <span class="modal-container__text">*DU* - 2022/10/09</span>
+                <span><br /></span>
+                <span class=""><br />现已开启【用户协议】</span>
+                <span><br />【公告】可以选择“不再显示”选项,</span>
+                <span><br />【媒体文件】现已可以开始浏览!</span>
+                <span><br />【主题】Minecraft更新!</span>
+                <span><br /></span>
+                <span class="copyright modal-footer"><br />Copyright &#169; 2024 DayingNeko. All Rights Reserved.</span>
+            </div>
+            <div class="dontshow">
+                <input type="checkbox" name="" id="dont-show-again"><span class="do-not-show-again">不再显示</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="explorer">
+        <div class="toolbar">
+            <h1 id="current-folder">root</h1>
+            <button onclick="selectAll()">选中所有</button>
+        </div>
+        <div class="file-container" id="file-list">
+            <!-- 文件和文件夹会动态生成 -->
+        </div>
+        <button id="download-button" onclick="downloadSelected()">下载选中的文件</button>
+        <!-- <img class="download-icon" src="https://s2.loli.net/2024/10/05/cXB3YW1vIVoerOT.png" alt="Download Icon" style="display: none;"> 下载图标 -->
+    </div>
+
+    <script src="/download/script.js"></script>
+    <!-- <img src="" alt=""> -->
+    <p class="copyright">Copyright &#169; 2024 DayingNeko. All Rights Reserved.</p>
+</body>
+</html>
+
+<!-- 
+https://s2.loli.net/2024/10/05/cXB3YW1vIVoerOT.png
+https://s2.loli.net/2024/10/05/tVI9nBRLNiuFaYv.png
+https://s2.loli.net/2024/10/05/CZvRcH1WLBTsxXS.png
+ -->

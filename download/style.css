@@ -261,3 +261,63 @@ body, button {
     height: auto; /* 保持比例 */
     margin-right: 10px;
 }
+.hint {
+    margin-left: -0.7rem;
+    color: orange;
+}
+.dontshow {
+    display: flex;
+    justify-content: center;
+}
+span.do-not-show-again {
+    font-size: 0.70rem;
+    color: #0078D7;
+    margin-top: 1.6px;
+}
+/* 视频与音频播放 */
+#video-audio-modal {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 90%; /* Set the modal width to 90% */
+    max-width: 800px; /* Limit the maximum width */
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#video-audio-modal video,
+#video-audio-modal audio {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#video-audio-modal .close-button {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: #333;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#video-audio-modal .download-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#video-audio-modal .download-button:hover {
+    background-color: #218838;
+}
