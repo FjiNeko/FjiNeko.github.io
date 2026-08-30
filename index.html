@@ -4,17 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FjiNeko Docs | 个人主页 · 知识库与开发者作品集</title>
-  <meta name="description" content="FjiNeko (FujiNeko) 的 GitBook 风格个人主页与技术文档库，深度解析 CGBGEAR 论坛全栈架构、NekoConvert、Scrapy 爬虫与自动化项目。">
+  <meta name="description" content="FjiNeko (FujiNeko) 的个人主页与技术知识库，涵盖 CGBGEAR 论坛全栈架构、NekoConvert、Scrapy 爬虫与自动化项目。">
   <meta name="keywords" content="FjiNeko, GitBook, CGBGEAR, NekoConvert, Python, Scrapy, Flask, Portfolio">
   <meta name="author" content="FjiNeko">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
-
-  <!-- Google Fonts: Inter & Plus Jakarta Sans & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,29 +19,26 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Inter"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            mono: ['"Fira Code"', 'monospace'],
+            sans: ['"Microsoft YaHei"', '"微软雅黑"', 'Arial', 'sans-serif'],
+            tag: ['Arial', 'sans-serif'],
+            mono: ['"Fira Code"', 'Consolas', 'monospace'],
           },
           colors: {
-            gitbook: {
-              50: '#f8fafc',
-              100: '#f1f5f9',
-              200: '#e2e8f0',
-              300: '#cbd5e1',
-              700: '#334155',
-              800: '#1e293b',
-              850: '#151c2c',
-              900: '#0f172a',
-              950: '#0b0f19',
-              accent: '#3b82f6',
-              accentHover: '#2563eb',
-              border: '#273248',
-            },
-            callout: {
-              info: '#3b82f6',
-              success: '#10b981',
-              warning: '#f59e0b',
-              purple: '#8b5cf6',
+            retro: {
+              bg: '#181512',
+              card: '#221e1a',
+              cardHover: '#2a2520',
+              sidebar: '#14120f',
+              border: '#3d342c',
+              borderLight: '#52463b',
+              beige: '#d8cca3',
+              cream: '#f5f0ea',
+              catPink: '#e8a5a5',
+              xpBlue: '#2b6cb0',
+              xpBlueLight: '#4299e1',
+              textPrimary: '#f5f0ea',
+              textSecondary: '#cfc4b6',
+              textMuted: '#9e9182',
             }
           }
         }
@@ -60,27 +52,32 @@
   <!-- Custom GitBook Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#0b0f19] text-[#cbd5e1] antialiased selection:bg-blue-600 selection:text-white transition-colors duration-200 min-h-screen">
+<body class="bg-[#181512] text-[#cfc4b6] antialiased selection:bg-[#2b6cb0] selection:text-white transition-colors duration-200 min-h-screen">
+
+  <!-- Ambient CRT Warm Glow -->
+  <div class="fixed top-[-5rem] left-[20%] w-[32rem] h-[32rem] bg-[#d8cca3]/8 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+  <div class="fixed top-[40%] right-[10%] w-[28rem] h-[28rem] bg-[#2b6cb0]/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-10 left-[35%] w-[24rem] h-[24rem] bg-[#e8a5a5]/8 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
   <!-- ============================================== -->
   <!-- 📌 TOP NAVIGATION BAR (GitBook Header)        -->
   <!-- ============================================== -->
-  <header class="sticky top-0 z-50 h-16 bg-[#0b0f19]/90 backdrop-blur-md border-b border-[#1e293b] flex items-center justify-between px-4 lg:px-8">
+  <header class="sticky top-0 z-50 h-16 bg-[#14120f]/95 backdrop-blur-md border-b border-[#3d342c] flex items-center justify-between px-4 lg:px-8">
     
     <div class="flex items-center gap-4">
       <!-- Mobile Sidebar Toggle -->
-      <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-lg bg-[#1e293b] text-slate-300 hover:text-white hover:bg-[#334155] transition" aria-label="Toggle Sidebar">
+      <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-lg bg-[#221e1a] text-[#cfc4b6] hover:text-white hover:bg-[#2a2520] transition" aria-label="Toggle Sidebar">
         <i data-lucide="menu" class="w-5 h-5"></i>
       </button>
 
       <!-- Brand Logo -->
       <a href="#overview" class="flex items-center gap-3 group">
-        <div class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
-          <i data-lucide="book-open" class="w-4 h-4"></i>
+        <div class="w-9 h-9 rounded-lg bg-[#221e1a] border border-[#d8cca3]/40 p-0.5 shadow flex items-center justify-center overflow-hidden group-hover:border-[#d8cca3] transition-colors">
+          <img src="avatar.png" alt="FjiNeko" class="w-full h-full object-cover rounded-[6px]">
         </div>
         <div class="flex items-center gap-2">
-          <span class="font-bold text-base text-white tracking-tight group-hover:text-blue-400 transition-colors">FjiNeko</span>
-          <span class="text-xs px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono font-medium">Docs</span>
+          <span class="font-bold text-base text-[#f5f0ea] tracking-tight group-hover:text-[#d8cca3] transition-colors">FjiNeko</span>
+          <span class="text-xs px-2 py-0.5 rounded bg-[#2b6cb0]/20 text-[#4299e1] border border-[#2b6cb0]/40 font-tag font-semibold">Docs</span>
         </div>
       </a>
     </div>
@@ -88,23 +85,23 @@
     <!-- Quick Search Bar (GitBook Style) -->
     <div class="hidden sm:flex items-center flex-1 max-w-md mx-6">
       <div class="relative w-full">
-        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9e9182]"></i>
         <input type="text" id="quick-search" placeholder="搜索文档与项目 (快捷搜索)..."
-               class="w-full bg-[#151c2c] border border-[#273248] rounded-xl pl-9 pr-14 py-1.5 text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
-        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-500 bg-[#1e293b] px-1.5 py-0.5 rounded border border-[#334155]">Ctrl K</span>
+               class="w-full bg-[#1e1a16] border border-[#3d342c] rounded-xl pl-9 pr-14 py-1.5 text-xs text-[#f5f0ea] placeholder-[#9e9182] focus:outline-none focus:border-[#d8cca3] focus:ring-1 focus:ring-[#d8cca3] transition">
+        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-tag text-[#9e9182] bg-[#2a2520] px-1.5 py-0.5 rounded border border-[#3d342c]">Ctrl K</span>
       </div>
     </div>
 
     <!-- Top Right Actions -->
     <div class="flex items-center gap-3">
-      <div class="hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>v2.4 Active</span>
+      <div class="hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2b6cb0]/15 border border-[#2b6cb0]/35 text-[#4299e1] text-xs font-tag">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#4299e1] animate-pulse"></span>
+        <span>v2.5 Active</span>
       </div>
 
       <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" 
-         class="px-3 py-1.5 rounded-lg bg-[#151c2c] hover:bg-[#1e293b] border border-[#273248] hover:border-slate-500 text-slate-200 hover:text-white transition flex items-center gap-2 text-xs font-medium">
-        <i data-lucide="github" class="w-4 h-4"></i>
+         class="px-3 py-1.5 rounded-lg bg-[#221e1a] hover:bg-[#2a2520] border border-[#3d342c] hover:border-[#d8cca3]/60 text-[#cfc4b6] hover:text-white transition flex items-center gap-2 text-xs font-tag font-semibold">
+        <i data-lucide="github" class="w-4 h-4 text-[#d8cca3]"></i>
         <span class="hidden sm:inline">GitHub (14)</span>
       </a>
     </div>
@@ -122,35 +119,35 @@
     <!-- ============================================== -->
     <!-- 🧭 GITBOOK LEFT SIDEBAR NAVIGATION             -->
     <!-- ============================================== -->
-    <aside id="sidebar" class="fixed top-16 bottom-0 left-0 z-40 w-72 lg:w-80 bg-[#0f172a]/95 lg:bg-[#0b0f19] border-r border-[#1e293b] flex flex-col justify-between overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out p-4 space-y-6">
+    <aside id="sidebar" class="fixed top-16 bottom-0 left-0 z-40 w-72 lg:w-80 bg-[#14120f]/95 lg:bg-[#14120f] border-r border-[#3d342c] flex flex-col justify-between overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out p-4 space-y-6">
       
       <div class="space-y-6">
         
         <!-- Author Profile Summary Card -->
-        <div class="p-3.5 rounded-xl bg-[#151c2c] border border-[#273248] flex items-center gap-3">
-          <img src="https://avatars.githubusercontent.com/u/151485147?v=4" alt="FjiNeko" 
-               class="w-10 h-10 rounded-lg object-cover border border-blue-500/30">
+        <div class="p-3.5 rounded-xl bg-[#221e1a] border border-[#3d342c] flex items-center gap-3">
+          <img src="avatar.png" alt="FjiNeko" 
+               class="w-10 h-10 rounded-lg object-cover border border-[#d8cca3]/40">
           <div class="flex flex-col min-w-0">
-            <span class="font-bold text-sm text-white truncate">FjiNeko (FujiNeko)</span>
-            <span class="text-[11px] text-slate-400 font-mono truncate">Keep smiling everyday 🙂</span>
+            <span class="font-bold text-sm text-[#f5f0ea] truncate">FjiNeko (FujiNeko)</span>
+            <span class="text-[11px] text-[#9e9182] font-tag truncate">Keep smiling everyday 🙂</span>
           </div>
         </div>
 
         <!-- GitBook Nav Categories Tree -->
         <nav class="space-y-5" id="sidebar-nav">
           
-          <!-- Category 1: GETTING STARTED -->
+          <!-- Category 1: GUIDE -->
           <div>
-            <div class="px-3 mb-2 text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">
+            <div class="px-3 mb-2 text-[11px] font-tag font-bold uppercase tracking-wider text-[#9e9182]">
               指南与概览 · Guide
             </div>
             <div class="space-y-0.5">
               <a href="#overview" class="doc-nav-link active" data-section="overview">
-                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                <i data-lucide="layout-dashboard" class="w-4 h-4 text-[#d8cca3]"></i>
                 <span>主页概览 Overview</span>
               </a>
               <a href="#highlights" class="doc-nav-link" data-section="highlights">
-                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <i data-lucide="sparkles" class="w-4 h-4 text-[#d8cca3]"></i>
                 <span>精选作品 Highlights</span>
               </a>
             </div>
@@ -158,17 +155,17 @@
 
           <!-- Category 2: SPECIALIZED ARCHITECTURE (DEDICATED SECTION) -->
           <div>
-            <div class="px-3 mb-2 text-[11px] font-mono font-bold uppercase tracking-wider text-blue-400 flex items-center justify-between">
+            <div class="px-3 mb-2 text-[11px] font-tag font-bold uppercase tracking-wider text-[#d8cca3] flex items-center justify-between">
               <span>核心专区 · Special Section</span>
-              <span class="text-[9px] bg-blue-500/20 text-blue-300 px-1.5 py-0.5 rounded">Deep Dive</span>
+              <span class="text-[9px] bg-[#d8cca3]/20 text-[#d8cca3] px-1.5 py-0.5 rounded font-tag">Deep Dive</span>
             </div>
             <div class="space-y-0.5">
-              <a href="#cgbgear-forum" class="doc-nav-link text-blue-300" data-section="cgbgear-forum">
-                <i data-lucide="layers" class="w-4 h-4 text-blue-400"></i>
-                <span class="font-semibold">CGBGEAR 社区论坛全栈架构</span>
+              <a href="#cgbgear-forum" class="doc-nav-link text-[#d8cca3]" data-section="cgbgear-forum">
+                <i data-lucide="layers" class="w-4 h-4 text-[#d8cca3]"></i>
+                <span class="font-bold">CGBGEAR 社区论坛全栈架构</span>
               </a>
               <div class="pl-7 space-y-0.5 text-xs">
-                <a href="#cgbgear-arch" class="doc-sub-link">▫ 系统分层架构图解</a>
+                <a href="#cgbgear-arch" class="doc-sub-link">▫ 系统分层拓扑架构图</a>
                 <a href="#cgbgear-server" class="doc-sub-link">▫ 后端服务 (CGBGEAR_SERVER)</a>
                 <a href="#cgbgear-ui" class="doc-sub-link">▫ 用户前端 (CGBGEAR_USER_INTERFACE)</a>
                 <a href="#cgbgear-tech" class="doc-sub-link">▫ 技术特性与 API 机制</a>
@@ -178,20 +175,20 @@
 
           <!-- Category 3: CODEBASE & REPOSITORIES -->
           <div>
-            <div class="px-3 mb-2 text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">
+            <div class="px-3 mb-2 text-[11px] font-tag font-bold uppercase tracking-wider text-[#9e9182]">
               开源代码库 · Repositories
             </div>
             <div class="space-y-0.5">
               <a href="#repositories" class="doc-nav-link" data-section="repositories">
-                <i data-lucide="folder-git-2" class="w-4 h-4"></i>
+                <i data-lucide="folder-git-2" class="w-4 h-4 text-[#d8cca3]"></i>
                 <span>全部开源仓库 (14)</span>
               </a>
               <a href="#crawler-suite" class="doc-nav-link" data-section="crawler-suite">
-                <i data-lucide="bug" class="w-4 h-4"></i>
+                <i data-lucide="bug" class="w-4 h-4 text-[#d8cca3]"></i>
                 <span>Scrapy 数据采集爬虫集</span>
               </a>
               <a href="#minecraft-suite" class="doc-nav-link" data-section="minecraft-suite">
-                <i data-lucide="gamepad-2" class="w-4 h-4"></i>
+                <i data-lucide="gamepad-2" class="w-4 h-4 text-[#d8cca3]"></i>
                 <span>Minecraft 数据包与模组</span>
               </a>
             </div>
@@ -199,20 +196,20 @@
 
           <!-- Category 4: SPECIFICATIONS -->
           <div>
-            <div class="px-3 mb-2 text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">
+            <div class="px-3 mb-2 text-[11px] font-tag font-bold uppercase tracking-wider text-[#9e9182]">
               工程规格 · Specifications
             </div>
             <div class="space-y-0.5">
               <a href="#skills" class="doc-nav-link" data-section="skills">
-                <i data-lucide="cpu" class="w-4 h-4"></i>
+                <i data-lucide="cpu" class="w-4 h-4 text-[#d8cca3]"></i>
                 <span>技术栈与工具箱 Tech Stack</span>
               </a>
               <a href="#about" class="doc-nav-link" data-section="about">
-                <i data-lucide="user-check" class="w-4 h-4"></i>
+                <i data-lucide="user-check" class="w-4 h-4 text-[#d8cca3]"></i>
                 <span>关于开发者 About Me</span>
               </a>
               <a href="#contact" class="doc-nav-link" data-section="contact">
-                <i data-lucide="mail" class="w-4 h-4"></i>
+                <i data-lucide="mail" class="w-4 h-4 text-[#d8cca3]"></i>
                 <span>联系与投喂 Contact</span>
               </a>
             </div>
@@ -223,12 +220,12 @@
       </div>
 
       <!-- Sidebar Footer -->
-      <div class="pt-4 border-t border-[#1e293b] text-xs text-slate-400 font-mono flex items-center justify-between">
+      <div class="pt-4 border-t border-[#3d342c] text-xs text-[#9e9182] font-tag flex items-center justify-between">
         <div class="flex items-center gap-1.5">
-          <i data-lucide="git-branch" class="w-3.5 h-3.5 text-slate-400"></i>
+          <i data-lucide="git-branch" class="w-3.5 h-3.5 text-[#9e9182]"></i>
           <span>main</span>
         </div>
-        <button id="sidebar-copy-btn" data-email="murdermobai0605@outlook.com" class="hover:text-blue-400 transition" title="一键复制邮箱">
+        <button id="sidebar-copy-btn" data-email="murdermobai0605@outlook.com" class="hover:text-[#d8cca3] transition" title="一键复制邮箱">
           复制邮箱 📋
         </button>
       </div>
@@ -244,23 +241,23 @@
       <section id="overview" class="scroll-mt-24 space-y-6">
         
         <!-- Breadcrumb Navigation -->
-        <div class="flex items-center gap-2 text-xs font-mono text-slate-400 pb-2 border-b border-[#1e293b]">
+        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
           <span>Docs</span>
           <span>/</span>
           <span>Guide</span>
           <span>/</span>
-          <span class="text-blue-400 font-semibold">Overview</span>
+          <span class="text-[#d8cca3] font-semibold">Overview</span>
         </div>
 
         <div class="space-y-3">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 text-blue-400 text-xs font-mono border border-blue-500/20">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#d8cca3]/10 text-[#d8cca3] text-xs font-tag border border-[#d8cca3]/25">
             <i data-lucide="book-marked" class="w-3.5 h-3.5"></i>
             <span>FjiNeko Developer Documentation</span>
           </div>
-          <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-[#f5f0ea] tracking-tight">
             主页概览与知识库
           </h1>
-          <p class="text-base text-slate-300 leading-relaxed font-sans">
+          <p class="text-base text-[#cfc4b6] leading-relaxed">
             欢迎查阅 FjiNeko (FujiNeko) 的个人知识库与开源作品集。这里详细记录了 Python 后端架构、数据采集流水线、OBS 实时小部件与格式转换引擎的技术实现细节。
           </p>
         </div>
@@ -268,11 +265,11 @@
         <!-- GitBook Info Callout -->
         <div class="gitbook-callout callout-info">
           <div class="flex items-start gap-3">
-            <i data-lucide="info" class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5"></i>
+            <i data-lucide="info" class="w-5 h-5 text-[#2b6cb0] flex-shrink-0 mt-0.5"></i>
             <div class="space-y-1 text-sm">
-              <span class="font-bold text-white">关于本知识库</span>
-              <p class="text-slate-300">
-                本站采用 GitBook 文档风格构建，支持左侧大纲树导航、模块快速锚点与全栈项目深度剖析。重点专区请查看 <a href="#cgbgear-forum" class="text-blue-400 hover:underline font-semibold">CGBGEAR 社区论坛全栈架构</a>。
+              <span class="font-bold text-[#f5f0ea]">关于本知识库</span>
+              <p class="text-[#cfc4b6]">
+                本站采用 GitBook 风格构建，以复古大头电脑与猫咪奶白色系为视觉基调。重点全栈专区请查阅 <a href="#cgbgear-forum" class="text-[#d8cca3] hover:underline font-semibold">CGBGEAR 社区论坛全栈架构</a>。
               </p>
             </div>
           </div>
@@ -280,25 +277,25 @@
 
         <!-- Four Metric Cards -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-          <div class="p-4 rounded-xl bg-[#151c2c] border border-[#273248]">
-            <div class="text-xs font-mono text-slate-400">公开仓库</div>
-            <div class="text-2xl font-bold text-white mt-1">14+</div>
-            <div class="text-[11px] text-blue-400 font-mono mt-0.5">GitHub Repos</div>
+          <div class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c]">
+            <div class="text-xs font-tag text-[#9e9182]">公开仓库</div>
+            <div class="text-2xl font-bold text-[#f5f0ea] mt-1 font-tag">14+</div>
+            <div class="text-[11px] text-[#d8cca3] font-tag mt-0.5">GitHub Repos</div>
           </div>
-          <div class="p-4 rounded-xl bg-[#151c2c] border border-[#273248]">
-            <div class="text-xs font-mono text-slate-400">核心语言</div>
-            <div class="text-2xl font-bold text-emerald-400 mt-1">Python</div>
-            <div class="text-[11px] text-slate-400 font-mono mt-0.5">Scrapy / Flask</div>
+          <div class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c]">
+            <div class="text-xs font-tag text-[#9e9182]">核心语言</div>
+            <div class="text-2xl font-bold text-[#d8cca3] mt-1 font-tag">Python</div>
+            <div class="text-[11px] text-[#9e9182] font-tag mt-0.5">Scrapy / Flask</div>
           </div>
-          <div class="p-4 rounded-xl bg-[#151c2c] border border-[#273248]">
-            <div class="text-xs font-mono text-slate-400">全栈实践</div>
-            <div class="text-2xl font-bold text-purple-400 mt-1">Full-Stack</div>
-            <div class="text-[11px] text-slate-400 font-mono mt-0.5">Flask + Web GUI</div>
+          <div class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c]">
+            <div class="text-xs font-tag text-[#9e9182]">全栈实践</div>
+            <div class="text-2xl font-bold text-[#4299e1] mt-1 font-tag">Full-Stack</div>
+            <div class="text-[11px] text-[#9e9182] font-tag mt-0.5">Flask + Web GUI</div>
           </div>
-          <div class="p-4 rounded-xl bg-[#151c2c] border border-[#273248]">
-            <div class="text-xs font-mono text-slate-400">流媒体挂件</div>
-            <div class="text-2xl font-bold text-amber-400 mt-1">OBS Overlay</div>
-            <div class="text-[11px] text-slate-400 font-mono mt-0.5">Spotify Pixel</div>
+          <div class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c]">
+            <div class="text-xs font-tag text-[#9e9182]">流媒体挂件</div>
+            <div class="text-2xl font-bold text-[#e8a5a5] mt-1 font-tag">OBS Overlay</div>
+            <div class="text-[11px] text-[#9e9182] font-tag mt-0.5">Spotify Pixel</div>
           </div>
         </div>
 
@@ -307,34 +304,36 @@
       <!-- ================= 02 HIGHLIGHTS ================= -->
       <section id="highlights" class="scroll-mt-24 space-y-6">
         
-        <div class="flex items-center gap-2 text-xs font-mono text-slate-400 pb-2 border-b border-[#1e293b]">
+        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
           <span>Docs</span>
           <span>/</span>
           <span>Guide</span>
           <span>/</span>
-          <span class="text-blue-400 font-semibold">Highlights</span>
+          <span class="text-[#d8cca3] font-semibold">Highlights</span>
         </div>
 
         <div class="space-y-2">
-          <h2 class="text-2xl font-bold text-white tracking-tight">精选代表作品 (Featured Works)</h2>
-          <p class="text-sm text-slate-400">专注于桌面格式转换引擎与 OBS 流媒体挂件</p>
+          <h2 class="text-2xl font-bold text-[#f5f0ea] tracking-tight">精选代表作品 (Featured Works)</h2>
+          <p class="text-sm text-[#9e9182]">专注于桌面格式转换引擎与 OBS 流媒体挂件</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          <!-- Highlight 1: NekoConvert -->
-          <div class="p-6 rounded-2xl bg-[#151c2c] border border-[#273248] hover:border-blue-500/50 transition flex flex-col justify-between space-y-4 group">
+          <!-- Highlight 1: NekoConvert (状态：未发布) -->
+          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] hover:border-[#d8cca3]/60 transition flex flex-col justify-between space-y-4 group">
             <div class="space-y-3">
               <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/30">
-                  Media Engine
+                <!-- 状态使用：未发布 -->
+                <span class="px-2.5 py-1 rounded-md text-xs font-tag bg-[#9e9182]/20 text-[#d8cca3] border border-[#d8cca3]/40 font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#d8cca3]"></span>
+                  未发布
                 </span>
-                <i data-lucide="refresh-cw" class="w-5 h-5 text-blue-400"></i>
+                <i data-lucide="refresh-cw" class="w-5 h-5 text-[#d8cca3]"></i>
               </div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                NekoConvert (多功能格式转换引擎)
+              <h3 class="text-lg font-bold text-[#f5f0ea] group-hover:text-[#d8cca3] transition-colors">
+                多功能格式转换引擎 (NekoConvert)
               </h3>
-              <p class="text-sm text-slate-300 leading-relaxed">
+              <p class="text-sm text-[#cfc4b6] leading-relaxed">
                 面向音视频、图像、文档等多媒体格式的高性能批量转换与智能压缩工具。配备现代化 GUI/Web 界面与多语言国际化支持。
               </p>
               <div class="flex flex-wrap gap-1.5 pt-1">
@@ -344,27 +343,27 @@
                 <span class="doc-tag">Batch Process</span>
               </div>
             </div>
-            <div class="pt-4 border-t border-[#1e293b] flex items-center justify-between text-xs font-mono">
-              <span class="text-emerald-400">● Maintained</span>
-              <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline flex items-center gap-1">
-                查看详情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-              </a>
+            <div class="pt-4 border-t border-[#3d342c] flex items-center justify-between text-xs font-tag">
+              <span class="text-[#d8cca3]">状态：未发布</span>
+              <span class="text-[#9e9182]">敬请期待 🚀</span>
             </div>
           </div>
 
-          <!-- Highlight 2: Minecraft Spotify Widget -->
-          <div class="p-6 rounded-2xl bg-[#151c2c] border border-[#273248] hover:border-emerald-500/50 transition flex flex-col justify-between space-y-4 group">
+          <!-- Highlight 2: Minecraft Spotify Widget (状态：已开源) -->
+          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] hover:border-[#2b6cb0]/60 transition flex flex-col justify-between space-y-4 group">
             <div class="space-y-3">
               <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                  Live Streaming
+                <!-- 状态改为：已开源 -->
+                <span class="px-2.5 py-1 rounded-md text-xs font-tag bg-[#2b6cb0]/20 text-[#4299e1] border border-[#2b6cb0]/40 font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#4299e1] animate-pulse"></span>
+                  已开源
                 </span>
-                <i data-lucide="music" class="w-5 h-5 text-emerald-400"></i>
+                <i data-lucide="music" class="w-5 h-5 text-[#4299e1]"></i>
               </div>
-              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
-                Minecraft Spotify Widget (实时像素音乐挂件)
+              <h3 class="text-lg font-bold text-[#f5f0ea] group-hover:text-[#4299e1] transition-colors">
+                实时像素音乐挂件 (Minecraft Spotify Widget)
               </h3>
-              <p class="text-sm text-slate-300 leading-relaxed">
+              <p class="text-sm text-[#cfc4b6] leading-relaxed">
                 专为直播与 OBS 打造的透明背景音乐挂件。实时同步 Spotify 播放曲目、动态专辑封面与进度条，融入 Minecraft 像素字体与音效。
               </p>
               <div class="flex flex-wrap gap-1.5 pt-1">
@@ -374,9 +373,9 @@
                 <span class="doc-tag">Web Audio</span>
               </div>
             </div>
-            <div class="pt-4 border-t border-[#1e293b] flex items-center justify-between text-xs font-mono">
-              <span class="text-emerald-400">● Streaming Ready</span>
-              <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline flex items-center gap-1">
+            <div class="pt-4 border-t border-[#3d342c] flex items-center justify-between text-xs font-tag">
+              <span class="text-[#4299e1]">状态：已开源</span>
+              <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" class="text-[#4299e1] hover:underline flex items-center gap-1">
                 查看挂件 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
               </a>
             </div>
@@ -389,27 +388,27 @@
       <!-- ============================================================== -->
       <!-- 🌟 03 DEDICATED SECTION: CGBGEAR COMMUNITY FORUM FULL-STACK    -->
       <!-- ============================================================== -->
-      <section id="cgbgear-forum" class="scroll-mt-24 space-y-10 pt-6 border-t border-[#1e293b]">
+      <section id="cgbgear-forum" class="scroll-mt-24 space-y-10 pt-6 border-t border-[#3d342c]">
         
         <!-- Breadcrumb Navigation -->
-        <div class="flex items-center gap-2 text-xs font-mono text-slate-400 pb-2 border-b border-[#1e293b]">
+        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
           <span>Docs</span>
           <span>/</span>
           <span>Architecture Deep-Dive</span>
           <span>/</span>
-          <span class="text-blue-400 font-semibold">CGBGEAR Forum</span>
+          <span class="text-[#d8cca3] font-semibold">CGBGEAR Forum</span>
         </div>
 
         <!-- Section Header -->
         <div class="space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 text-blue-400 text-xs font-mono border border-blue-500/20">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#d8cca3]/10 text-[#d8cca3] text-xs font-tag border border-[#d8cca3]/25">
             <i data-lucide="layers" class="w-3.5 h-3.5"></i>
             <span>Architecture Deep-Dive · 专属深度专区</span>
           </div>
-          <h2 class="text-3xl font-extrabold text-white tracking-tight">
+          <h2 class="text-3xl font-extrabold text-[#f5f0ea] tracking-tight">
             【CGBGEAR 社区论坛全栈架构】深度剖析
           </h2>
-          <p class="text-base text-slate-300 leading-relaxed font-sans">
+          <p class="text-base text-[#cfc4b6] leading-relaxed">
             CGBGEAR 社区论坛是一个采用前后端完全解耦架构的综合型社区平台。系统由底层的 RESTful 接口服务集群与上层的响应式 Web 前端客户端共同协同驱动。
           </p>
         </div>
@@ -417,10 +416,10 @@
         <!-- Architecture Overview Callout -->
         <div class="gitbook-callout callout-purple">
           <div class="flex items-start gap-3">
-            <i data-lucide="server" class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5"></i>
+            <i data-lucide="server" class="w-5 h-5 text-[#d8cca3] flex-shrink-0 mt-0.5"></i>
             <div class="space-y-1 text-sm">
-              <span class="font-bold text-white">架构设计目标</span>
-              <p class="text-slate-300">
+              <span class="font-bold text-[#f5f0ea]">架构设计目标</span>
+              <p class="text-[#cfc4b6]">
                 通过明确划分 **数据层与业务网关 (Flask)** 与 **表现交互层 (Web UI)**，实现低耦合、高内聚的模块化架构，便于快速迭代社区发帖、回复、用户权限与多媒体附件功能。
               </p>
             </div>
@@ -429,21 +428,20 @@
 
         <!-- Part 1: Visual Architecture Diagram -->
         <div id="cgbgear-arch" class="space-y-4 scroll-mt-24">
-          <h3 class="text-lg font-bold text-white flex items-center gap-2">
-            <span class="text-blue-400 font-mono"># 3.1</span> 系统分层拓扑架构图 (System Architecture)
+          <h3 class="text-lg font-bold text-[#f5f0ea] flex items-center gap-2">
+            <span class="text-[#d8cca3] font-tag"># 3.1</span> 系统分层拓扑架构图 (System Architecture)
           </h3>
           
-          <div class="p-6 rounded-2xl bg-[#151c2c] border border-[#273248] space-y-6">
+          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-6">
             
-            <!-- Flow Diagram Blocks -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
               
               <!-- Frontend Layer -->
-              <div class="p-4 rounded-xl bg-[#1e293b] border border-blue-500/30 text-center space-y-2">
-                <div class="text-xs font-mono text-blue-400 uppercase font-bold">Frontend Layer</div>
-                <div class="font-bold text-white text-sm">CGBGEAR_USER_INTERFACE</div>
-                <div class="text-xs text-slate-400 font-mono">HTML5 / Modern JS / CSS3</div>
-                <div class="text-[11px] text-slate-300 bg-[#0f172a] p-2 rounded border border-[#273248]">
+              <div class="p-4 rounded-xl bg-[#1e1a16] border border-[#2b6cb0]/40 text-center space-y-2">
+                <div class="text-xs font-tag text-[#4299e1] uppercase font-bold">Frontend Layer</div>
+                <div class="font-bold text-[#f5f0ea] text-sm">CGBGEAR_USER_INTERFACE</div>
+                <div class="text-xs text-[#9e9182] font-tag">HTML5 / Modern JS / CSS3</div>
+                <div class="text-[11px] text-[#cfc4b6] bg-[#14120f] p-2 rounded border border-[#3d342c]">
                   • 帖子列表与详情流<br>
                   • 异步 Fetch 数据渲染<br>
                   • 客户端表单校验与主题
@@ -452,19 +450,19 @@
 
               <!-- Communication Channel -->
               <div class="flex flex-col items-center justify-center text-center space-y-1">
-                <div class="text-[11px] font-mono text-slate-400">JSON RESTful API</div>
-                <div class="w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 hidden md:block"></div>
-                <div class="text-[10px] font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                <div class="text-[11px] font-tag text-[#9e9182]">JSON RESTful API</div>
+                <div class="w-full h-0.5 bg-gradient-to-r from-[#2b6cb0] via-[#d8cca3] to-[#e8a5a5] hidden md:block"></div>
+                <div class="text-[10px] font-tag text-[#d8cca3] bg-[#d8cca3]/10 px-2 py-0.5 rounded border border-[#d8cca3]/25">
                   HTTP / CORS / JWT Auth
                 </div>
               </div>
 
               <!-- Backend Layer -->
-              <div class="p-4 rounded-xl bg-[#1e293b] border border-emerald-500/30 text-center space-y-2">
-                <div class="text-xs font-mono text-emerald-400 uppercase font-bold">Backend Service</div>
-                <div class="font-bold text-white text-sm">CGBGEAR_SERVER</div>
-                <div class="text-xs text-slate-400 font-mono">Python / Flask Core</div>
-                <div class="text-[11px] text-slate-300 bg-[#0f172a] p-2 rounded border border-[#273248]">
+              <div class="p-4 rounded-xl bg-[#1e1a16] border border-[#d8cca3]/40 text-center space-y-2">
+                <div class="text-xs font-tag text-[#d8cca3] uppercase font-bold">Backend Service</div>
+                <div class="font-bold text-[#f5f0ea] text-sm">CGBGEAR_SERVER</div>
+                <div class="text-xs text-[#9e9182] font-tag">Python / Flask Core</div>
+                <div class="text-[11px] text-[#cfc4b6] bg-[#14120f] p-2 rounded border border-[#3d342c]">
                   • 路由分发与 API 网关<br>
                   • 用户会话与密码哈希<br>
                   • 数据库 CRUD 与事务控制
@@ -479,45 +477,44 @@
         <!-- Part 2: Backend Deep Dive (CGBGEAR_SERVER) -->
         <div id="cgbgear-server" class="space-y-4 scroll-mt-24">
           <div class="flex items-center justify-between">
-            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-              <span class="text-emerald-400 font-mono"># 3.2</span> 后端服务端：CGBGEAR_SERVER
+            <h3 class="text-lg font-bold text-[#f5f0ea] flex items-center gap-2">
+              <span class="text-[#d8cca3] font-tag"># 3.2</span> 后端服务端：CGBGEAR_SERVER
             </h3>
             <a href="https://github.com/FjiNeko/CGBGEAR_SERVER" target="_blank" rel="noopener noreferrer" 
-               class="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1">
+               class="text-xs font-tag text-[#d8cca3] hover:underline flex items-center gap-1 font-semibold">
               <i data-lucide="github" class="w-3.5 h-3.5"></i> FjiNeko/CGBGEAR_SERVER
             </a>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#151c2c] border border-[#273248] space-y-4 text-sm leading-relaxed">
-            <p class="text-slate-300">
+          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-4 text-sm leading-relaxed">
+            <p class="text-[#cfc4b6]">
               后端基于 Python <strong>Flask</strong> 框架构建，提供了高扩展性的微服务骨架与标准化 RESTful 响应契约：
             </p>
             
-            <ul class="space-y-2.5 text-slate-300">
+            <ul class="space-y-2.5 text-[#cfc4b6]">
               <li class="flex items-start gap-2.5">
-                <span class="text-emerald-400 font-mono">1.</span>
+                <span class="text-[#d8cca3] font-tag font-bold">1.</span>
                 <div>
-                  <strong class="text-white">统一路由分发与 Blueprint 蓝图设计</strong>：按用户鉴权 (Auth)、帖子管理 (Posts)、评论互动 (Comments) 实行模块化隔离。
+                  <strong class="text-[#f5f0ea]">统一路由分发与 Blueprint 蓝图设计</strong>：按用户鉴权 (Auth)、帖子管理 (Posts)、评论互动 (Comments) 实行模块化隔离。
                 </div>
               </li>
               <li class="flex items-start gap-2.5">
-                <span class="text-emerald-400 font-mono">2.</span>
+                <span class="text-[#d8cca3] font-tag font-bold">2.</span>
                 <div>
-                  <strong class="text-white">安全与鉴权机制</strong>：集成密码安全加盐哈希（Hashing）与 Session/Token 验证，防止常见跨站攻击。
+                  <strong class="text-[#f5f0ea]">安全与鉴权机制</strong>：集成密码安全加盐哈希（Hashing）与 Session/Token 验证，防止常见跨站攻击。
                 </div>
               </li>
               <li class="flex items-start gap-2.5">
-                <span class="text-emerald-400 font-mono">3.</span>
+                <span class="text-[#d8cca3] font-tag font-bold">3.</span>
                 <div>
-                  <strong class="text-white">统一 JSON 响应契约</strong>：定义标准化的 <code>code</code>、<code>msg</code>、<code>data</code> 接口格式，简化前端异常拦截。
+                  <strong class="text-[#f5f0ea]">统一 JSON 响应契约</strong>：定义标准化的 <code>code</code>、<code>msg</code>、<code>data</code> 接口格式，简化前端异常拦截。
                 </div>
               </li>
             </ul>
 
-            <!-- Code Snippet Box -->
             <div class="pt-2">
-              <div class="text-xs font-mono text-slate-400 mb-1">Backend Git Clone Command:</div>
-              <div class="bg-[#0b0f19] border border-[#273248] p-3 rounded-xl font-mono text-xs text-emerald-300 flex items-center justify-between">
+              <div class="text-xs font-tag text-[#9e9182] mb-1">Backend Git Clone Command:</div>
+              <div class="bg-[#14120f] border border-[#3d342c] p-3 rounded-xl font-tag text-xs text-[#d8cca3] flex items-center justify-between">
                 <code>git clone https://github.com/FjiNeko/CGBGEAR_SERVER.git</code>
                 <button class="copy-code-btn hover:text-white" data-code="git clone https://github.com/FjiNeko/CGBGEAR_SERVER.git" title="复制命令">
                   <i data-lucide="copy" class="w-4 h-4"></i>
@@ -530,44 +527,44 @@
         <!-- Part 3: Frontend Deep Dive (CGBGEAR_USER_INTERFACE) -->
         <div id="cgbgear-ui" class="space-y-4 scroll-mt-24">
           <div class="flex items-center justify-between">
-            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-              <span class="text-blue-400 font-mono"># 3.3</span> 用户前端界面：CGBGEAR_USER_INTERFACE
+            <h3 class="text-lg font-bold text-[#f5f0ea] flex items-center gap-2">
+              <span class="text-[#4299e1] font-tag"># 3.3</span> 用户前端界面：CGBGEAR_USER_INTERFACE
             </h3>
             <a href="https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE" target="_blank" rel="noopener noreferrer" 
-               class="text-xs font-mono text-blue-400 hover:underline flex items-center gap-1">
+               class="text-xs font-tag text-[#4299e1] hover:underline flex items-center gap-1 font-semibold">
               <i data-lucide="github" class="w-3.5 h-3.5"></i> FjiNeko/CGBGEAR_USER_INTERFACE
             </a>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#151c2c] border border-[#273248] space-y-4 text-sm leading-relaxed">
-            <p class="text-slate-300">
+          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-4 text-sm leading-relaxed">
+            <p class="text-[#cfc4b6]">
               前端负责为社区用户提供直观沉浸的交互体验：
             </p>
 
-            <ul class="space-y-2.5 text-slate-300">
+            <ul class="space-y-2.5 text-[#cfc4b6]">
               <li class="flex items-start gap-2.5">
-                <span class="text-blue-400 font-mono">1.</span>
+                <span class="text-[#4299e1] font-tag font-bold">1.</span>
                 <div>
-                  <strong class="text-white">响应式多端排版</strong>：自适应适配宽屏桌面端与移动端浏览器。
+                  <strong class="text-[#f5f0ea]">响应式多端排版</strong>：自适应适配宽屏桌面端与移动端浏览器。
                 </div>
               </li>
               <li class="flex items-start gap-2.5">
-                <span class="text-blue-400 font-mono">2.</span>
+                <span class="text-[#4299e1] font-tag font-bold">2.</span>
                 <div>
-                  <strong class="text-white">异步无刷新交互</strong>：基于原生 JavaScript Fetch API 与后端进行 JSON 异步通信，保证操作流畅度。
+                  <strong class="text-[#f5f0ea]">异步无刷新交互</strong>：基于原生 JavaScript Fetch API 与后端进行 JSON 异步通信，保证操作流畅度。
                 </div>
               </li>
               <li class="flex items-start gap-2.5">
-                <span class="text-blue-400 font-mono">3.</span>
+                <span class="text-[#4299e1] font-tag font-bold">3.</span>
                 <div>
-                  <strong class="text-white">轻量级资源依赖</strong>：无需复杂的构建工具即可直接在静态服务器或 Web 容器中分发运行。
+                  <strong class="text-[#f5f0ea]">轻量级资源依赖</strong>：无需复杂的构建工具即可直接在静态服务器或 Web 容器中分发运行。
                 </div>
               </li>
             </ul>
 
             <div class="pt-2">
-              <div class="text-xs font-mono text-slate-400 mb-1">Frontend Git Clone Command:</div>
-              <div class="bg-[#0b0f19] border border-[#273248] p-3 rounded-xl font-mono text-xs text-blue-300 flex items-center justify-between">
+              <div class="text-xs font-tag text-[#9e9182] mb-1">Frontend Git Clone Command:</div>
+              <div class="bg-[#14120f] border border-[#3d342c] p-3 rounded-xl font-tag text-xs text-[#4299e1] flex items-center justify-between">
                 <code>git clone https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE.git</code>
                 <button class="copy-code-btn hover:text-white" data-code="git clone https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE.git" title="复制命令">
                   <i data-lucide="copy" class="w-4 h-4"></i>
@@ -579,13 +576,13 @@
 
         <!-- Part 4: Tech Specs & Dual Repo Links -->
         <div id="cgbgear-tech" class="space-y-4 scroll-mt-24">
-          <h3 class="text-lg font-bold text-white flex items-center gap-2">
-            <span class="text-amber-400 font-mono"># 3.4</span> 技术特性速览表
+          <h3 class="text-lg font-bold text-[#f5f0ea] flex items-center gap-2">
+            <span class="text-[#d8cca3] font-tag"># 3.4</span> 技术特性速览表
           </h3>
 
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs border border-[#273248] rounded-xl overflow-hidden">
-              <thead class="bg-[#151c2c] text-slate-300 border-b border-[#273248] font-mono">
+            <table class="w-full text-left text-xs border border-[#3d342c] rounded-xl overflow-hidden">
+              <thead class="bg-[#221e1a] text-[#f5f0ea] border-b border-[#3d342c] font-tag">
                 <tr>
                   <th class="p-3.5">架构维度</th>
                   <th class="p-3.5">后端实现 (Server)</th>
@@ -593,21 +590,21 @@
                   <th class="p-3.5">交互协议 / 规范</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-[#1e293b] text-slate-300 font-sans">
-                <tr class="hover:bg-[#151c2c]/60">
-                  <td class="p-3.5 font-semibold text-white">核心技术栈</td>
-                  <td class="p-3.5 font-mono text-emerald-400">Python / Flask</td>
-                  <td class="p-3.5 font-mono text-blue-400">HTML5 / JavaScript / CSS3</td>
-                  <td class="p-3.5 font-mono text-slate-400">RESTful JSON</td>
+              <tbody class="divide-y divide-[#3d342c] text-[#cfc4b6]">
+                <tr class="hover:bg-[#221e1a]/60">
+                  <td class="p-3.5 font-semibold text-[#f5f0ea]">核心技术栈</td>
+                  <td class="p-3.5 font-tag text-[#d8cca3]">Python / Flask</td>
+                  <td class="p-3.5 font-tag text-[#4299e1]">HTML5 / JavaScript / CSS3</td>
+                  <td class="p-3.5 font-tag text-[#9e9182]">RESTful JSON</td>
                 </tr>
-                <tr class="hover:bg-[#151c2c]/60">
-                  <td class="p-3.5 font-semibold text-white">数据通信</td>
+                <tr class="hover:bg-[#221e1a]/60">
+                  <td class="p-3.5 font-semibold text-[#f5f0ea]">数据通信</td>
                   <td class="p-3.5">jsonify 结构化输出</td>
                   <td class="p-3.5">Fetch API 异步流</td>
                   <td class="p-3.5">CORS 跨域配置</td>
                 </tr>
-                <tr class="hover:bg-[#151c2c]/60">
-                  <td class="p-3.5 font-semibold text-white">业务模块</td>
+                <tr class="hover:bg-[#221e1a]/60">
+                  <td class="p-3.5 font-semibold text-[#f5f0ea]">业务模块</td>
                   <td class="p-3.5">Auth / Posts / Threads</td>
                   <td class="p-3.5">Feed / Editor / Profile</td>
                   <td class="p-3.5">HTTP Status Codes</td>
@@ -620,20 +617,20 @@
       </section>
 
       <!-- ================= 04 ALL REPOSITORIES ================= -->
-      <section id="repositories" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#1e293b]">
+      <section id="repositories" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#3d342c]">
         
-        <div class="flex items-center gap-2 text-xs font-mono text-slate-400 pb-2 border-b border-[#1e293b]">
+        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
           <span>Docs</span>
           <span>/</span>
           <span>Codebase</span>
           <span>/</span>
-          <span class="text-blue-400 font-semibold">Repositories</span>
+          <span class="text-[#d8cca3] font-semibold">Repositories</span>
         </div>
 
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 class="text-2xl font-bold text-white tracking-tight">开源仓库索引 (All 14 Repositories)</h2>
-            <p class="text-sm text-slate-400">公开代码库完整列表与技术分类</p>
+            <h2 class="text-2xl font-bold text-[#f5f0ea] tracking-tight">开源仓库索引 (All 14 Repositories)</h2>
+            <p class="text-sm text-[#9e9182]">公开代码库完整列表与技术分类</p>
           </div>
 
           <!-- Filter Pills -->
@@ -652,12 +649,12 @@
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
                 <span class="doc-badge-amber">Scrapy</span>
-                <i data-lucide="film" class="w-4 h-4 text-amber-400"></i>
+                <i data-lucide="film" class="w-4 h-4 text-[#d8cca3]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-blue-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
                 Scrapy_douban_movie250
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 豆瓣电影 Top250 数据采集、评分抽取与 Pipeline 清洗入库。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -665,9 +662,9 @@
                 <span class="doc-tag">Scrapy</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/Scrapy_douban_movie250" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/Scrapy_douban_movie250" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:underline">
                 Repo →
               </a>
             </div>
@@ -678,12 +675,12 @@
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
                 <span class="doc-badge-amber">Scrapy</span>
-                <i data-lucide="book-open" class="w-4 h-4 text-amber-400"></i>
+                <i data-lucide="book-open" class="w-4 h-4 text-[#d8cca3]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-blue-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
                 Scrapy_Douban_Books
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 通过 Scrapy 框架针对豆瓣图书页面信息的结构化定向爬虫。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -691,9 +688,9 @@
                 <span class="doc-tag">Books</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/Scrapy_Douban_Books" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/Scrapy_Douban_Books" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:underline">
                 Repo →
               </a>
             </div>
@@ -704,12 +701,12 @@
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
                 <span class="doc-badge-amber">Scrapy</span>
-                <i data-lucide="car" class="w-4 h-4 text-amber-400"></i>
+                <i data-lucide="car" class="w-4 h-4 text-[#d8cca3]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-blue-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
                 Scrapy_Guazi_Car
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 瓜子二手车页面车源参数与价格趋势爬取解析工程。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -717,9 +714,9 @@
                 <span class="doc-tag">Auto Data</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/Scrapy_Guazi_Car" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/Scrapy_Guazi_Car" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:underline">
                 Repo →
               </a>
             </div>
@@ -730,12 +727,12 @@
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
                 <span class="doc-badge-amber">Scrapy & JSON</span>
-                <i data-lucide="tv" class="w-4 h-4 text-amber-400"></i>
+                <i data-lucide="tv" class="w-4 h-4 text-[#d8cca3]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-blue-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
                 IQIYI_Scrapy_Json
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 爱奇艺风云榜榜单接口爬取，解析动态 JSON 流与视频指标。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -743,9 +740,9 @@
                 <span class="doc-tag">JSON API</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/IQIYI_Scrapy_Json" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/IQIYI_Scrapy_Json" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:underline">
                 Repo →
               </a>
             </div>
@@ -755,13 +752,13 @@
           <div class="doc-repo-card" data-category="crawler web">
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="doc-badge-emerald">Data Science</span>
-                <i data-lucide="bar-chart-2" class="w-4 h-4 text-emerald-400"></i>
+                <span class="doc-badge-blue">Data Science</span>
+                <i data-lucide="bar-chart-2" class="w-4 h-4 text-[#4299e1]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-emerald-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#4299e1] transition-colors">
                 PandasBasic
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 Python Pandas 数据分析清洗与 DataFrame 实战学习笔记。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -769,9 +766,9 @@
                 <span class="doc-tag">Analytics</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/PandasBasic" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/PandasBasic" target="_blank" rel="noopener noreferrer" class="text-[#4299e1] hover:underline">
                 Repo →
               </a>
             </div>
@@ -781,13 +778,13 @@
           <div class="doc-repo-card" data-category="web">
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="doc-badge-purple">Vue.js</span>
-                <i data-lucide="code" class="w-4 h-4 text-purple-400"></i>
+                <span class="doc-badge-pink">Vue.js</span>
+                <i data-lucide="code" class="w-4 h-4 text-[#e8a5a5]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-purple-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#e8a5a5] transition-colors">
                 CO2 (Vue App)
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 基于 Vue 框架的现代组件化 Web 应用实验项目。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -795,9 +792,9 @@
                 <span class="doc-tag">Frontend</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/CO2" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/CO2" target="_blank" rel="noopener noreferrer" class="text-[#e8a5a5] hover:underline">
                 Repo →
               </a>
             </div>
@@ -808,12 +805,12 @@
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
                 <span class="doc-badge-blue">DataPack</span>
-                <i data-lucide="gamepad-2" class="w-4 h-4 text-blue-400"></i>
+                <i data-lucide="gamepad-2" class="w-4 h-4 text-[#4299e1]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-blue-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#4299e1] transition-colors">
                 Murder-Mystery DataPack
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 Minecraft 自定义密室杀手玩法数据包与联机机制。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -821,9 +818,9 @@
                 <span class="doc-tag">Game Logic</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/Murder-Mystery-DataPack-Downloading" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/Murder-Mystery-DataPack-Downloading" target="_blank" rel="noopener noreferrer" class="text-[#4299e1] hover:underline">
                 Repo →
               </a>
             </div>
@@ -834,12 +831,12 @@
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
                 <span class="doc-badge-blue">ResourcePack</span>
-                <i data-lucide="package" class="w-4 h-4 text-blue-400"></i>
+                <i data-lucide="package" class="w-4 h-4 text-[#4299e1]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-blue-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#4299e1] transition-colors">
                 ServerResourePack
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 Minecraft 服务器专用材质贴图与音效资源包。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -847,9 +844,9 @@
                 <span class="doc-tag">Textures</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/ServerResourePack" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/ServerResourePack" target="_blank" rel="noopener noreferrer" class="text-[#4299e1] hover:underline">
                 Repo →
               </a>
             </div>
@@ -859,13 +856,13 @@
           <div class="doc-repo-card" data-category="web">
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="doc-badge-emerald">Web Native</span>
-                <i data-lucide="globe" class="w-4 h-4 text-emerald-400"></i>
+                <span class="doc-badge-amber">Web Native</span>
+                <i data-lucide="globe" class="w-4 h-4 text-[#d8cca3]"></i>
               </div>
-              <h4 class="font-bold text-white text-sm hover:text-emerald-400 transition-colors">
+              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
                 html-css-js-website
               </h4>
-              <p class="text-xs text-slate-400 line-clamp-2">
+              <p class="text-xs text-[#9e9182] line-clamp-2">
                 原生 HTML5/CSS3/JS 响应式网页与交互实验。
               </p>
               <div class="flex flex-wrap gap-1">
@@ -873,9 +870,9 @@
                 <span class="doc-tag">JavaScript</span>
               </div>
             </div>
-            <div class="pt-3 border-t border-[#1e293b] mt-3 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-slate-400">Public</span>
-              <a href="https://github.com/FjiNeko/html-css-js-website" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">
+            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
+              <span class="text-[#9e9182]">Public</span>
+              <a href="https://github.com/FjiNeko/html-css-js-website" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:underline">
                 Repo →
               </a>
             </div>
@@ -886,94 +883,94 @@
       </section>
 
       <!-- ================= 05 TECH STACK ================= -->
-      <section id="skills" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#1e293b]">
+      <section id="skills" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#3d342c]">
         
-        <div class="flex items-center gap-2 text-xs font-mono text-slate-400 pb-2 border-b border-[#1e293b]">
+        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
           <span>Docs</span>
           <span>/</span>
           <span>Specifications</span>
           <span>/</span>
-          <span class="text-blue-400 font-semibold">Tech Stack</span>
+          <span class="text-[#d8cca3] font-semibold">Tech Stack</span>
         </div>
 
         <div class="space-y-2">
-          <h2 class="text-2xl font-bold text-white tracking-tight">技术版图与工具规范</h2>
-          <p class="text-sm text-slate-400">日常开发与工程栈全景图</p>
+          <h2 class="text-2xl font-bold text-[#f5f0ea] tracking-tight">技术版图与工具规范</h2>
+          <p class="text-sm text-[#9e9182]">日常开发与工程栈全景图</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           
-          <div class="p-5 rounded-2xl bg-[#151c2c] border border-[#273248] space-y-3">
-            <div class="flex items-center gap-2 text-blue-400 font-bold text-sm">
+          <div class="p-5 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-3">
+            <div class="flex items-center gap-2 text-[#d8cca3] font-bold text-sm">
               <i data-lucide="code-2" class="w-4 h-4"></i>
               <span>开发语言 Languages</span>
             </div>
-            <div class="space-y-2 text-xs text-slate-300">
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">Python</span>
-                <span class="font-mono text-blue-400">Primary / Advanced</span>
+            <div class="space-y-2 text-xs text-[#cfc4b6]">
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">Python</span>
+                <span class="font-tag text-[#d8cca3]">Primary / Advanced</span>
               </div>
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">JavaScript</span>
-                <span class="font-mono text-blue-400">ES6+ / Web APIs</span>
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">JavaScript</span>
+                <span class="font-tag text-[#d8cca3]">ES6+ / Web APIs</span>
               </div>
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">Shell / PowerShell</span>
-                <span class="font-mono text-blue-400">Automation</span>
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">Shell / PowerShell</span>
+                <span class="font-tag text-[#d8cca3]">Automation</span>
               </div>
               <div class="flex justify-between py-1">
-                <span class="text-white font-medium">HTML5 & CSS3</span>
-                <span class="font-mono text-slate-400">Tailwind / Native</span>
+                <span class="text-[#f5f0ea] font-medium">HTML5 & CSS3</span>
+                <span class="font-tag text-[#9e9182]">Tailwind / Native</span>
               </div>
             </div>
           </div>
 
-          <div class="p-5 rounded-2xl bg-[#151c2c] border border-[#273248] space-y-3">
-            <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+          <div class="p-5 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-3">
+            <div class="flex items-center gap-2 text-[#4299e1] font-bold text-sm">
               <i data-lucide="database" class="w-4 h-4"></i>
               <span>框架与工具 Frameworks</span>
             </div>
-            <div class="space-y-2 text-xs text-slate-300">
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">Scrapy & PyQuery</span>
-                <span class="font-mono text-emerald-400">Data Crawler</span>
+            <div class="space-y-2 text-xs text-[#cfc4b6]">
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">Scrapy & PyQuery</span>
+                <span class="font-tag text-[#4299e1]">Data Crawler</span>
               </div>
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">Flask & FastAPI</span>
-                <span class="font-mono text-emerald-400">REST Backend</span>
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">Flask & FastAPI</span>
+                <span class="font-tag text-[#4299e1]">REST Backend</span>
               </div>
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">FFmpeg Engine</span>
-                <span class="font-mono text-emerald-400">Media Convert</span>
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">FFmpeg Engine</span>
+                <span class="font-tag text-[#4299e1]">Media Convert</span>
               </div>
               <div class="flex justify-between py-1">
-                <span class="text-white font-medium">Git & GitHub Actions</span>
-                <span class="font-mono text-slate-400">CI/CD & Pages</span>
+                <span class="text-[#f5f0ea] font-medium">Git & GitHub Actions</span>
+                <span class="font-tag text-[#9e9182]">CI/CD & Pages</span>
               </div>
             </div>
           </div>
 
-          <div class="p-5 rounded-2xl bg-[#151c2c] border border-[#273248] space-y-3">
-            <div class="flex items-center gap-2 text-purple-400 font-bold text-sm">
+          <div class="p-5 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-3">
+            <div class="flex items-center gap-2 text-[#e8a5a5] font-bold text-sm">
               <i data-lucide="sparkles" class="w-4 h-4"></i>
               <span>特色与领域 Specialized</span>
             </div>
-            <div class="space-y-2 text-xs text-slate-300">
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">OBS 实时流媒体挂件</span>
-                <span class="font-mono text-purple-400">Spotify Live</span>
+            <div class="space-y-2 text-xs text-[#cfc4b6]">
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">OBS 实时流媒体挂件</span>
+                <span class="font-tag text-[#e8a5a5]">Spotify Live</span>
               </div>
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">Minecraft 玩法数据包</span>
-                <span class="font-mono text-purple-400">DataPack / Mod</span>
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">Minecraft 玩法数据包</span>
+                <span class="font-tag text-[#e8a5a5]">DataPack / Mod</span>
               </div>
-              <div class="flex justify-between py-1 border-b border-[#1e293b]">
-                <span class="text-white font-medium">通用格式转换器</span>
-                <span class="font-mono text-purple-400">NekoConvert</span>
+              <div class="flex justify-between py-1 border-b border-[#3d342c]">
+                <span class="text-[#f5f0ea] font-medium">通用格式转换器</span>
+                <span class="font-tag text-[#e8a5a5]">NekoConvert</span>
               </div>
               <div class="flex justify-between py-1">
-                <span class="text-white font-medium">GitBook 文档工程</span>
-                <span class="font-mono text-slate-400">Doc & UI</span>
+                <span class="text-[#f5f0ea] font-medium">GitBook 文档工程</span>
+                <span class="font-tag text-[#9e9182]">Doc & UI</span>
               </div>
             </div>
           </div>
@@ -983,44 +980,44 @@
       </section>
 
       <!-- ================= 06 ABOUT & CONTACT ================= -->
-      <section id="about" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#1e293b]">
+      <section id="about" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#3d342c]">
         
-        <div class="flex items-center gap-2 text-xs font-mono text-slate-400 pb-2 border-b border-[#1e293b]">
+        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
           <span>Docs</span>
           <span>/</span>
           <span>About</span>
           <span>/</span>
-          <span class="text-blue-400 font-semibold">Contact</span>
+          <span class="text-[#d8cca3] font-semibold">Contact</span>
         </div>
 
-        <div class="p-8 rounded-2xl bg-[#151c2c] border border-[#273248] space-y-6">
+        <div class="p-8 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-6">
           <div class="flex items-center gap-3">
-            <img src="https://avatars.githubusercontent.com/u/151485147?v=4" alt="FjiNeko" class="w-12 h-12 rounded-xl object-cover border border-blue-500/40">
+            <img src="avatar.png" alt="FjiNeko" class="w-12 h-12 rounded-xl object-cover border border-[#d8cca3]/40">
             <div>
-              <h3 class="text-lg font-bold text-white">关于 FjiNeko (FujiNeko)</h3>
-              <p class="text-xs text-slate-400 font-mono">Python Developer · Open Source Enthusiast</p>
+              <h3 class="text-lg font-bold text-[#f5f0ea]">关于 FjiNeko (FujiNeko)</h3>
+              <p class="text-xs text-[#9e9182] font-tag">Python Developer · Open Source Enthusiast</p>
             </div>
           </div>
 
-          <p class="text-sm text-slate-300 leading-relaxed font-sans">
+          <p class="text-sm text-[#cfc4b6] leading-relaxed font-sans">
             专注于用 Python 解决实际场景痛点，热爱 Scrapy 爬虫、前后端分离 Web 系统、OBS 直播挂件与本地自动化脚本。保持对新技术的好奇心与钻研精神。
           </p>
 
           <!-- GitBook Contact Callout -->
-          <div id="contact" class="pt-4 border-t border-[#1e293b] flex flex-wrap items-center gap-4">
+          <div id="contact" class="pt-4 border-t border-[#3d342c] flex flex-wrap items-center gap-4">
             <button id="main-copy-email-btn" data-email="murdermobai0605@outlook.com"
-                    class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition flex items-center gap-2">
+                    class="px-5 py-2.5 rounded-xl bg-[#2b6cb0] hover:bg-[#3182ce] text-white font-semibold text-xs transition flex items-center gap-2 font-tag">
               <i data-lucide="mail" class="w-4 h-4"></i>
               <span>复制邮箱 (murdermobai0605@outlook.com)</span>
             </button>
 
             <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer"
-               class="px-5 py-2.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-200 hover:text-white font-medium text-xs transition flex items-center gap-2 border border-[#273248]">
-              <i data-lucide="github" class="w-4 h-4"></i>
+               class="px-5 py-2.5 rounded-xl bg-[#1e1a16] hover:bg-[#2a2520] text-[#cfc4b6] hover:text-white font-medium text-xs transition flex items-center gap-2 border border-[#3d342c] font-tag">
+              <i data-lucide="github" class="w-4 h-4 text-[#d8cca3]"></i>
               <span>访问 GitHub 主页</span>
             </a>
 
-            <div id="copy-toast" class="hidden text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-lg animate-fade">
+            <div id="copy-toast" class="hidden text-xs font-tag text-[#d8cca3] bg-[#d8cca3]/10 border border-[#d8cca3]/30 px-3 py-1.5 rounded-lg animate-fade">
               ✓ 邮箱地址已复制到剪贴板！
             </div>
           </div>
@@ -1028,24 +1025,24 @@
 
         <!-- GitBook Pagination Footer Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
-          <a href="#overview" class="p-4 rounded-xl bg-[#151c2c] border border-[#273248] hover:border-blue-500/50 transition group">
-            <div class="text-[11px] font-mono text-slate-400 group-hover:text-blue-400">← PREVIOUS</div>
-            <div class="font-bold text-sm text-white mt-1">主页概览 Overview</div>
+          <a href="#overview" class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c] hover:border-[#d8cca3]/60 transition group">
+            <div class="text-[11px] font-tag text-[#9e9182] group-hover:text-[#d8cca3]">← PREVIOUS</div>
+            <div class="font-bold text-sm text-[#f5f0ea] mt-1">主页概览 Overview</div>
           </a>
-          <a href="#cgbgear-forum" class="p-4 rounded-xl bg-[#151c2c] border border-[#273248] hover:border-blue-500/50 transition group text-right">
-            <div class="text-[11px] font-mono text-slate-400 group-hover:text-blue-400">NEXT →</div>
-            <div class="font-bold text-sm text-white mt-1">CGBGEAR 社区论坛全栈架构</div>
+          <a href="#cgbgear-forum" class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c] hover:border-[#d8cca3]/60 transition group text-right">
+            <div class="text-[11px] font-tag text-[#9e9182] group-hover:text-[#d8cca3]">NEXT →</div>
+            <div class="font-bold text-sm text-[#f5f0ea] mt-1">CGBGEAR 社区论坛全栈架构</div>
           </a>
         </div>
 
         <!-- GitBook Document Footer -->
-        <footer class="pt-8 border-t border-[#1e293b] text-xs font-mono text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <footer class="pt-8 border-t border-[#3d342c] text-xs font-tag text-[#9e9182] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             Last modified on Aug 30, 2026 · Powered by GitBook Style
           </div>
           <div class="flex items-center gap-4">
-            <a href="https://github.com/FjiNeko/FjiNeko.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition">Edit on GitHub</a>
-            <a href="#overview" class="hover:text-slate-300 transition">Back to top ↑</a>
+            <a href="https://github.com/FjiNeko/FjiNeko.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-[#f5f0ea] transition">Edit on GitHub</a>
+            <a href="#overview" class="hover:text-[#f5f0ea] transition">Back to top ↑</a>
           </div>
         </footer>
 
