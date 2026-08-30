@@ -41,27 +41,35 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-3">
+      <!-- 右侧无边框纯图标联系方式 -->
+      <div class="flex items-center gap-3 text-slate-400">
+        <!-- Bilibili -->
+        <a href="https://space.bilibili.com/432216814" target="_blank" rel="noopener noreferrer"
+           class="p-1 hover:text-[#00aeec] transition" title="访问Bilibili主页">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M17.813 4.653h.854c1.51 0 2.769.864 3.197 2.19.167.514.248 1.077.248 1.681v10.149c0 2.116-1.72 3.834-3.834 3.834H5.722c-.604 0-1.167-.081-1.681-.248C2.715 21.83 1.851 20.572 1.851 19.06V8.91c0-.604.081-1.167.248-1.681.428-1.326 1.687-2.19 3.197-2.19h.854l-1.89-1.89a.89.89 0 0 1 0-1.258.89.89 0 0 1 1.258 0l2.519 2.519a.89.89 0 0 1 .26.629h7.408a.89.89 0 0 1 .26-.629l2.519-2.519a.89.89 0 0 1 1.258 0 .89.89 0 0 1 0 1.258l-1.89 1.89zm-1.89 3.333H8.077c-1.34 0-2.427 1.087-2.427 2.427v7.513c0 1.34 1.087 2.427 2.427 2.427h7.846c1.34 0 2.427-1.087 2.427-2.427v-7.513c0-1.34-1.087-2.427-2.427-2.427zm-5.769 3.704a1.111 1.111 0 1 1-2.222 0 1.111 1.111 0 0 1 2.222 0zm5.556 0a1.111 1.111 0 1 1-2.222 0 1.111 1.111 0 0 1 2.222 0z"/></svg>
+        </a>
+
+        <!-- Mail -->
         <button id="copy-email-btn" data-email="murdermobai0605@outlook.com"
-                class="px-3 py-1 rounded bg-white/[0.06] hover:bg-white/[0.1] text-xs text-slate-300 transition flex items-center gap-1.5 font-tag">
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-sky-400"></i>
-          <span>联系我</span>
+                class="p-1 hover:text-sky-400 transition" title="复制邮箱地址">
+          <i data-lucide="mail" class="w-4 h-4"></i>
         </button>
 
+        <!-- GitHub -->
         <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer"
-           class="p-1.5 rounded bg-white/[0.06] hover:bg-white/[0.1] text-slate-300 hover:text-white transition" title="访问GitHub主页">
+           class="p-1 hover:text-white transition" title="访问GitHub主页">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
         </a>
       </div>
     </header>
 
     <!-- ============================================== -->
-    <!-- 2. 个人信息横幅 (PROFILE HERO)                -->
+    <!-- 2. 个人信息横幅与技术雷达 (PROFILE HERO & RADAR)-->
     <!-- ============================================== -->
-    <section class="flex flex-col md:flex-row md:items-center justify-between gap-6 py-2">
-      <div class="space-y-3 max-w-xl">
-        
-        <!-- 角色标签：与最新作品内标签样式、形态一致，无状态点 -->
+    <section class="flex flex-col md:flex-row md:items-center justify-between gap-8 py-2">
+      
+      <!-- 左侧简介与数据 -->
+      <div class="space-y-4 max-w-lg">
         <div>
           <span class="px-2 py-0.5 rounded bg-white/[0.06] text-[11px] font-tag text-slate-300">Python开发者·自动化架构·工具开发</span>
         </div>
@@ -74,23 +82,94 @@
         <p class="text-sm text-slate-300 leading-relaxed min-h-[44px] sm:min-h-[24px]">
           <span id="typewriter-text"></span><span id="typewriter-cursor" class="inline-block w-[2px] h-4 ml-1 bg-sky-400 align-middle animate-pulse"></span>
         </p>
+
+        <!-- 统计指标 -->
+        <div class="flex items-center gap-2 pt-1 font-tag">
+          <div class="px-2.5 py-1 rounded bg-white/[0.06] text-center">
+            <div class="text-xs font-bold text-white leading-tight">14</div>
+            <div class="text-[10px] text-slate-400">开源项目</div>
+          </div>
+          <div class="px-2.5 py-1 rounded bg-white/[0.06] text-center">
+            <div class="text-xs font-bold text-sky-400 leading-tight">99+</div>
+            <div class="text-[10px] text-slate-400">获星点赞</div>
+          </div>
+          <div class="px-2.5 py-1 rounded bg-white/[0.06] text-center">
+            <div class="text-xs font-bold text-indigo-400 leading-tight">1.2k+</div>
+            <div class="text-[10px] text-slate-400">代码提交</div>
+          </div>
+        </div>
       </div>
 
-      <!-- 统计指标：样式与最新作品内标签样式、形态一致 -->
-      <div class="flex items-center gap-2 self-start md:self-auto font-tag">
-        <div class="px-2.5 py-1 rounded bg-white/[0.06] text-center">
-          <div class="text-xs font-bold text-white leading-tight">14</div>
-          <div class="text-[10px] text-slate-400">开源项目</div>
+      <!-- 右侧：等比例缩放30%的技术雷达 (70% Scale Tech Radar) -->
+      <div class="flex flex-col items-center justify-center self-center md:self-auto p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+        <div class="w-[280px] aspect-square relative flex items-center justify-center">
+          <div class="absolute inset-4 bg-sky-500/10 rounded-full blur-xl pointer-events-none"></div>
+
+          <svg viewBox="0 0 500 460" class="w-full h-full drop-shadow-md overflow-visible">
+            <!-- Hexagon Rings -->
+            <polygon points="250,90 388.6,170 388.6,330 250,410 111.4,330 111.4,170" class="fill-[#0c1220]/80 stroke-white/20 stroke-[1.5]" />
+            <polygon points="250,130 353.9,190 353.9,310 250,370 146.1,310 146.1,190" class="fill-none stroke-white/10 stroke-[1] stroke-dasharray-[3,3]" />
+            <polygon points="250,170 319.3,210 319.3,290 250,330 180.7,290 180.7,210" class="fill-none stroke-white/[0.07] stroke-[1] stroke-dasharray-[3,3]" />
+            <polygon points="250,210 284.6,230 284.6,270 250,290 215.4,270 215.4,230" class="fill-none stroke-white/[0.05] stroke-[1]" />
+
+            <!-- Axis Lines -->
+            <line x1="250" y1="250" x2="250" y2="90" class="stroke-white/15 stroke-[1]" />
+            <line x1="250" y1="250" x2="388.6" y2="170" class="stroke-white/15 stroke-[1]" />
+            <line x1="250" y1="250" x2="388.6" y2="330" class="stroke-white/15 stroke-[1]" />
+            <line x1="250" y1="250" x2="250" y2="410" class="stroke-white/15 stroke-[1]" />
+            <line x1="250" y1="250" x2="111.4" y2="330" class="stroke-white/15 stroke-[1]" />
+            <line x1="250" y1="250" x2="111.4" y2="170" class="stroke-white/15 stroke-[1]" />
+
+            <!-- Data Shape -->
+            <polygon points="250,98 368,182 355,315 250,365 132,318 135,185" 
+                     class="fill-sky-500/20 stroke-sky-400 stroke-[2] drop-shadow-[0_0_12px_rgba(56,189,248,0.35)]" />
+
+            <!-- Data Points -->
+            <circle cx="250" cy="98" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
+            <circle cx="368" cy="182" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
+            <circle cx="355" cy="315" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
+            <circle cx="250" cy="365" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
+            <circle cx="132" cy="318" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
+            <circle cx="135" cy="185" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
+
+            <!-- Labels (Arial Font) -->
+            <text x="250" y="65" text-anchor="middle" class="fill-white font-bold font-tag text-[15px]">Python(Core)</text>
+            <text x="250" y="80" text-anchor="middle" class="fill-sky-400 font-tag text-[11px]">95%</text>
+
+            <text x="405" y="165" text-anchor="start" class="fill-white font-bold font-tag text-[13px]">Scrapy</text>
+            <text x="405" y="180" text-anchor="start" class="fill-slate-400 font-tag text-[11px]">88%</text>
+
+            <text x="405" y="335" text-anchor="start" class="fill-white font-bold font-tag text-[13px]">Flask</text>
+            <text x="405" y="350" text-anchor="start" class="fill-slate-400 font-tag text-[11px]">80%</text>
+
+            <text x="250" y="435" text-anchor="middle" class="fill-white font-bold font-tag text-[13px]">FFmpeg</text>
+            <text x="250" y="450" text-anchor="middle" class="fill-slate-400 font-tag text-[11px]">75%</text>
+
+            <text x="95" y="335" text-anchor="end" class="fill-white font-bold font-tag text-[13px]">Git&Shell</text>
+            <text x="95" y="350" text-anchor="end" class="fill-slate-400 font-tag text-[11px]">85%</text>
+
+            <text x="95" y="165" text-anchor="end" class="fill-white font-bold font-tag text-[13px]">JavaScript</text>
+            <text x="95" y="180" text-anchor="end" class="fill-slate-400 font-tag text-[11px]">82%</text>
+          </svg>
         </div>
-        <div class="px-2.5 py-1 rounded bg-white/[0.06] text-center">
-          <div class="text-xs font-bold text-sky-400 leading-tight">99+</div>
-          <div class="text-[10px] text-slate-400">获星点赞</div>
-        </div>
-        <div class="px-2.5 py-1 rounded bg-white/[0.06] text-center">
-          <div class="text-xs font-bold text-indigo-400 leading-tight">1.2k+</div>
-          <div class="text-[10px] text-slate-400">代码提交</div>
+
+        <!-- Radar Compact Legend -->
+        <div class="flex items-center justify-center gap-3 text-[10px] font-tag text-slate-400 pt-2 border-t border-white/[0.06] w-full">
+          <div class="flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+            <span>Python(95%)</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+            <span>Scrapy/Web</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+            <span>Git/FFmpeg</span>
+          </div>
         </div>
       </div>
+
     </section>
 
     <!-- ============================================== -->
@@ -108,10 +187,6 @@
       <button class="nav-tab-btn px-4 py-2 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap" data-tab="tab-cgbgear">
         <i data-lucide="layers" class="w-3.5 h-3.5 text-cyan-400"></i>
         <span>CGBGEAR全栈架构</span>
-      </button>
-      <button class="nav-tab-btn px-4 py-2 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap" data-tab="tab-radar">
-        <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i>
-        <span>技术雷达</span>
       </button>
       <button class="nav-tab-btn px-4 py-2 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap" data-tab="tab-about">
         <i data-lucide="user" class="w-3.5 h-3.5 text-amber-400"></i>
@@ -234,6 +309,26 @@
           <div class="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-tag">
             <span class="text-slate-400">图书数据</span>
             <a href="https://github.com/FjiNeko/Scrapy_Douban_Books" target="_blank" class="text-slate-300 hover:text-white transition p-1" title="在GitHub查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3.5 h-3.5 fill-current"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Scrapy Guazi Car -->
+        <div class="minimal-card p-5 flex flex-col justify-between space-y-4" data-category="crawler">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs font-tag">
+              <span class="text-sky-400 font-semibold">#Scrapy</span>
+              <span class="text-slate-400">Python</span>
+            </div>
+            <h4 class="font-bold text-sm text-white tracking-tight">Scrapy_Guazi_Car</h4>
+            <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">
+              瓜子二手车页面车源参数与价格趋势爬取解析工程。
+            </p>
+          </div>
+          <div class="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-tag">
+            <span class="text-slate-400">车源信息</span>
+            <a href="https://github.com/FjiNeko/Scrapy_Guazi_Car" target="_blank" class="text-slate-300 hover:text-white transition p-1" title="在GitHub查看源码">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3.5 h-3.5 fill-current"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
             </a>
           </div>
@@ -433,7 +528,7 @@
             <div class="flex justify-between items-center text-xs font-tag">
               <span class="text-cyan-400 font-semibold">Backend Server Repo (Python/Flask)</span>
               <a href="https://github.com/FjiNeko/CGBGEAR_SERVER" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-1 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3 h-3 fill-current"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3.5 h-3.5 fill-current"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
                 <span>GitHub</span>
               </a>
             </div>
@@ -444,7 +539,7 @@
             <div class="flex justify-between items-center text-xs font-tag">
               <span class="text-sky-400 font-semibold">Frontend UI Repo</span>
               <a href="https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-1 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3 h-3 fill-current"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3.5 h-3.5 fill-current"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
                 <span>GitHub</span>
               </a>
             </div>
@@ -457,94 +552,7 @@
 
     </div>
 
-    <!-- 📊 TAB 4: 技术雷达 (RADAR) -->
-    <div id="tab-radar" class="tab-pane space-y-6">
-      
-      <div class="minimal-card p-6 sm:p-8 flex flex-col items-center justify-center space-y-6">
-        
-        <div class="space-y-1 text-center">
-          <h3 class="text-lg font-bold text-white">技术版图与工具规范</h3>
-          <p class="text-xs text-slate-400 font-tag">以Python为核心驱动的全栈与自动化技术栈雷达</p>
-        </div>
-
-        <div class="w-full max-w-[420px] aspect-square relative flex items-center justify-center">
-          <div class="absolute inset-8 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-          <svg viewBox="0 0 500 460" class="w-full h-full drop-shadow-lg overflow-visible">
-            <!-- Hexagon Rings -->
-            <polygon points="250,90 388.6,170 388.6,330 250,410 111.4,330 111.4,170" class="fill-[#0c1220]/80 stroke-white/20 stroke-[1.5]" />
-            <polygon points="250,130 353.9,190 353.9,310 250,370 146.1,310 146.1,190" class="fill-none stroke-white/10 stroke-[1] stroke-dasharray-[3,3]" />
-            <polygon points="250,170 319.3,210 319.3,290 250,330 180.7,290 180.7,210" class="fill-none stroke-white/[0.07] stroke-[1] stroke-dasharray-[3,3]" />
-            <polygon points="250,210 284.6,230 284.6,270 250,290 215.4,270 215.4,230" class="fill-none stroke-white/[0.05] stroke-[1]" />
-
-            <!-- Axis Lines -->
-            <line x1="250" y1="250" x2="250" y2="90" class="stroke-white/15 stroke-[1]" />
-            <line x1="250" y1="250" x2="388.6" y2="170" class="stroke-white/15 stroke-[1]" />
-            <line x1="250" y1="250" x2="388.6" y2="330" class="stroke-white/15 stroke-[1]" />
-            <line x1="250" y1="250" x2="250" y2="410" class="stroke-white/15 stroke-[1]" />
-            <line x1="250" y1="250" x2="111.4" y2="330" class="stroke-white/15 stroke-[1]" />
-            <line x1="250" y1="250" x2="111.4" y2="170" class="stroke-white/15 stroke-[1]" />
-
-            <!-- Data Shape -->
-            <polygon points="250,98 368,182 355,315 250,365 132,318 135,185" 
-                     class="fill-sky-500/20 stroke-sky-400 stroke-[2] drop-shadow-[0_0_12px_rgba(56,189,248,0.35)]" />
-
-            <!-- Data Points -->
-            <circle cx="250" cy="98" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
-            <circle cx="368" cy="182" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
-            <circle cx="355" cy="315" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
-            <circle cx="250" cy="365" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
-            <circle cx="132" cy="318" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
-            <circle cx="135" cy="185" r="4.5" class="fill-white stroke-sky-400 stroke-[2]" />
-
-            <!-- Labels (Arial Font) -->
-            <!-- 1. Top: Python (Core) -->
-            <text x="250" y="65" text-anchor="middle" class="fill-white font-bold font-tag text-[15px]">Python(Core)</text>
-            <text x="250" y="80" text-anchor="middle" class="fill-sky-400 font-tag text-[11px]">95%</text>
-
-            <!-- 2. Top Right: Scrapy -->
-            <text x="405" y="165" text-anchor="start" class="fill-white font-bold font-tag text-[13px]">Scrapy</text>
-            <text x="405" y="180" text-anchor="start" class="fill-slate-400 font-tag text-[11px]">88%</text>
-
-            <!-- 3. Bottom Right: Flask -->
-            <text x="405" y="335" text-anchor="start" class="fill-white font-bold font-tag text-[13px]">Flask</text>
-            <text x="405" y="350" text-anchor="start" class="fill-slate-400 font-tag text-[11px]">80%</text>
-
-            <!-- 4. Bottom: FFmpeg -->
-            <text x="250" y="435" text-anchor="middle" class="fill-white font-bold font-tag text-[13px]">FFmpeg</text>
-            <text x="250" y="450" text-anchor="middle" class="fill-slate-400 font-tag text-[11px]">75%</text>
-
-            <!-- 5. Bottom Left: Git & Shell -->
-            <text x="95" y="335" text-anchor="end" class="fill-white font-bold font-tag text-[13px]">Git&Shell</text>
-            <text x="95" y="350" text-anchor="end" class="fill-slate-400 font-tag text-[11px]">85%</text>
-
-            <!-- 6. Top Left: JavaScript -->
-            <text x="95" y="165" text-anchor="end" class="fill-white font-bold font-tag text-[13px]">JavaScript</text>
-            <text x="95" y="180" text-anchor="end" class="fill-slate-400 font-tag text-[11px]">82%</text>
-          </svg>
-        </div>
-
-        <!-- Radar Legend -->
-        <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-tag text-slate-300 pt-2 border-t border-white/[0.06] w-full max-w-sm">
-          <div class="flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
-            <span>核心主攻(Python)</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span>
-            <span>熟练掌握(Scrapy/Web)</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
-            <span>日常工具(Git/FFmpeg)</span>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- 👤 TAB 5: 关于作者 (ABOUT) -->
+    <!-- 👤 TAB 4: 关于作者 (ABOUT) -->
     <div id="tab-about" class="tab-pane space-y-6">
       
       <div class="minimal-card p-6 sm:p-8 space-y-6">
@@ -585,6 +593,7 @@
         <span>Hosted on GitHub Pages</span>
       </div>
       <div class="flex items-center gap-4">
+        <a href="https://space.bilibili.com/432216814" target="_blank" rel="noopener noreferrer" class="hover:text-[#00aeec] transition">Bilibili</a>
         <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">GitHub</a>
         <button id="footer-copy-email-btn" data-email="murdermobai0605@outlook.com" class="hover:text-white transition">murdermobai0605@outlook.com</button>
       </div>
