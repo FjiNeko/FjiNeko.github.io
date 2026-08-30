@@ -59,7 +59,7 @@ body {
   border: 1px solid var(--border-color);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-radius: 16px;
+  border-radius: 14px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -136,8 +136,9 @@ body {
   border: 1px solid rgba(56, 189, 248, 0.25);
 }
 
+/* Red style for Unreleased */
 .badge-status.unreleased {
-  background: rgba(245, 158, 11, 0.12);
-  color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  background: rgba(244, 63, 94, 0.12);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.25);
 }

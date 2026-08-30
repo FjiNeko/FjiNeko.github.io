@@ -1,4 +1,4 @@
-// 极简风格个人主页交互脚本
+// 极简风格个人主页交互与打字机脚本
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -7,7 +7,31 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
-  // 2. 标签页切换逻辑 (Tab Switching)
+  // 2. 打字机动效 (Typewriter Effect)
+  const typewriterElement = document.getElementById('typewriter-text');
+  if (typewriterElement) {
+    const textToType = "专注于Python自动化脚本、Scrapy分布式数据采集、Flask轻量服务架构与OBS多媒体视觉挂件开发。";
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeWriter() {
+      if (!isDeleting && charIndex <= textToType.length) {
+        typewriterElement.textContent = textToType.substring(0, charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 45);
+      } else if (!isDeleting && charIndex > textToType.length) {
+        // 完成输入后静止展示，光标继续闪烁
+        const cursor = document.getElementById('typewriter-cursor');
+        if (cursor) {
+          cursor.classList.add('opacity-75');
+        }
+      }
+    }
+
+    typeWriter();
+  }
+
+  // 3. 标签页切换逻辑 (Tab Switching)
   const tabButtons = document.querySelectorAll('.nav-tab-btn');
   const tabPanes = document.querySelectorAll('.tab-pane');
 
@@ -35,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3. 全部开源仓库分类筛选 (Repository Category Filter)
+  // 4. 全部开源仓库分类筛选 (Repository Category Filter)
   const filterButtons = document.querySelectorAll('.repo-filter-btn');
   const repoCards = document.querySelectorAll('.minimal-card[data-category]');
 
@@ -64,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. 气泡提示与一键复制功能 (Toast & Copy)
+  // 5. 气泡提示与一键复制功能 (Toast & Copy)
   const toast = document.getElementById('toast-message');
 
   function showToast(message) {
