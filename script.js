@@ -3,20 +3,90 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+  initScrollSpy();
+  initMobileSidebar();
   initTypingEffect();
   initAmbientCanvas();
-  initProjectFilter();
-  initInteractions();
+  initRepositoryFilter();
+  initCopyActions();
   initPawClickEffect();
 });
 
-// Dynamic Typing Effect
+// ====================================================
+// 🧭 ScrollSpy: Real-time Active Nav Highlighting (GameSci style)
+// ====================================================
+function initScrollSpy() {
+  const sections = document.querySelectorAll('main section[id]');
+  const navItems = document.querySelectorAll('#sidebar-nav .nav-item');
+
+  function updateActiveNav() {
+    let scrollPosition = window.scrollY + 200;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navItems.forEach(item => {
+          if (item.getAttribute('data-section') === sectionId) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+}
+
+// ====================================================
+// 📱 Mobile Sidebar Drawer Toggle
+// ====================================================
+function initMobileSidebar() {
+  const toggleBtn = document.getElementById('mobile-sidebar-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('mobile-backdrop');
+  const navLinks = document.querySelectorAll('#sidebar-nav a');
+
+  function openSidebar() {
+    sidebar.classList.remove('-translate-x-full');
+    backdrop.classList.remove('hidden');
+  }
+
+  function closeSidebar() {
+    sidebar.classList.add('-translate-x-full');
+    backdrop.classList.add('hidden');
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', openSidebar);
+  }
+  if (backdrop) {
+    backdrop.addEventListener('click', closeSidebar);
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 1024) {
+        closeSidebar();
+      }
+    });
+  });
+}
+
+// ====================================================
+// ✍️ Dynamic Typing Effect
+// ====================================================
 function initTypingEffect() {
   const words = [
-    "Python 爬虫与数据采集探索",
-    "Flask / FastAPI 全栈 Web 开发",
+    "Python 爬虫与数据流水线开发",
+    "Flask / FastAPI 全栈架构探索",
     "OBS 实时像素音乐挂件制作者",
-    "实用效率与桌面工具创造者",
+    "实用效率与桌面工具打造者",
     "Keep smiling everyday 🙂"
   ];
   
@@ -34,20 +104,20 @@ function initTypingEffect() {
     if (isDeleting) {
       textElement.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
-      typingSpeed = 45;
+      typingSpeed = 40;
     } else {
       textElement.textContent = currentWord.substring(0, charIndex + 1);
       charIndex++;
-      typingSpeed = 95;
+      typingSpeed = 90;
     }
 
     if (!isDeleting && charIndex === currentWord.length) {
-      typingSpeed = 2200; // Pause when word complete
+      typingSpeed = 2200; // Pause when complete
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % words.length;
-      typingSpeed = 400; // Pause before typing new word
+      typingSpeed = 400; // Pause before new word
     }
 
     setTimeout(type, typingSpeed);
@@ -56,7 +126,9 @@ function initTypingEffect() {
   type();
 }
 
-// Warm Amber Floating Particles (Cozy Dust & Sparks)
+// ====================================================
+// ✨ Ambient Floating Particles Canvas (Warm Coffee Sparks)
+// ====================================================
 function initAmbientCanvas() {
   const canvas = document.getElementById('ambient-canvas');
   if (!canvas) return;
@@ -71,14 +143,14 @@ function initAmbientCanvas() {
   });
 
   const particles = [];
-  const particleCount = Math.min(Math.floor(window.innerWidth / 30), 40);
+  const particleCount = Math.min(Math.floor(window.innerWidth / 30), 45);
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: -Math.random() * 0.4 - 0.1, // Floating gently upwards
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: -Math.random() * 0.4 - 0.15, // Floating gently upwards
       radius: Math.random() * 2 + 0.8,
       alpha: Math.random() * 0.45 + 0.15,
       color: Math.random() > 0.4 ? 'rgba(251, 191, 36,' : 'rgba(244, 114, 182,'
@@ -93,7 +165,6 @@ function initAmbientCanvas() {
       p.x += p.vx;
       p.y += p.vy;
 
-      // Wrap around screen
       if (p.y < -10) p.y = height + 10;
       if (p.x < -10) p.x = width + 10;
       if (p.x > width + 10) p.x = -10;
@@ -110,10 +181,12 @@ function initAmbientCanvas() {
   render();
 }
 
-// Projects Filter Tabs
-function initProjectFilter() {
+// ====================================================
+// 🗂️ Repositories Category Filter Tabs
+// ====================================================
+function initRepositoryFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  const projectCards = document.querySelectorAll('#repositories-grid .project-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -140,45 +213,43 @@ function initProjectFilter() {
   });
 }
 
-// User Interactions & Copy Email
-function initInteractions() {
-  // Mobile Menu Toggle
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-  }
-
-  // Copy Email Button
-  const copyBtn = document.getElementById('copy-email-btn');
+// ====================================================
+// 📋 Copy Email & Interactions
+// ====================================================
+function initCopyActions() {
+  const copyButtons = [
+    document.getElementById('sidebar-copy-email'),
+    document.getElementById('hero-copy-email-btn'),
+    document.getElementById('main-copy-email-btn')
+  ];
   const copyToast = document.getElementById('copy-toast');
-  if (copyBtn && copyToast) {
-    copyBtn.addEventListener('click', async () => {
-      const email = copyBtn.getAttribute('data-email');
+
+  copyButtons.forEach(btn => {
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
+      const email = btn.getAttribute('data-email');
       try {
         await navigator.clipboard.writeText(email);
-        copyToast.classList.remove('hidden');
-        setTimeout(() => {
-          copyToast.classList.add('hidden');
-        }, 3000);
+        if (copyToast) {
+          copyToast.classList.remove('hidden');
+          setTimeout(() => {
+            copyToast.classList.add('hidden');
+          }, 3000);
+        }
       } catch (err) {
         prompt('请手动复制邮箱：', email);
       }
     });
-  }
+  });
 }
 
-// Cute Cat Paw Click Effect
+// ====================================================
+// 🐾 Cat Paw Click Effect
+// ====================================================
 function initPawClickEffect() {
   const pawIcons = ['🐾', '🐱', '✨', '☕', '🌟'];
   
   document.addEventListener('click', (e) => {
-    // Avoid triggering when clicking interactive buttons
     if (e.target.closest('button') || e.target.closest('a') || e.target.closest('input')) {
       return;
     }
