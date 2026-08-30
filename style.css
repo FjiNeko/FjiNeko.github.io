@@ -1,252 +1,208 @@
-/* Left Sidebar (GameSci Style) & Cozy Neko Coffee Theme */
+/* GitBook Documentation Theme Stylesheet */
 
 /* ==================================================== */
-/* 🧭 LEFT SIDEBAR NAVIGATION ITEMS                     */
+/* 📚 SIDEBAR TREE NAVIGATION (GitBook Style)           */
 /* ==================================================== */
 
-.nav-item {
-  position: relative;
+.doc-nav-link {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.875rem;
-  color: #a89e97;
-  text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-
-.nav-item:hover {
-  color: #ffffff;
-  background: rgba(35, 27, 23, 0.7);
-  transform: translateX(3px);
-}
-
-.nav-indicator {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 0;
-  background: linear-gradient(to bottom, #f59e0b, #fbbf24);
-  border-radius: 0 4px 4px 0;
-  box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
-  transition: height 0.25s ease;
-}
-
-.nav-item.active .nav-indicator {
-  height: 65%;
-}
-
-.nav-index {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.6875rem;
-  color: #786e68;
-  letter-spacing: 0.05em;
-  transition: color 0.2s ease;
-}
-
-.nav-item.active .nav-index {
-  color: #fbbf24;
-  font-weight: 600;
-}
-
-.nav-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-title {
-  font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #d1c7c0;
-  transition: color 0.2s ease;
-}
-
-.nav-sub {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.625rem;
-  letter-spacing: 0.08em;
-  color: #685e58;
-  transition: color 0.2s ease;
-}
-
-.nav-item.active {
-  background: rgba(45, 33, 27, 0.85);
-  color: #ffffff;
-  border-right: 1px solid rgba(245, 158, 11, 0.2);
-}
-
-.nav-item.active .nav-title {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.nav-item.active .nav-sub {
-  color: #f59e0b;
-}
-
-/* ==================================================== */
-/* 📄 CARDS & MODULES                                   */
-/* ==================================================== */
-
-.cozy-hero-card {
-  background: rgba(26, 20, 17, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(245, 158, 11, 0.15);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 30px -10px rgba(245, 158, 11, 0.08);
-}
-
-.cozy-card {
-  background: rgba(28, 22, 18, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(245, 158, 11, 0.12);
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cozy-card:hover {
-  background: rgba(35, 27, 23, 0.88);
-  border-color: rgba(245, 158, 11, 0.3);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 25px -8px rgba(245, 158, 11, 0.15);
-}
-
-.project-card {
-  background: rgba(24, 19, 16, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(245, 158, 11, 0.12);
-  border-radius: 1.25rem;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-card:hover {
-  background: rgba(32, 25, 21, 0.9);
-  border-color: rgba(245, 158, 11, 0.35);
-  transform: translateY(-4px);
-  box-shadow: 0 14px 28px -8px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(245, 158, 11, 0.15);
-}
-
-.card-footer {
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(52, 41, 35, 0.8);
-  margin-top: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.card-link {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #fbbf24;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  transition: all 0.2s;
-}
-
-.card-link:hover {
-  color: #fde047;
-  transform: translateX(3px);
-}
-
-/* Filter Tab Buttons */
-.filter-btn {
-  padding: 0.45rem 0.95rem;
-  border-radius: 0.875rem;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
   font-size: 0.8125rem;
   font-weight: 500;
-  background: rgba(26, 20, 17, 0.7);
-  border: 1px solid rgba(52, 41, 35, 0.9);
-  color: #b8ada6;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.15s ease;
 }
 
-.filter-btn:hover {
-  background: rgba(40, 31, 26, 0.85);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: #ffffff;
+.doc-nav-link:hover {
+  color: #f8fafc;
+  background: #1e293b;
 }
 
-.filter-btn.active {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: #140f0d;
-  font-weight: 700;
-  border-color: #fbbf24;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+.doc-nav-link.active {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  font-weight: 600;
 }
 
-/* Tag Pill */
-.tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.5rem;
+.doc-sub-link {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.375rem;
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: all 0.15s ease;
+}
+
+.doc-sub-link:hover {
+  color: #cbd5e1;
+  background: rgba(30, 41, 59, 0.6);
+}
+
+/* ==================================================== */
+/* 💡 GITBOOK CALLOUT BLOCKS                            */
+/* ==================================================== */
+
+.gitbook-callout {
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border-left-width: 4px;
+}
+
+.callout-info {
+  background: rgba(59, 130, 246, 0.08);
+  border-left-color: #3b82f6;
+  border-top: 1px solid rgba(59, 130, 246, 0.15);
+  border-right: 1px solid rgba(59, 130, 246, 0.15);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.callout-purple {
+  background: rgba(139, 92, 246, 0.08);
+  border-left-color: #8b5cf6;
+  border-top: 1px solid rgba(139, 92, 246, 0.15);
+  border-right: 1px solid rgba(139, 92, 246, 0.15);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+.callout-emerald {
+  background: rgba(16, 185, 129, 0.08);
+  border-left-color: #10b981;
+  border-top: 1px solid rgba(16, 185, 129, 0.15);
+  border-right: 1px solid rgba(16, 185, 129, 0.15);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+/* ==================================================== */
+/* 🏷️ REPOSITORY CARDS & BADGES                         */
+/* ==================================================== */
+
+.doc-repo-card {
+  background: #151c2c;
+  border: 1px solid #273248;
+  border-radius: 0.875rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.doc-repo-card:hover {
+  border-color: #3b82f6;
+  background: #1a2236;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+}
+
+.doc-badge-amber {
   font-size: 0.6875rem;
   font-family: 'Fira Code', monospace;
-  background: rgba(35, 27, 23, 0.85);
-  border: 1px solid rgba(68, 54, 46, 0.7);
-  color: #eaddd7;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  background: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
-/* Subtle Grid Background Pattern */
-.bg-grid {
-  background-size: 28px 28px;
-  background-image: 
-    linear-gradient(to right, rgba(245, 158, 11, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
+.doc-badge-emerald {
+  font-size: 0.6875rem;
+  font-family: 'Fira Code', monospace;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
-/* Custom Scrollbar */
+.doc-badge-purple {
+  font-size: 0.6875rem;
+  font-family: 'Fira Code', monospace;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  background: rgba(139, 92, 246, 0.1);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.doc-badge-blue {
+  font-size: 0.6875rem;
+  font-family: 'Fira Code', monospace;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.doc-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.375rem;
+  font-size: 0.6875rem;
+  font-family: 'Fira Code', monospace;
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+}
+
+/* ==================================================== */
+/* 🎛️ FILTER BUTTONS                                    */
+/* ==================================================== */
+
+.doc-filter-btn {
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #151c2c;
+  border: 1px solid #273248;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.doc-filter-btn:hover {
+  color: #f8fafc;
+  background: #1e293b;
+  border-color: #475569;
+}
+
+.doc-filter-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  border-color: #3b82f6;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Custom Clean Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0807;
+  background: #0b0f19;
 }
 ::-webkit-scrollbar-thumb {
-  background: #281f1b;
-  border-radius: 4px;
+  background: #1e293b;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3c2f29;
+  background: #334155;
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade {
-  animation: fadeIn 0.3s ease-out forwards;
-}
-
-/* Cat Paw Click Ripple */
-.paw-ripple {
-  position: fixed;
-  pointer-events: none;
-  font-size: 1.25rem;
-  user-select: none;
-  animation: pawFade 0.8s ease-out forwards;
-  z-index: 9999;
-}
-
-@keyframes pawFade {
-  0% { opacity: 0.9; transform: translate(-50%, -50%) scale(0.6) rotate(0deg); }
-  50% { opacity: 1; transform: translate(-50%, -80%) scale(1.1) rotate(-10deg); }
-  100% { opacity: 0; transform: translate(-50%, -120%) scale(1.3) rotate(15deg); }
+  animation: fadeIn 0.25s ease-out forwards;
 }

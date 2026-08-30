@@ -1,26 +1,24 @@
-// Initialize Lucide Icons & Interactions
+// Initialize Lucide Icons & GitBook Doc Interactions
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
     window.lucide.createIcons();
   }
   initScrollSpy();
   initMobileSidebar();
-  initTypingEffect();
-  initAmbientCanvas();
+  initQuickSearch();
   initRepositoryFilter();
   initCopyActions();
-  initPawClickEffect();
 });
 
 // ====================================================
-// 🧭 ScrollSpy: Real-time Active Nav Highlighting (GameSci style)
+// 🧭 ScrollSpy: Active Section Highlighting in GitBook Tree
 // ====================================================
 function initScrollSpy() {
   const sections = document.querySelectorAll('main section[id]');
-  const navItems = document.querySelectorAll('#sidebar-nav .nav-item');
+  const navLinks = document.querySelectorAll('#sidebar-nav .doc-nav-link');
 
-  function updateActiveNav() {
-    let scrollPosition = window.scrollY + 200;
+  function updateActiveLink() {
+    let scrollPosition = window.scrollY + 180;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
@@ -28,23 +26,54 @@ function initScrollSpy() {
       const sectionId = section.getAttribute('id');
 
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        navItems.forEach(item => {
-          if (item.getAttribute('data-section') === sectionId) {
-            item.classList.add('active');
+        navLinks.forEach(link => {
+          if (link.getAttribute('data-section') === sectionId) {
+            link.classList.add('active');
           } else {
-            item.classList.remove('active');
+            link.classList.remove('active');
           }
         });
       }
     });
   }
 
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  updateActiveNav();
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  updateActiveLink();
 }
 
 // ====================================================
-// 📱 Mobile Sidebar Drawer Toggle
+// 🔍 Quick Search & Ctrl+K Shortcut
+// ====================================================
+function initQuickSearch() {
+  const searchInput = document.getElementById('quick-search');
+  if (!searchInput) return;
+
+  // Keyboard Shortcut: Ctrl + K or Cmd + K
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  // Live client-side filtering on repositories & content
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    const repoCards = document.querySelectorAll('#repositories-grid .doc-repo-card');
+
+    repoCards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      if (text.includes(query) || query === '') {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+}
+
+// ====================================================
+// 📱 Mobile Sidebar Toggle
 // ====================================================
 function initMobileSidebar() {
   const toggleBtn = document.getElementById('mobile-sidebar-toggle');
@@ -79,114 +108,11 @@ function initMobileSidebar() {
 }
 
 // ====================================================
-// ✍️ Dynamic Typing Effect
-// ====================================================
-function initTypingEffect() {
-  const words = [
-    "Python 爬虫与数据流水线开发",
-    "Flask / FastAPI 全栈架构探索",
-    "OBS 实时像素音乐挂件制作者",
-    "实用效率与桌面工具打造者",
-    "Keep smiling everyday 🙂"
-  ];
-  
-  const textElement = document.getElementById('typed-text');
-  if (!textElement) return;
-
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 80;
-
-  function type() {
-    const currentWord = words[wordIndex];
-    
-    if (isDeleting) {
-      textElement.textContent = currentWord.substring(0, charIndex - 1);
-      charIndex--;
-      typingSpeed = 40;
-    } else {
-      textElement.textContent = currentWord.substring(0, charIndex + 1);
-      charIndex++;
-      typingSpeed = 90;
-    }
-
-    if (!isDeleting && charIndex === currentWord.length) {
-      typingSpeed = 2200; // Pause when complete
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-      typingSpeed = 400; // Pause before new word
-    }
-
-    setTimeout(type, typingSpeed);
-  }
-
-  type();
-}
-
-// ====================================================
-// ✨ Ambient Floating Particles Canvas (Warm Coffee Sparks)
-// ====================================================
-function initAmbientCanvas() {
-  const canvas = document.getElementById('ambient-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  let width = canvas.width = window.innerWidth;
-  let height = canvas.height = window.innerHeight;
-
-  window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
-
-  const particles = [];
-  const particleCount = Math.min(Math.floor(window.innerWidth / 30), 45);
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: -Math.random() * 0.4 - 0.15, // Floating gently upwards
-      radius: Math.random() * 2 + 0.8,
-      alpha: Math.random() * 0.45 + 0.15,
-      color: Math.random() > 0.4 ? 'rgba(251, 191, 36,' : 'rgba(244, 114, 182,'
-    });
-  }
-
-  function render() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.y < -10) p.y = height + 10;
-      if (p.x < -10) p.x = width + 10;
-      if (p.x > width + 10) p.x = -10;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `${p.color} ${p.alpha})`;
-      ctx.fill();
-    }
-
-    requestAnimationFrame(render);
-  }
-
-  render();
-}
-
-// ====================================================
 // 🗂️ Repositories Category Filter Tabs
 // ====================================================
 function initRepositoryFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('#repositories-grid .project-card');
+  const filterBtns = document.querySelectorAll('.doc-filter-btn');
+  const repoCards = document.querySelectorAll('#repositories-grid .doc-repo-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -195,7 +121,7 @@ function initRepositoryFilter() {
 
       const filter = btn.getAttribute('data-filter');
 
-      projectCards.forEach(card => {
+      repoCards.forEach(card => {
         if (filter === 'all') {
           card.style.display = 'flex';
           card.classList.add('animate-fade');
@@ -214,12 +140,30 @@ function initRepositoryFilter() {
 }
 
 // ====================================================
-// 📋 Copy Email & Interactions
+// 📋 Copy Code & Email Actions
 // ====================================================
 function initCopyActions() {
+  // Copy Code Snippets
+  const codeBtns = document.querySelectorAll('.copy-code-btn');
+  codeBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const code = btn.getAttribute('data-code');
+      try {
+        await navigator.clipboard.writeText(code);
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<span class="text-[10px] text-emerald-400 font-mono">Copied!</span>';
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+        }, 2000);
+      } catch (err) {
+        prompt('请手动复制命令：', code);
+      }
+    });
+  });
+
+  // Copy Email Buttons
   const copyButtons = [
-    document.getElementById('sidebar-copy-email'),
-    document.getElementById('hero-copy-email-btn'),
+    document.getElementById('sidebar-copy-btn'),
     document.getElementById('main-copy-email-btn')
   ];
   const copyToast = document.getElementById('copy-toast');
@@ -227,7 +171,7 @@ function initCopyActions() {
   copyButtons.forEach(btn => {
     if (!btn) return;
     btn.addEventListener('click', async () => {
-      const email = btn.getAttribute('data-email');
+      const email = btn.getAttribute('data-email') || 'murdermobai0605@outlook.com';
       try {
         await navigator.clipboard.writeText(email);
         if (copyToast) {
@@ -240,30 +184,5 @@ function initCopyActions() {
         prompt('请手动复制邮箱：', email);
       }
     });
-  });
-}
-
-// ====================================================
-// 🐾 Cat Paw Click Effect
-// ====================================================
-function initPawClickEffect() {
-  const pawIcons = ['🐾', '🐱', '✨', '☕', '🌟'];
-  
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('button') || e.target.closest('a') || e.target.closest('input')) {
-      return;
-    }
-
-    const paw = document.createElement('div');
-    paw.className = 'paw-ripple';
-    paw.textContent = pawIcons[Math.floor(Math.random() * pawIcons.length)];
-    paw.style.left = `${e.clientX}px`;
-    paw.style.top = `${e.clientY}px`;
-
-    document.body.appendChild(paw);
-
-    setTimeout(() => {
-      paw.remove();
-    }, 800);
   });
 }
