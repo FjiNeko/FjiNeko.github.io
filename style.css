@@ -1,121 +1,103 @@
-/* TikTok Web Dark Mode Stylesheet */
-
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+/* 简约高级风格 (Minimalist Modern Dark) CSS */
 
 :root {
-  --tiktok-bg: #121212;
-  --tiktok-surface: #1e1e1e;
-  --tiktok-surface-hover: #2a2a2a;
-  --tiktok-border: rgba(255, 255, 255, 0.12);
-  --tiktok-red: #fe2c55;
-  --tiktok-red-hover: #e02449;
-  --tiktok-cyan: #25f4ee;
-  --tiktok-text-primary: #ffffff;
-  --tiktok-text-secondary: rgba(255, 255, 255, 0.75);
-  --tiktok-text-muted: rgba(255, 255, 255, 0.48);
+  --font-cn: "Microsoft YaHei", "微软雅黑", -apple-system, sans-serif;
+  --font-en: Arial, "Helvetica Neue", sans-serif;
+  
+  --bg-main: #0a0e17;
+  --bg-card: rgba(16, 24, 40, 0.65);
+  --bg-card-hover: rgba(22, 34, 56, 0.85);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.4);
+  
+  --accent-primary: #6366f1;
+  --accent-secondary: #0ea5e9;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-sub: #64748b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: "Microsoft YaHei", "微软雅黑", "Noto Sans SC", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-  background-color: var(--tiktok-bg);
-  color: var(--tiktok-text-primary);
+  font-family: var(--font-cn);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-.font-tag, .font-stat {
-  font-family: Arial, "Plus Jakarta Sans", sans-serif !important;
+.font-tag, .font-en {
+  font-family: var(--font-en) !important;
 }
 
-/* ==================================================== */
-/* 📱 TIKTOK INTERACTIVE TAB BAR                        */
-/* ==================================================== */
-
-.tiktok-tab-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.25rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--tiktok-text-muted);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.tiktok-tab-btn:hover {
-  color: var(--tiktok-text-primary);
-}
-
-.tiktok-tab-btn.active {
-  color: var(--tiktok-text-primary);
-}
-
-.tiktok-tab-btn.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
+/* Background Subtle Mesh Glow */
+.bg-mesh {
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background-color: var(--tiktok-text-primary);
-  border-radius: 2px;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(14, 165, 233, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
 }
 
-/* ==================================================== */
-/* 🎬 TIKTOK 3:4 VIDEO FEED CARDS                      */
-/* ==================================================== */
+/* Minimalist Card */
+.minimal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-.tiktok-card {
+.minimal-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--accent-glow);
+}
+
+/* Tab Navigation */
+.nav-tab-btn {
   position: relative;
-  aspect-ratio: 3 / 4;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  background-color: #181818;
-  border: 1px solid var(--tiktok-border);
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
 }
 
-.tiktok-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7);
+.nav-tab-btn:hover {
+  color: var(--text-main);
 }
 
-/* Subtle video scanline & gradient */
-.tiktok-card-gradient {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.9) 100%);
-}
-
-.tiktok-badge-pin {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  font-family: Arial, sans-serif;
-  background-color: var(--tiktok-red);
+.nav-tab-btn.active {
   color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
-.tiktok-badge-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  font-family: Arial, sans-serif;
-  background-color: var(--tiktok-cyan);
-  color: #121212;
+/* Tab Content Visibility */
+.tab-pane {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tab-pane.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Custom Scrollbar */
@@ -123,33 +105,45 @@ body {
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #121212;
+  background: #0a0e17;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #2b2b2b;
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #444444;
+  background: rgba(255, 255, 255, 0.3);
 }
 
-/* Tab animations */
-.tab-content {
-  display: none;
-}
-.tab-content.active {
-  display: block;
-  animation: tiktokFadeIn 0.3s ease-out forwards;
+/* Status Badges */
+.badge-status {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-@keyframes tiktokFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.badge-status.released {
+  background: rgba(14, 165, 233, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+.badge-status.unreleased {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-pinned {
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.25);
 }
