@@ -497,7 +497,7 @@
           </div>
           <h2 class="text-2xl font-extrabold text-white">【CGBGEAR 社区论坛全栈架构】剖析</h2>
           <p class="text-sm text-[rgba(255,255,255,0.7)] leading-relaxed">
-            前后端解耦架构设计，高内聚低耦合。后台服务器获取数据使用 **PHP** 编写的 RESTful 接口服务集群驱动，前端交互由响应式 Web UI 异步渲染。
+            前后端解耦架构设计，高内聚低耦合。后台服务器核心架构基于 **Python (Flask)** 驱动的 RESTful 接口服务集群，前端交互由响应式 Web UI 异步渲染。
           </p>
         </div>
 
@@ -518,11 +518,11 @@
             <p class="text-xs text-[rgba(255,255,255,0.6)]">标准响应格式 {code, msg, data}</p>
           </div>
 
-          <!-- Backend (PHP) -->
+          <!-- Backend (Python/Flask) -->
           <div class="p-4 rounded-xl bg-[#242424] border border-[#fe2c55]/30 space-y-2 text-center">
-            <span class="text-xs font-tag text-[#fe2c55] font-bold uppercase">Backend Service (PHP)</span>
+            <span class="text-xs font-tag text-[#fe2c55] font-bold uppercase">Backend Service (Python / Flask)</span>
             <div class="font-bold text-sm text-white">CGBGEAR_SERVER</div>
-            <p class="text-xs text-[rgba(255,255,255,0.6)]">PHP 数据获取 / PDO / JSON 接口 / 鉴权</p>
+            <p class="text-xs text-[rgba(255,255,255,0.6)]">Flask 蓝图模块化 / RESTful API / JWT 鉴权</p>
           </div>
 
         </div>
@@ -532,7 +532,7 @@
           
           <div class="p-4 rounded-xl bg-[#121212] border border-[rgba(255,255,255,0.1)] space-y-2">
             <div class="flex justify-between items-center text-xs font-tag">
-              <span class="text-[#fe2c55] font-bold">Backend Server Repo (PHP)</span>
+              <span class="text-[#fe2c55] font-bold">Backend Server Repo (Python / Flask)</span>
               <a href="https://github.com/FjiNeko/CGBGEAR_SERVER" target="_blank" class="hover:underline flex items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3 h-3 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
                 <span>GitHub</span>
@@ -567,7 +567,7 @@
         
         <div class="space-y-1 text-center">
           <h3 class="text-xl font-bold">技术版图与工具规范</h3>
-          <p class="text-xs text-[rgba(255,255,255,0.6)] font-tag">以 Python 为核心、PHP 为后台数据获取驱动的技术栈雷达</p>
+          <p class="text-xs text-[rgba(255,255,255,0.6)] font-tag">以 Python 为核心驱动的全栈与自动化技术栈雷达</p>
         </div>
 
         <div class="w-full max-w-[440px] aspect-square relative flex items-center justify-center">
