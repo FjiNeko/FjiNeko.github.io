@@ -1,20 +1,23 @@
-// Initialize Lucide Icons
+// Initialize Lucide Icons & Interactions
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
     window.lucide.createIcons();
   }
   initTypingEffect();
-  initParticleCanvas();
+  initAmbientCanvas();
+  initProjectFilter();
   initInteractions();
+  initPawClickEffect();
 });
 
 // Dynamic Typing Effect
 function initTypingEffect() {
   const words = [
-    "Python Developer & Scripting",
-    "Tool Builder & Automation Explorer",
-    "OBS Widget & Streaming Tech Creator",
-    "Open Source & Geek Crafting"
+    "Python 爬虫与数据采集探索",
+    "Flask / FastAPI 全栈 Web 开发",
+    "OBS 实时像素音乐挂件制作者",
+    "实用效率与桌面工具创造者",
+    "Keep smiling everyday 🙂"
   ];
   
   const textElement = document.getElementById('typed-text');
@@ -31,20 +34,20 @@ function initTypingEffect() {
     if (isDeleting) {
       textElement.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
-      typingSpeed = 40;
+      typingSpeed = 45;
     } else {
       textElement.textContent = currentWord.substring(0, charIndex + 1);
       charIndex++;
-      typingSpeed = 90;
+      typingSpeed = 95;
     }
 
     if (!isDeleting && charIndex === currentWord.length) {
-      typingSpeed = 2000; // Pause at end
+      typingSpeed = 2200; // Pause when word complete
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % words.length;
-      typingSpeed = 400; // Pause before new word
+      typingSpeed = 400; // Pause before typing new word
     }
 
     setTimeout(type, typingSpeed);
@@ -53,9 +56,9 @@ function initTypingEffect() {
   type();
 }
 
-// Particle Canvas Animation
-function initParticleCanvas() {
-  const canvas = document.getElementById('particle-canvas');
+// Warm Amber Floating Particles (Cozy Dust & Sparks)
+function initAmbientCanvas() {
+  const canvas = document.getElementById('ambient-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
@@ -68,54 +71,37 @@ function initParticleCanvas() {
   });
 
   const particles = [];
-  const particleCount = Math.min(Math.floor(window.innerWidth / 25), 45);
+  const particleCount = Math.min(Math.floor(window.innerWidth / 30), 40);
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      radius: Math.random() * 1.5 + 0.5,
-      alpha: Math.random() * 0.5 + 0.2
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: -Math.random() * 0.4 - 0.1, // Floating gently upwards
+      radius: Math.random() * 2 + 0.8,
+      alpha: Math.random() * 0.45 + 0.15,
+      color: Math.random() > 0.4 ? 'rgba(251, 191, 36,' : 'rgba(244, 114, 182,'
     });
   }
 
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    // Draw Particles
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
 
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
+      // Wrap around screen
+      if (p.y < -10) p.y = height + 10;
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(45, 212, 191, ${p.alpha})`;
+      ctx.fillStyle = `${p.color} ${p.alpha})`;
       ctx.fill();
-
-      // Connect close particles
-      for (let j = i + 1; j < particles.length; j++) {
-        const p2 = particles[j];
-        const dx = p.x - p2.x;
-        const dy = p.y - p2.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < 100) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(99, 102, 241, ${0.15 * (1 - dist / 100)})`;
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.stroke();
-        }
-      }
     }
 
     requestAnimationFrame(render);
@@ -124,7 +110,37 @@ function initParticleCanvas() {
   render();
 }
 
-// User Interactions
+// Projects Filter Tabs
+function initProjectFilter() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        if (filter === 'all') {
+          card.style.display = 'flex';
+          card.classList.add('animate-fade');
+        } else {
+          const categories = card.getAttribute('data-category').split(' ');
+          if (categories.includes(filter)) {
+            card.style.display = 'flex';
+            card.classList.add('animate-fade');
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+}
+
+// User Interactions & Copy Email
 function initInteractions() {
   // Mobile Menu Toggle
   const menuBtn = document.getElementById('mobile-menu-btn');
@@ -133,7 +149,6 @@ function initInteractions() {
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
-    // Close mobile menu on click link
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     });
@@ -156,10 +171,28 @@ function initInteractions() {
       }
     });
   }
+}
 
-  // Set Current Year
-  const yearElem = document.getElementById('current-year');
-  if (yearElem) {
-    yearElem.textContent = new Date().getFullYear();
-  }
+// Cute Cat Paw Click Effect
+function initPawClickEffect() {
+  const pawIcons = ['🐾', '🐱', '✨', '☕', '🌟'];
+  
+  document.addEventListener('click', (e) => {
+    // Avoid triggering when clicking interactive buttons
+    if (e.target.closest('button') || e.target.closest('a') || e.target.closest('input')) {
+      return;
+    }
+
+    const paw = document.createElement('div');
+    paw.className = 'paw-ripple';
+    paw.textContent = pawIcons[Math.floor(Math.random() * pawIcons.length)];
+    paw.style.left = `${e.clientX}px`;
+    paw.style.top = `${e.clientY}px`;
+
+    document.body.appendChild(paw);
+
+    setTimeout(() => {
+      paw.remove();
+    }, 800);
+  });
 }
