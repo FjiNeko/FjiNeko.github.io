@@ -1,1087 +1,686 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="dark scroll-smooth">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FjiNeko Docs | 个人主页 · 知识库与开发者作品集</title>
-  <meta name="description" content="FjiNeko (FujiNeko) 的个人主页与技术知识库，涵盖 CGBGEAR 论坛全栈架构、NekoConvert、Scrapy 爬虫与自动化项目。">
-  <meta name="keywords" content="FjiNeko, GitBook, CGBGEAR, NekoConvert, Python, Scrapy, Flask, Portfolio">
-  <meta name="author" content="FjiNeko">
-
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
-
+  <title>FjiNeko (@fjineko) | TikTok 开发者主页</title>
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Microsoft YaHei"', '"微软雅黑"', 'Arial', 'sans-serif'],
-            tag: ['Arial', 'sans-serif'],
-            mono: ['"Fira Code"', 'Consolas', 'monospace'],
-          },
-          colors: {
-            retro: {
-              bg: '#181512',
-              card: '#221e1a',
-              cardHover: '#2a2520',
-              sidebar: '#14120f',
-              border: '#3d342c',
-              borderLight: '#52463b',
-              beige: '#d8cca3',
-              cream: '#f5f0ea',
-              catPink: '#e8a5a5',
-              xpBlue: '#2b6cb0',
-              xpBlueLight: '#4299e1',
-              textPrimary: '#f5f0ea',
-              textSecondary: '#cfc4b6',
-              textMuted: '#9e9182',
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Lucide Icons -->
+  
+  <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Custom GitBook Styles -->
+  
+  <!-- Custom TikTok Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="avatar.png">
 </head>
-<body class="bg-[#181512] text-[#cfc4b6] antialiased selection:bg-[#2b6cb0] selection:text-white transition-colors duration-200 min-h-screen">
-
-  <!-- Ambient CRT Warm Glow -->
-  <div class="fixed top-[-5rem] left-[20%] w-[32rem] h-[32rem] bg-[#d8cca3]/8 rounded-full blur-[130px] pointer-events-none -z-10"></div>
-  <div class="fixed top-[40%] right-[10%] w-[28rem] h-[28rem] bg-[#2b6cb0]/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
-  <div class="fixed bottom-10 left-[35%] w-[24rem] h-[24rem] bg-[#e8a5a5]/8 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<body class="bg-[#121212] text-white min-h-screen antialiased selection:bg-[#fe2c55] selection:text-white">
 
   <!-- ============================================== -->
-  <!-- 📌 TOP NAVIGATION BAR (GitBook Header)        -->
+  <!-- 📌 TIKTOK TOP NAVIGATION BAR                   -->
   <!-- ============================================== -->
-  <header class="sticky top-0 z-50 h-16 bg-[#14120f]/95 backdrop-blur-md border-b border-[#3d342c] flex items-center justify-between px-4 lg:px-8">
+  <header class="sticky top-0 z-50 h-16 bg-[#121212]/95 backdrop-blur-md border-b border-[rgba(255,255,255,0.12)] px-4 lg:px-8 flex items-center justify-between">
     
-    <div class="flex items-center gap-4">
-      <!-- Mobile Sidebar Toggle -->
-      <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-lg bg-[#221e1a] text-[#cfc4b6] hover:text-white hover:bg-[#2a2520] transition" aria-label="Toggle Sidebar">
-        <i data-lucide="menu" class="w-5 h-5"></i>
+    <!-- Left: TikTok Logo Brand -->
+    <div class="flex items-center gap-6">
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="flex items-center font-black text-2xl tracking-tighter">
+          <span class="text-white">Tik</span><span class="text-[#fe2c55]">Tok</span>
+          <span class="text-xs ml-2 px-1.5 py-0.5 rounded bg-[#25f4ee]/20 text-[#25f4ee] font-tag font-bold border border-[#25f4ee]/30">Dev</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Center: TikTok Search Bar -->
+    <div class="hidden md:flex items-center flex-1 max-w-md mx-8">
+      <div class="relative w-full">
+        <input type="text" id="tiktok-search" placeholder="搜索项目、仓库或技能..." 
+               class="w-full bg-[#242424] text-sm text-white placeholder-[rgba(255,255,255,0.5)] rounded-full pl-5 pr-12 py-2.5 focus:outline-none focus:ring-1 focus:ring-[rgba(255,255,255,0.3)] border border-transparent transition">
+        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-[rgba(255,255,255,0.5)] hover:text-white transition">
+          <i data-lucide="search" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Right: TikTok Top Actions -->
+    <div class="flex items-center gap-3">
+      <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" 
+         class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#242424] hover:bg-[#303030] text-sm font-semibold transition text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+        <span class="font-tag">GitHub (14)</span>
+      </a>
+
+      <button id="header-share-btn" class="p-2.5 rounded-full hover:bg-[#242424] text-white transition" title="分享主页">
+        <i data-lucide="share-2" class="w-5 h-5"></i>
       </button>
 
-      <!-- Brand Logo -->
-      <a href="#overview" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-lg bg-[#221e1a] border border-[#d8cca3]/40 p-0.5 shadow flex items-center justify-center overflow-hidden group-hover:border-[#d8cca3] transition-colors">
-          <img src="avatar.png" alt="FjiNeko" class="w-full h-full object-cover rounded-[6px]">
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="font-bold text-base text-[#f5f0ea] tracking-tight group-hover:text-[#d8cca3] transition-colors">FjiNeko</span>
-          <span class="text-xs px-2 py-0.5 rounded bg-[#2b6cb0]/20 text-[#4299e1] border border-[#2b6cb0]/40 font-tag font-semibold">Docs</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Quick Search Bar (GitBook Style) -->
-    <div class="hidden sm:flex items-center flex-1 max-w-md mx-6">
-      <div class="relative w-full">
-        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9e9182]"></i>
-        <input type="text" id="quick-search" placeholder="搜索文档与项目 (快捷搜索)..."
-               class="w-full bg-[#1e1a16] border border-[#3d342c] rounded-xl pl-9 pr-14 py-1.5 text-xs text-[#f5f0ea] placeholder-[#9e9182] focus:outline-none focus:border-[#d8cca3] focus:ring-1 focus:ring-[#d8cca3] transition">
-        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-tag text-[#9e9182] bg-[#2a2520] px-1.5 py-0.5 rounded border border-[#3d342c]">Ctrl K</span>
+      <div class="w-9 h-9 rounded-full overflow-hidden border border-[rgba(255,255,255,0.2)]">
+        <img src="avatar.png" alt="Profile" class="w-full h-full object-cover">
       </div>
-    </div>
-
-    <!-- Top Right Actions -->
-    <div class="flex items-center gap-3">
-      <div class="hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2b6cb0]/15 border border-[#2b6cb0]/35 text-[#4299e1] text-xs font-tag">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#4299e1] animate-pulse"></span>
-        <span>v2.5 Active</span>
-      </div>
-
-      <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" 
-         class="px-3 py-1.5 rounded-lg bg-[#221e1a] hover:bg-[#2a2520] border border-[#3d342c] hover:border-[#d8cca3]/60 text-[#cfc4b6] hover:text-white transition flex items-center gap-2 text-xs font-tag font-semibold">
-        <i data-lucide="github" class="w-4 h-4 text-[#d8cca3]"></i>
-        <span class="hidden sm:inline">GitHub (14)</span>
-      </a>
     </div>
 
   </header>
 
-  <!-- Mobile Backdrop Overlay -->
-  <div id="mobile-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity"></div>
-
   <!-- ============================================== -->
-  <!-- 📚 MAIN WRAPPER: SIDEBAR + CONTENT             -->
+  <!-- 👤 TIKTOK PROFILE HEADER                       -->
   <!-- ============================================== -->
-  <div class="flex min-h-[calc(100vh-4rem)] max-w-[96rem] mx-auto relative">
-
-    <!-- ============================================== -->
-    <!-- 🧭 GITBOOK LEFT SIDEBAR NAVIGATION             -->
-    <!-- ============================================== -->
-    <aside id="sidebar" class="fixed top-16 bottom-0 left-0 z-40 w-72 lg:w-80 bg-[#14120f]/95 lg:bg-[#14120f] border-r border-[#3d342c] flex flex-col justify-between overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out p-4 space-y-6">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-6 border-b border-[rgba(255,255,255,0.12)]">
       
-      <div class="space-y-6">
-        
-        <!-- Author Profile Summary Card -->
-        <div class="p-3.5 rounded-xl bg-[#221e1a] border border-[#3d342c] flex items-center gap-3">
-          <img src="avatar.png" alt="FjiNeko" 
-               class="w-10 h-10 rounded-lg object-cover border border-[#d8cca3]/40">
-          <div class="flex flex-col min-w-0">
-            <span class="font-bold text-sm text-[#f5f0ea] truncate">FjiNeko (FujiNeko)</span>
-            <span class="text-[11px] text-[#9e9182] font-tag truncate">Keep smiling everyday 🙂</span>
-          </div>
+      <!-- Big Avatar with TikTok Story Ring -->
+      <div class="relative group">
+        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-[#fe2c55] via-[#25f4ee] to-[#fe2c55] shadow-xl">
+          <img src="avatar.png" alt="FjiNeko" class="w-full h-full object-cover rounded-full bg-[#121212]">
         </div>
-
-        <!-- GitBook Nav Categories Tree -->
-        <nav class="space-y-5" id="sidebar-nav">
-          
-          <!-- Category 1: GUIDE -->
-          <div>
-            <div class="px-3 mb-2 text-[11px] font-tag font-bold uppercase tracking-wider text-[#9e9182]">
-              指南与概览 · Guide
-            </div>
-            <div class="space-y-0.5">
-              <a href="#overview" class="doc-nav-link active" data-section="overview">
-                <i data-lucide="layout-dashboard" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span>主页概览 Overview</span>
-              </a>
-              <a href="#highlights" class="doc-nav-link" data-section="highlights">
-                <i data-lucide="sparkles" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span>精选作品 Highlights</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 2: SPECIALIZED ARCHITECTURE (DEDICATED SECTION) -->
-          <div>
-            <div class="px-3 mb-2 text-[11px] font-tag font-bold uppercase tracking-wider text-[#d8cca3] flex items-center justify-between">
-              <span>核心专区 · Special Section</span>
-              <span class="text-[9px] bg-[#d8cca3]/20 text-[#d8cca3] px-1.5 py-0.5 rounded font-tag">Deep Dive</span>
-            </div>
-            <div class="space-y-0.5">
-              <a href="#cgbgear-forum" class="doc-nav-link text-[#d8cca3]" data-section="cgbgear-forum">
-                <i data-lucide="layers" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span class="font-bold">CGBGEAR 社区论坛全栈架构</span>
-              </a>
-              <div class="pl-7 space-y-0.5 text-xs">
-                <a href="#cgbgear-arch" class="doc-sub-link">▫ 系统分层拓扑架构图</a>
-                <a href="#cgbgear-server" class="doc-sub-link">▫ 后端服务 (CGBGEAR_SERVER)</a>
-                <a href="#cgbgear-ui" class="doc-sub-link">▫ 用户前端 (CGBGEAR_USER_INTERFACE)</a>
-                <a href="#cgbgear-tech" class="doc-sub-link">▫ 技术特性与 API 机制</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Category 3: CODEBASE & REPOSITORIES -->
-          <div>
-            <div class="px-3 mb-2 text-[11px] font-tag font-bold uppercase tracking-wider text-[#9e9182]">
-              开源代码库 · Repositories
-            </div>
-            <div class="space-y-0.5">
-              <a href="#repositories" class="doc-nav-link" data-section="repositories">
-                <i data-lucide="folder-git-2" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span>全部开源仓库 (14)</span>
-              </a>
-              <a href="#crawler-suite" class="doc-nav-link" data-section="crawler-suite">
-                <i data-lucide="bug" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span>Scrapy 数据采集爬虫集</span>
-              </a>
-              <a href="#minecraft-suite" class="doc-nav-link" data-section="minecraft-suite">
-                <i data-lucide="gamepad-2" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span>Minecraft 数据包与模组</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 4: SPECIFICATIONS -->
-          <div>
-            <div class="px-3 mb-2 text-[11px] font-tag font-bold uppercase tracking-wider text-[#9e9182]">
-              工程规格 · Specifications
-            </div>
-            <div class="space-y-0.5">
-              <a href="#skills" class="doc-nav-link" data-section="skills">
-                <i data-lucide="cpu" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span>技术栈与工具箱 Tech Stack</span>
-              </a>
-              <a href="#about" class="doc-nav-link" data-section="about">
-                <i data-lucide="user-check" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span>关于开发者 About Me</span>
-              </a>
-              <a href="#contact" class="doc-nav-link" data-section="contact">
-                <i data-lucide="mail" class="w-4 h-4 text-[#d8cca3]"></i>
-                <span>联系与投喂 Contact</span>
-              </a>
-            </div>
-          </div>
-
-        </nav>
-
+        <div class="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-[#25f4ee] border-2 border-[#121212] flex items-center justify-center text-[#121212] text-xs font-bold" title="在线 Active">
+          ✓
+        </div>
       </div>
 
-      <!-- Sidebar Footer -->
-      <div class="pt-4 border-t border-[#3d342c] text-xs text-[#9e9182] font-tag flex items-center justify-between">
-        <div class="flex items-center gap-1.5">
-          <i data-lucide="git-branch" class="w-3.5 h-3.5 text-[#9e9182]"></i>
-          <span>main</span>
-        </div>
-        <button id="sidebar-copy-btn" data-email="murdermobai0605@outlook.com" class="hover:text-[#d8cca3] transition" title="一键复制邮箱">
-          复制邮箱 📋
-        </button>
-      </div>
-
-    </aside>
-
-    <!-- ============================================== -->
-    <!-- 📄 GITBOOK MAIN ARTICLE CANVAS                -->
-    <!-- ============================================== -->
-    <main class="flex-1 w-full lg:ml-80 px-4 sm:px-8 lg:px-16 py-10 max-w-5xl space-y-16">
-
-      <!-- ================= 01 OVERVIEW ================= -->
-      <section id="overview" class="scroll-mt-24 space-y-6">
+      <!-- Profile Info & Action Buttons -->
+      <div class="space-y-4 flex-1">
         
-        <!-- Breadcrumb Navigation -->
-        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
-          <span>Docs</span>
-          <span>/</span>
-          <span>Guide</span>
-          <span>/</span>
-          <span class="text-[#d8cca3] font-semibold">Overview</span>
+        <!-- Name & Handle -->
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">FjiNeko</h1>
+            <!-- Verified Badge -->
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#20d5ec] text-[#121212] text-xs" title="Verified Creator">
+              <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+            </span>
+          </div>
+          <p class="text-sm font-semibold text-[rgba(255,255,255,0.7)] font-tag">@fjineko · FujiNeko</p>
         </div>
 
-        <div class="space-y-3">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#d8cca3]/10 text-[#d8cca3] text-xs font-tag border border-[#d8cca3]/25">
-            <i data-lucide="book-marked" class="w-3.5 h-3.5"></i>
-            <span>FjiNeko Developer Documentation</span>
+        <!-- Buttons Row -->
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" 
+             class="px-8 py-2.5 rounded-md bg-[#fe2c55] hover:bg-[#e02449] text-white font-bold text-sm transition flex items-center gap-2 shadow-lg shadow-[#fe2c55]/20">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            <span>关注 Follow</span>
+          </a>
+
+          <button id="copy-email-btn" data-email="murdermobai0605@outlook.com"
+                  class="px-5 py-2.5 rounded-md bg-[#242424] hover:bg-[#303030] text-white font-semibold text-sm transition flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>发私信 / 邮件</span>
+          </button>
+        </div>
+
+        <!-- TikTok Stats Row -->
+        <div class="flex items-center gap-6 text-sm font-stat pt-1">
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-white text-base">14</span>
+            <span class="text-[rgba(255,255,255,0.6)]">关注 (Repos)</span>
           </div>
-          <h1 class="text-3xl sm:text-4xl font-extrabold text-[#f5f0ea] tracking-tight">
-            主页概览与知识库
-          </h1>
-          <p class="text-base text-[#cfc4b6] leading-relaxed">
-            欢迎查阅 FjiNeko (FujiNeko) 的个人知识库与开源作品集。这里详细记录了 Python 后端架构、数据采集流水线、OBS 实时小部件与格式转换引擎的技术实现细节。
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-white text-base">99+</span>
+            <span class="text-[rgba(255,255,255,0.6)]">粉丝 (Stars)</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-white text-base">1.2k+</span>
+            <span class="text-[rgba(255,255,255,0.6)]">获赞 (Commits)</span>
+          </div>
+        </div>
+
+        <!-- Bio / Personal Bio -->
+        <div class="space-y-1.5 text-sm text-[rgba(255,255,255,0.9)] leading-relaxed">
+          <p>Keep smiling everyday 🙂</p>
+          <p class="text-[rgba(255,255,255,0.7)]">
+            🐍 Python 全栈开发 & 数据爬虫工程师 | 🛠️ 桌面格式转换引擎 NekoConvert & 实时像素音乐挂件
           </p>
+          <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-1.5 text-[#25f4ee] hover:underline font-tag font-semibold text-xs pt-1">
+            <i data-lucide="link" class="w-3.5 h-3.5"></i>
+            <span>github.com/FjiNeko</span>
+          </a>
         </div>
 
-        <!-- GitBook Info Callout -->
-        <div class="gitbook-callout callout-info">
-          <div class="flex items-start gap-3">
-            <i data-lucide="info" class="w-5 h-5 text-[#2b6cb0] flex-shrink-0 mt-0.5"></i>
-            <div class="space-y-1 text-sm">
-              <span class="font-bold text-[#f5f0ea]">关于本知识库</span>
-              <p class="text-[#cfc4b6]">
-                本站采用 GitBook 风格构建，以复古大头电脑与猫咪奶白色系为视觉基调。重点全栈专区请查阅 <a href="#cgbgear-forum" class="text-[#d8cca3] hover:underline font-semibold">CGBGEAR 社区论坛全栈架构</a>。
-              </p>
+      </div>
+
+    </div>
+
+    <!-- Toast Notice for Copy -->
+    <div id="tiktok-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2 rounded-full bg-[#fe2c55] text-white text-xs font-semibold shadow-2xl animate-fade">
+      ✓ 邮箱已复制到剪贴板！
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 🎛️ TIKTOK TAB BAR NAVIGATION                  -->
+    <!-- ============================================== -->
+    <div class="flex items-center border-b border-[rgba(255,255,255,0.12)] overflow-x-auto gap-2 sm:gap-6 no-scrollbar">
+      
+      <button class="tiktok-tab-btn active" data-tab="tab-featured">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>精选作品</span>
+      </button>
+
+      <button class="tiktok-tab-btn" data-tab="tab-repos">
+        <i data-lucide="grid" class="w-4 h-4"></i>
+        <span>全部作品 (14)</span>
+      </button>
+
+      <button class="tiktok-tab-btn" data-tab="tab-series">
+        <i data-lucide="film" class="w-4 h-4"></i>
+        <span>CGBGEAR 专区</span>
+      </button>
+
+      <button class="tiktok-tab-btn" data-tab="tab-radar">
+        <i data-lucide="radar" class="w-4 h-4"></i>
+        <span>技术雷达</span>
+      </button>
+
+      <button class="tiktok-tab-btn" data-tab="tab-about">
+        <i data-lucide="user" class="w-4 h-4"></i>
+        <span>关于作者</span>
+      </button>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 🎬 TAB 1: 精选作品 (FEATURED / PINNED)         -->
+    <!-- ============================================== -->
+    <div id="tab-featured" class="tab-content active space-y-6">
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+
+        <!-- Highlight 1: NekoConvert (状态：未发布 / 📌 Pinned) -->
+        <div class="tiktok-card group relative p-6 bg-gradient-to-b from-[#1e1e1e] to-[#141414] justify-between border-t-2 border-t-[#fe2c55]">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="tiktok-badge-pin">
+                <i data-lucide="pin" class="w-3 h-3"></i> 📌 置顶作品
+              </span>
+              <!-- 状态：未发布 -->
+              <span class="px-2 py-0.5 rounded text-xs font-tag bg-[#d8cca3]/20 text-[#d8cca3] border border-[#d8cca3]/40 font-bold">
+                未发布
+              </span>
+            </div>
+
+            <h3 class="text-xl font-bold group-hover:text-[#fe2c55] transition-colors">
+              多功能格式转换引擎 (NekoConvert)
+            </h3>
+
+            <p class="text-sm text-[rgba(255,255,255,0.7)] leading-relaxed">
+              面向音视频、图像、文档等多媒体格式的高性能批量转换与智能压缩工具。配备现代化 Web/GUI 交互界面。
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2 py-1 rounded bg-[#242424] text-xs font-tag text-[rgba(255,255,255,0.8)]">#Python</span>
+              <span class="px-2 py-1 rounded bg-[#242424] text-xs font-tag text-[rgba(255,255,255,0.8)]">#FFmpeg</span>
+              <span class="px-2 py-1 rounded bg-[#242424] text-xs font-tag text-[rgba(255,255,255,0.8)]">#FastAPI</span>
+              <span class="px-2 py-1 rounded bg-[#242424] text-xs font-tag text-[rgba(255,255,255,0.8)]">#BatchProcess</span>
             </div>
           </div>
-        </div>
 
-        <!-- Four Metric Cards -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-          <div class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c]">
-            <div class="text-xs font-tag text-[#9e9182]">公开仓库</div>
-            <div class="text-2xl font-bold text-[#f5f0ea] mt-1 font-tag">14+</div>
-            <div class="text-[11px] text-[#d8cca3] font-tag mt-0.5">GitHub Repos</div>
-          </div>
-          <div class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c]">
-            <div class="text-xs font-tag text-[#9e9182]">核心语言</div>
-            <div class="text-2xl font-bold text-[#d8cca3] mt-1 font-tag">Python</div>
-            <div class="text-[11px] text-[#9e9182] font-tag mt-0.5">Scrapy / Flask</div>
-          </div>
-          <div class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c]">
-            <div class="text-xs font-tag text-[#9e9182]">全栈实践</div>
-            <div class="text-2xl font-bold text-[#4299e1] mt-1 font-tag">Full-Stack</div>
-            <div class="text-[11px] text-[#9e9182] font-tag mt-0.5">Flask + Web GUI</div>
-          </div>
-          <div class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c]">
-            <div class="text-xs font-tag text-[#9e9182]">流媒体挂件</div>
-            <div class="text-2xl font-bold text-[#e8a5a5] mt-1 font-tag">OBS Overlay</div>
-            <div class="text-[11px] text-[#9e9182] font-tag mt-0.5">Spotify Pixel</div>
+          <div class="pt-6 border-t border-[rgba(255,255,255,0.1)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.5)]">▶ 3.8k 播放 · 敬请期待 🚀</span>
+            <span class="text-[#fe2c55] font-bold">即将上线</span>
           </div>
         </div>
 
-      </section>
+        <!-- Highlight 2: Minecraft Spotify Widget (状态：已开源 / 📌 Pinned) -->
+        <div class="tiktok-card group relative p-6 bg-gradient-to-b from-[#1e1e1e] to-[#141414] justify-between border-t-2 border-t-[#25f4ee]">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="tiktok-badge-live">
+                <i data-lucide="pin" class="w-3 h-3"></i> 📌 置顶作品
+              </span>
+              <!-- 状态改为：已开源 -->
+              <span class="px-2 py-0.5 rounded text-xs font-tag bg-[#25f4ee]/20 text-[#25f4ee] border border-[#25f4ee]/40 font-bold">
+                已开源
+              </span>
+            </div>
 
-      <!-- ================= 02 HIGHLIGHTS ================= -->
-      <section id="highlights" class="scroll-mt-24 space-y-6">
+            <h3 class="text-xl font-bold group-hover:text-[#25f4ee] transition-colors">
+              实时像素音乐挂件 (Minecraft Spotify Widget)
+            </h3>
+
+            <p class="text-sm text-[rgba(255,255,255,0.7)] leading-relaxed">
+              专为直播与 OBS 打造的透明背景音乐挂件。实时同步 Spotify 播放曲目、动态专辑封面与进度条，融入 Minecraft 像素音效。
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2 py-1 rounded bg-[#242424] text-xs font-tag text-[rgba(255,255,255,0.8)]">#SpotifyAPI</span>
+              <span class="px-2 py-1 rounded bg-[#242424] text-xs font-tag text-[rgba(255,255,255,0.8)]">#OBSOverlay</span>
+              <span class="px-2 py-1 rounded bg-[#242424] text-xs font-tag text-[rgba(255,255,255,0.8)]">#PixelAE</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-[rgba(255,255,255,0.1)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.5)]">▶ 5.2k 播放 · ⭐ 320</span>
+            <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" 
+               class="text-[#25f4ee] hover:underline flex items-center gap-1 font-bold">
+              <span>立即体验</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 📦 TAB 2: 全部开源仓库 (TIKTOK VIDEO GRID)     -->
+    <!-- ============================================== -->
+    <div id="tab-repos" class="tab-content space-y-6">
+      
+      <!-- Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 pb-2">
+        <button class="doc-filter-btn active px-3.5 py-1.5 rounded-full text-xs font-tag font-semibold bg-white text-[#121212] transition" data-filter="all">全部 (14)</button>
+        <button class="doc-filter-btn px-3.5 py-1.5 rounded-full text-xs font-tag font-semibold bg-[#242424] text-[rgba(255,255,255,0.7)] hover:text-white transition" data-filter="crawler">Scrapy 爬虫</button>
+        <button class="doc-filter-btn px-3.5 py-1.5 rounded-full text-xs font-tag font-semibold bg-[#242424] text-[rgba(255,255,255,0.7)] hover:text-white transition" data-filter="web">全栈 & Web</button>
+        <button class="doc-filter-btn px-3.5 py-1.5 rounded-full text-xs font-tag font-semibold bg-[#242424] text-[rgba(255,255,255,0.7)] hover:text-white transition" data-filter="minecraft">Minecraft</button>
+      </div>
+
+      <!-- TikTok 3:4 Grid -->
+      <div id="repositories-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+
+        <!-- 1. Scrapy Douban Movie -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="crawler">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#fe2c55]">
+              <span class="font-bold">#Scrapy</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 2.4k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#fe2c55] transition-colors line-clamp-1">
+              Scrapy_douban_movie250
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              豆瓣电影 Top250 数据采集、评分抽取与 Pipeline 清洗入库。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">Python / Scrapy</span>
+            <a href="https://github.com/FjiNeko/Scrapy_douban_movie250" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#fe2c55] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Scrapy Douban Books -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="crawler">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#fe2c55]">
+              <span class="font-bold">#Scrapy</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 1.9k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#fe2c55] transition-colors line-clamp-1">
+              Scrapy_Douban_Books
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              通过 Scrapy 框架针对豆瓣图书页面信息的结构化定向爬虫。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">Python / Books</span>
+            <a href="https://github.com/FjiNeko/Scrapy_Douban_Books" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#fe2c55] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Scrapy Guazi Car -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="crawler">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#fe2c55]">
+              <span class="font-bold">#Scrapy</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 3.1k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#fe2c55] transition-colors line-clamp-1">
+              Scrapy_Guazi_Car
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              瓜子二手车页面车源参数与价格趋势爬取解析工程。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">Python / Auto</span>
+            <a href="https://github.com/FjiNeko/Scrapy_Guazi_Car" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#fe2c55] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. IQIYI Scrapy Json -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="crawler">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#fe2c55]">
+              <span class="font-bold">#Scrapy</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 2.7k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#fe2c55] transition-colors line-clamp-1">
+              IQIYI_Scrapy_Json
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              爱奇艺风云榜榜单接口爬取，解析动态 JSON 流与视频指标。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">Python / JSON API</span>
+            <a href="https://github.com/FjiNeko/IQIYI_Scrapy_Json" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#fe2c55] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. PandasBasic -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="crawler web">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#25f4ee]">
+              <span class="font-bold">#Analytics</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 1.5k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#25f4ee] transition-colors line-clamp-1">
+              PandasBasic
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              Python Pandas 数据分析清洗与 DataFrame 实战学习笔记。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">Pandas / Data</span>
+            <a href="https://github.com/FjiNeko/PandasBasic" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#25f4ee] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. CO2 Vue -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="web">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#fe2c55]">
+              <span class="font-bold">#Vue</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 1.2k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#fe2c55] transition-colors line-clamp-1">
+              CO2 (Vue App)
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              基于 Vue 框架的现代组件化 Web 应用实验项目。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">Vue.js / Frontend</span>
+            <a href="https://github.com/FjiNeko/CO2" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#fe2c55] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Minecraft Murder Mystery -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="minecraft">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#25f4ee]">
+              <span class="font-bold">#DataPack</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 4.8k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#25f4ee] transition-colors line-clamp-1">
+              Murder-Mystery DataPack
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              Minecraft 自定义密室杀手玩法数据包与联机机制。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">Minecraft / Logic</span>
+            <a href="https://github.com/FjiNeko/Murder-Mystery-DataPack-Downloading" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#25f4ee] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. Server Resource Pack -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="minecraft">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#25f4ee]">
+              <span class="font-bold">#ResourcePack</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 3.3k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#25f4ee] transition-colors line-clamp-1">
+              ServerResourePack
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              Minecraft 服务器专用材质贴图与音效资源包。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">Minecraft / Textures</span>
+            <a href="https://github.com/FjiNeko/ServerResourePack" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#25f4ee] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9. html-css-js-website -->
+        <div class="tiktok-card group p-5 bg-[#181818]" data-category="web">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag text-[#fe2c55]">
+              <span class="font-bold">#WebNative</span>
+              <span class="text-[rgba(255,255,255,0.4)]">▶ 1.1k</span>
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-[#fe2c55] transition-colors line-clamp-1">
+              html-css-js-website
+            </h4>
+            <p class="text-xs text-[rgba(255,255,255,0.6)] line-clamp-3 leading-relaxed">
+              原生 HTML5/CSS3/JS 响应式网页与交互实验。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[rgba(255,255,255,0.08)] flex items-center justify-between text-xs font-tag">
+            <span class="text-[rgba(255,255,255,0.4)]">HTML5 / JS</span>
+            <a href="https://github.com/FjiNeko/html-css-js-website" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#fe2c55] transition p-1" title="在 GitHub 查看源码">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 🏛️ TAB 3: CGBGEAR 社区论坛全栈架构 (SERIES)    -->
+    <!-- ============================================== -->
+    <div id="tab-series" class="tab-content space-y-6">
+      
+      <div class="p-6 rounded-2xl bg-[#181818] border border-[rgba(255,255,255,0.1)] space-y-6">
         
-        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
-          <span>Docs</span>
-          <span>/</span>
-          <span>Guide</span>
-          <span>/</span>
-          <span class="text-[#d8cca3] font-semibold">Highlights</span>
-        </div>
-
         <div class="space-y-2">
-          <h2 class="text-2xl font-bold text-[#f5f0ea] tracking-tight">精选代表作品 (Featured Works)</h2>
-          <p class="text-sm text-[#9e9182]">专注于桌面格式转换引擎与 OBS 流媒体挂件</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-          <!-- Highlight 1: NekoConvert (状态：未发布) -->
-          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] hover:border-[#d8cca3]/60 transition flex flex-col justify-between space-y-4 group">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <!-- 状态使用：未发布 -->
-                <span class="px-2.5 py-1 rounded-md text-xs font-tag bg-[#9e9182]/20 text-[#d8cca3] border border-[#d8cca3]/40 font-semibold flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#d8cca3]"></span>
-                  未发布
-                </span>
-                <i data-lucide="refresh-cw" class="w-5 h-5 text-[#d8cca3]"></i>
-              </div>
-              <h3 class="text-lg font-bold text-[#f5f0ea] group-hover:text-[#d8cca3] transition-colors">
-                多功能格式转换引擎 (NekoConvert)
-              </h3>
-              <p class="text-sm text-[#cfc4b6] leading-relaxed">
-                面向音视频、图像、文档等多媒体格式的高性能批量转换与智能压缩工具。配备现代化 GUI/Web 界面与多语言国际化支持。
-              </p>
-              <div class="flex flex-wrap gap-1.5 pt-1">
-                <span class="doc-tag">Python</span>
-                <span class="doc-tag">FFmpeg</span>
-                <span class="doc-tag">FastAPI</span>
-                <span class="doc-tag">Batch Process</span>
-              </div>
-            </div>
-            <div class="pt-4 border-t border-[#3d342c] flex items-center justify-between text-xs font-tag">
-              <span class="text-[#d8cca3]">状态：未发布</span>
-              <span class="text-[#9e9182]">敬请期待 🚀</span>
-            </div>
-          </div>
-
-          <!-- Highlight 2: Minecraft Spotify Widget (状态：已开源) -->
-          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] hover:border-[#2b6cb0]/60 transition flex flex-col justify-between space-y-4 group">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <!-- 状态改为：已开源 -->
-                <span class="px-2.5 py-1 rounded-md text-xs font-tag bg-[#2b6cb0]/20 text-[#4299e1] border border-[#2b6cb0]/40 font-semibold flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#4299e1] animate-pulse"></span>
-                  已开源
-                </span>
-                <i data-lucide="music" class="w-5 h-5 text-[#4299e1]"></i>
-              </div>
-              <h3 class="text-lg font-bold text-[#f5f0ea] group-hover:text-[#4299e1] transition-colors">
-                实时像素音乐挂件 (Minecraft Spotify Widget)
-              </h3>
-              <p class="text-sm text-[#cfc4b6] leading-relaxed">
-                专为直播与 OBS 打造的透明背景音乐挂件。实时同步 Spotify 播放曲目、动态专辑封面与进度条，融入 Minecraft 像素字体与音效。
-              </p>
-              <div class="flex flex-wrap gap-1.5 pt-1">
-                <span class="doc-tag">Spotify API</span>
-                <span class="doc-tag">OBS Overlay</span>
-                <span class="doc-tag">Pixel AE</span>
-                <span class="doc-tag">Web Audio</span>
-              </div>
-            </div>
-            <div class="pt-4 border-t border-[#3d342c] flex items-center justify-between text-xs font-tag">
-              <span class="text-[#4299e1]">状态：已开源</span>
-              <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer" class="text-[#4299e1] hover:underline flex items-center gap-1">
-                查看挂件 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ============================================================== -->
-      <!-- 🌟 03 DEDICATED SECTION: CGBGEAR COMMUNITY FORUM FULL-STACK    -->
-      <!-- ============================================================== -->
-      <section id="cgbgear-forum" class="scroll-mt-24 space-y-10 pt-6 border-t border-[#3d342c]">
-        
-        <!-- Breadcrumb Navigation -->
-        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
-          <span>Docs</span>
-          <span>/</span>
-          <span>Architecture Deep-Dive</span>
-          <span>/</span>
-          <span class="text-[#d8cca3] font-semibold">CGBGEAR Forum</span>
-        </div>
-
-        <!-- Section Header -->
-        <div class="space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#d8cca3]/10 text-[#d8cca3] text-xs font-tag border border-[#d8cca3]/25">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#fe2c55]/15 text-[#fe2c55] text-xs font-tag font-bold">
             <i data-lucide="layers" class="w-3.5 h-3.5"></i>
-            <span>Architecture Deep-Dive · 专属深度专区</span>
+            <span>Architecture Deep-Dive · 专属深度专栏</span>
           </div>
-          <h2 class="text-3xl font-extrabold text-[#f5f0ea] tracking-tight">
-            【CGBGEAR 社区论坛全栈架构】深度剖析
-          </h2>
-          <p class="text-base text-[#cfc4b6] leading-relaxed">
-            CGBGEAR 社区论坛是一个采用前后端完全解耦架构的综合型社区平台。系统由底层的 RESTful 接口服务集群与上层的响应式 Web 前端客户端共同协同驱动。
+          <h2 class="text-2xl font-extrabold text-white">【CGBGEAR 社区论坛全栈架构】剖析</h2>
+          <p class="text-sm text-[rgba(255,255,255,0.7)] leading-relaxed">
+            前后端解耦架构设计，高内聚低耦合。数据层业务网关由 Flask 驱动，前端交互由响应式 Web UI 渲染。
           </p>
         </div>
 
-        <!-- Architecture Overview Callout -->
-        <div class="gitbook-callout callout-purple">
-          <div class="flex items-start gap-3">
-            <i data-lucide="server" class="w-5 h-5 text-[#d8cca3] flex-shrink-0 mt-0.5"></i>
-            <div class="space-y-1 text-sm">
-              <span class="font-bold text-[#f5f0ea]">架构设计目标</span>
-              <p class="text-[#cfc4b6]">
-                通过明确划分 **数据层与业务网关 (Flask)** 与 **表现交互层 (Web UI)**，实现低耦合、高内聚的模块化架构，便于快速迭代社区发帖、回复、用户权限与多媒体附件功能。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Part 1: Visual Architecture Diagram -->
-        <div id="cgbgear-arch" class="space-y-4 scroll-mt-24">
-          <h3 class="text-lg font-bold text-[#f5f0ea] flex items-center gap-2">
-            <span class="text-[#d8cca3] font-tag"># 3.1</span> 系统分层拓扑架构图 (System Architecture)
-          </h3>
+        <!-- 3-Tier Topology Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
           
-          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-6">
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-              
-              <!-- Frontend Layer -->
-              <div class="p-4 rounded-xl bg-[#1e1a16] border border-[#2b6cb0]/40 text-center space-y-2">
-                <div class="text-xs font-tag text-[#4299e1] uppercase font-bold">Frontend Layer</div>
-                <div class="font-bold text-[#f5f0ea] text-sm">CGBGEAR_USER_INTERFACE</div>
-                <div class="text-xs text-[#9e9182] font-tag">HTML5 / Modern JS / CSS3</div>
-                <div class="text-[11px] text-[#cfc4b6] bg-[#14120f] p-2 rounded border border-[#3d342c]">
-                  • 帖子列表与详情流<br>
-                  • 异步 Fetch 数据渲染<br>
-                  • 客户端表单校验与主题
-                </div>
-              </div>
+          <!-- Frontend -->
+          <div class="p-4 rounded-xl bg-[#242424] border border-[#25f4ee]/30 space-y-2 text-center">
+            <span class="text-xs font-tag text-[#25f4ee] font-bold uppercase">Frontend Layer</span>
+            <div class="font-bold text-sm text-white">CGBGEAR_USER_INTERFACE</div>
+            <p class="text-xs text-[rgba(255,255,255,0.6)]">HTML5 / Modern JS / Fetch 异步渲染</p>
+          </div>
 
-              <!-- Communication Channel -->
-              <div class="flex flex-col items-center justify-center text-center space-y-1">
-                <div class="text-[11px] font-tag text-[#9e9182]">JSON RESTful API</div>
-                <div class="w-full h-0.5 bg-gradient-to-r from-[#2b6cb0] via-[#d8cca3] to-[#e8a5a5] hidden md:block"></div>
-                <div class="text-[10px] font-tag text-[#d8cca3] bg-[#d8cca3]/10 px-2 py-0.5 rounded border border-[#d8cca3]/25">
-                  HTTP / CORS / JWT Auth
-                </div>
-              </div>
+          <!-- Gateway -->
+          <div class="p-4 rounded-xl bg-[#242424] border border-[#fe2c55]/30 space-y-2 text-center">
+            <span class="text-xs font-tag text-[#fe2c55] font-bold uppercase">RESTful API Gateway</span>
+            <div class="font-bold text-sm text-white">HTTP / JSON 契约</div>
+            <p class="text-xs text-[rgba(255,255,255,0.6)]">标准响应格式 {code, msg, data}</p>
+          </div>
 
-              <!-- Backend Layer -->
-              <div class="p-4 rounded-xl bg-[#1e1a16] border border-[#d8cca3]/40 text-center space-y-2">
-                <div class="text-xs font-tag text-[#d8cca3] uppercase font-bold">Backend Service</div>
-                <div class="font-bold text-[#f5f0ea] text-sm">CGBGEAR_SERVER</div>
-                <div class="text-xs text-[#9e9182] font-tag">Python / Flask Core</div>
-                <div class="text-[11px] text-[#cfc4b6] bg-[#14120f] p-2 rounded border border-[#3d342c]">
-                  • 路由分发与 API 网关<br>
-                  • 用户会话与密码哈希<br>
-                  • 数据库 CRUD 与事务控制
-                </div>
-              </div>
+          <!-- Backend -->
+          <div class="p-4 rounded-xl bg-[#242424] border border-[#fe2c55]/30 space-y-2 text-center">
+            <span class="text-xs font-tag text-[#fe2c55] font-bold uppercase">Backend Service</span>
+            <div class="font-bold text-sm text-white">CGBGEAR_SERVER</div>
+            <p class="text-xs text-[rgba(255,255,255,0.6)]">Python Flask / Blueprint / Auth 鉴权</p>
+          </div>
 
+        </div>
+
+        <!-- Git Clone Commands -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+          
+          <div class="p-4 rounded-xl bg-[#121212] border border-[rgba(255,255,255,0.1)] space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag">
+              <span class="text-[#fe2c55] font-bold">Backend Server Repo</span>
+              <a href="https://github.com/FjiNeko/CGBGEAR_SERVER" target="_blank" class="hover:underline flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3 h-3 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+                <span>GitHub</span>
+              </a>
             </div>
-
-          </div>
-        </div>
-
-        <!-- Part 2: Backend Deep Dive (CGBGEAR_SERVER) -->
-        <div id="cgbgear-server" class="space-y-4 scroll-mt-24">
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-bold text-[#f5f0ea] flex items-center gap-2">
-              <span class="text-[#d8cca3] font-tag"># 3.2</span> 后端服务端：CGBGEAR_SERVER
-            </h3>
-            <a href="https://github.com/FjiNeko/CGBGEAR_SERVER" target="_blank" rel="noopener noreferrer" 
-               class="text-xs font-tag text-[#d8cca3] hover:underline flex items-center gap-1 font-semibold">
-              <i data-lucide="github" class="w-3.5 h-3.5"></i> FjiNeko/CGBGEAR_SERVER
-            </a>
+            <code class="block font-tag text-xs text-[rgba(255,255,255,0.7)] truncate">git clone https://github.com/FjiNeko/CGBGEAR_SERVER.git</code>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-4 text-sm leading-relaxed">
-            <p class="text-[#cfc4b6]">
-              后端基于 Python <strong>Flask</strong> 框架构建，提供了高扩展性的微服务骨架与标准化 RESTful 响应契约：
-            </p>
-            
-            <ul class="space-y-2.5 text-[#cfc4b6]">
-              <li class="flex items-start gap-2.5">
-                <span class="text-[#d8cca3] font-tag font-bold">1.</span>
-                <div>
-                  <strong class="text-[#f5f0ea]">统一路由分发与 Blueprint 蓝图设计</strong>：按用户鉴权 (Auth)、帖子管理 (Posts)、评论互动 (Comments) 实行模块化隔离。
-                </div>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-[#d8cca3] font-tag font-bold">2.</span>
-                <div>
-                  <strong class="text-[#f5f0ea]">安全与鉴权机制</strong>：集成密码安全加盐哈希（Hashing）与 Session/Token 验证，防止常见跨站攻击。
-                </div>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-[#d8cca3] font-tag font-bold">3.</span>
-                <div>
-                  <strong class="text-[#f5f0ea]">统一 JSON 响应契约</strong>：定义标准化的 <code>code</code>、<code>msg</code>、<code>data</code> 接口格式，简化前端异常拦截。
-                </div>
-              </li>
-            </ul>
-
-            <div class="pt-2">
-              <div class="text-xs font-tag text-[#9e9182] mb-1">Backend Git Clone Command:</div>
-              <div class="bg-[#14120f] border border-[#3d342c] p-3 rounded-xl font-tag text-xs text-[#d8cca3] flex items-center justify-between">
-                <code>git clone https://github.com/FjiNeko/CGBGEAR_SERVER.git</code>
-                <button class="copy-code-btn hover:text-white" data-code="git clone https://github.com/FjiNeko/CGBGEAR_SERVER.git" title="复制命令">
-                  <i data-lucide="copy" class="w-4 h-4"></i>
-                </button>
-              </div>
+          <div class="p-4 rounded-xl bg-[#121212] border border-[rgba(255,255,255,0.1)] space-y-2">
+            <div class="flex justify-between items-center text-xs font-tag">
+              <span class="text-[#25f4ee] font-bold">Frontend UI Repo</span>
+              <a href="https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE" target="_blank" class="hover:underline flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3 h-3 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+                <span>GitHub</span>
+              </a>
             </div>
+            <code class="block font-tag text-xs text-[rgba(255,255,255,0.7)] truncate">git clone https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE.git</code>
           </div>
+
         </div>
 
-        <!-- Part 3: Frontend Deep Dive (CGBGEAR_USER_INTERFACE) -->
-        <div id="cgbgear-ui" class="space-y-4 scroll-mt-24">
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-bold text-[#f5f0ea] flex items-center gap-2">
-              <span class="text-[#4299e1] font-tag"># 3.3</span> 用户前端界面：CGBGEAR_USER_INTERFACE
-            </h3>
-            <a href="https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE" target="_blank" rel="noopener noreferrer" 
-               class="text-xs font-tag text-[#4299e1] hover:underline flex items-center gap-1 font-semibold">
-              <i data-lucide="github" class="w-3.5 h-3.5"></i> FjiNeko/CGBGEAR_USER_INTERFACE
-            </a>
-          </div>
+      </div>
 
-          <div class="p-6 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-4 text-sm leading-relaxed">
-            <p class="text-[#cfc4b6]">
-              前端负责为社区用户提供直观沉浸的交互体验：
-            </p>
+    </div>
 
-            <ul class="space-y-2.5 text-[#cfc4b6]">
-              <li class="flex items-start gap-2.5">
-                <span class="text-[#4299e1] font-tag font-bold">1.</span>
-                <div>
-                  <strong class="text-[#f5f0ea]">响应式多端排版</strong>：自适应适配宽屏桌面端与移动端浏览器。
-                </div>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-[#4299e1] font-tag font-bold">2.</span>
-                <div>
-                  <strong class="text-[#f5f0ea]">异步无刷新交互</strong>：基于原生 JavaScript Fetch API 与后端进行 JSON 异步通信，保证操作流畅度。
-                </div>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-[#4299e1] font-tag font-bold">3.</span>
-                <div>
-                  <strong class="text-[#f5f0ea]">轻量级资源依赖</strong>：无需复杂的构建工具即可直接在静态服务器或 Web 容器中分发运行。
-                </div>
-              </li>
-            </ul>
-
-            <div class="pt-2">
-              <div class="text-xs font-tag text-[#9e9182] mb-1">Frontend Git Clone Command:</div>
-              <div class="bg-[#14120f] border border-[#3d342c] p-3 rounded-xl font-tag text-xs text-[#4299e1] flex items-center justify-between">
-                <code>git clone https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE.git</code>
-                <button class="copy-code-btn hover:text-white" data-code="git clone https://github.com/FjiNeko/CGBGEAR_USER_INTERFACE.git" title="复制命令">
-                  <i data-lucide="copy" class="w-4 h-4"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Part 4: Tech Specs & Dual Repo Links -->
-        <div id="cgbgear-tech" class="space-y-4 scroll-mt-24">
-          <h3 class="text-lg font-bold text-[#f5f0ea] flex items-center gap-2">
-            <span class="text-[#d8cca3] font-tag"># 3.4</span> 技术特性速览表
-          </h3>
-
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs border border-[#3d342c] rounded-xl overflow-hidden">
-              <thead class="bg-[#221e1a] text-[#f5f0ea] border-b border-[#3d342c] font-tag">
-                <tr>
-                  <th class="p-3.5">架构维度</th>
-                  <th class="p-3.5">后端实现 (Server)</th>
-                  <th class="p-3.5">前端实现 (UI)</th>
-                  <th class="p-3.5">交互协议 / 规范</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[#3d342c] text-[#cfc4b6]">
-                <tr class="hover:bg-[#221e1a]/60">
-                  <td class="p-3.5 font-semibold text-[#f5f0ea]">核心技术栈</td>
-                  <td class="p-3.5 font-tag text-[#d8cca3]">Python / Flask</td>
-                  <td class="p-3.5 font-tag text-[#4299e1]">HTML5 / JavaScript / CSS3</td>
-                  <td class="p-3.5 font-tag text-[#9e9182]">RESTful JSON</td>
-                </tr>
-                <tr class="hover:bg-[#221e1a]/60">
-                  <td class="p-3.5 font-semibold text-[#f5f0ea]">数据通信</td>
-                  <td class="p-3.5">jsonify 结构化输出</td>
-                  <td class="p-3.5">Fetch API 异步流</td>
-                  <td class="p-3.5">CORS 跨域配置</td>
-                </tr>
-                <tr class="hover:bg-[#221e1a]/60">
-                  <td class="p-3.5 font-semibold text-[#f5f0ea]">业务模块</td>
-                  <td class="p-3.5">Auth / Posts / Threads</td>
-                  <td class="p-3.5">Feed / Editor / Profile</td>
-                  <td class="p-3.5">HTTP Status Codes</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- ================= 04 ALL REPOSITORIES ================= -->
-      <section id="repositories" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#3d342c]">
+    <!-- ============================================== -->
+    <!-- 📊 TAB 4: 技术雷达 (TECH RADAR)               -->
+    <!-- ============================================== -->
+    <div id="tab-radar" class="tab-content space-y-6">
+      
+      <div class="p-6 sm:p-8 rounded-2xl bg-[#181818] border border-[rgba(255,255,255,0.1)] flex flex-col items-center justify-center space-y-6">
         
-        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
-          <span>Docs</span>
-          <span>/</span>
-          <span>Codebase</span>
-          <span>/</span>
-          <span class="text-[#d8cca3] font-semibold">Repositories</span>
+        <div class="space-y-1 text-center">
+          <h3 class="text-xl font-bold">技术版图与工具规范</h3>
+          <p class="text-xs text-[rgba(255,255,255,0.6)] font-tag">以 Python 为核心驱动的技术栈分布雷达</p>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="w-full max-w-[440px] aspect-square relative flex items-center justify-center">
+          <div class="absolute inset-8 bg-[#fe2c55]/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <svg viewBox="0 0 500 460" class="w-full h-full drop-shadow-lg overflow-visible">
+            <!-- Hexagon Rings -->
+            <polygon points="250,90 388.6,170 388.6,330 250,410 111.4,330 111.4,170" class="fill-[#121212]/80 stroke-[rgba(255,255,255,0.2)] stroke-[1.5]" />
+            <polygon points="250,130 353.9,190 353.9,310 250,370 146.1,310 146.1,190" class="fill-none stroke-[rgba(255,255,255,0.12)] stroke-[1] stroke-dasharray-[3,3]" />
+            <polygon points="250,170 319.3,210 319.3,290 250,330 180.7,290 180.7,210" class="fill-none stroke-[rgba(255,255,255,0.08)] stroke-[1] stroke-dasharray-[3,3]" />
+            <polygon points="250,210 284.6,230 284.6,270 250,290 215.4,270 215.4,230" class="fill-none stroke-[rgba(255,255,255,0.05)] stroke-[1]" />
+
+            <!-- Axes -->
+            <line x1="250" y1="250" x2="250" y2="90" class="stroke-[rgba(255,255,255,0.15)] stroke-[1.5]" />
+            <line x1="250" y1="250" x2="388.6" y2="170" class="stroke-[rgba(255,255,255,0.15)] stroke-[1.5]" />
+            <line x1="250" y1="250" x2="388.6" y2="330" class="stroke-[rgba(255,255,255,0.15)] stroke-[1.5]" />
+            <line x1="250" y1="250" x2="250" y2="410" class="stroke-[rgba(255,255,255,0.15)] stroke-[1.5]" />
+            <line x1="250" y1="250" x2="111.4" y2="330" class="stroke-[rgba(255,255,255,0.15)] stroke-[1.5]" />
+            <line x1="250" y1="250" x2="111.4" y2="170" class="stroke-[rgba(255,255,255,0.15)] stroke-[1.5]" />
+
+            <!-- Data Polygon (TikTok Neon Red & Cyan) -->
+            <polygon points="250,93.2 377.5,176.4 371.9,320.4 250,386 130.8,318.8 136.4,184.4"
+                     class="fill-[#fe2c55]/25 stroke-[#fe2c55] stroke-2 hover:fill-[#fe2c55]/35 transition-all duration-300" />
+
+            <!-- Vertex Dots -->
+            <circle cx="250" cy="93.2" r="5" class="fill-[#fe2c55] stroke-[#121212] stroke-2" />
+            <circle cx="377.5" cy="176.4" r="4.5" class="fill-[#fe2c55] stroke-[#121212] stroke-2" />
+            <circle cx="371.9" cy="320.4" r="4.5" class="fill-[#fe2c55] stroke-[#121212] stroke-2" />
+            <circle cx="250" cy="386" r="4.5" class="fill-[#25f4ee] stroke-[#121212] stroke-2" />
+            <circle cx="130.8" cy="318.8" r="4.5" class="fill-[#fe2c55] stroke-[#121212] stroke-2" />
+            <circle cx="136.4" cy="184.4" r="4.5" class="fill-[#25f4ee] stroke-[#121212] stroke-2" />
+
+            <!-- Axis Labels -->
+            <text x="250" y="65" text-anchor="middle" class="fill-white font-tag text-sm font-bold">
+              Python <tspan class="fill-[#fe2c55] text-xs font-semibold">(Core)</tspan>
+            </text>
+            <text x="405" y="174" text-anchor="start" class="fill-[rgba(255,255,255,0.75)] font-tag text-xs font-bold">Scrapy</text>
+            <text x="405" y="334" text-anchor="start" class="fill-[rgba(255,255,255,0.75)] font-tag text-xs font-bold">Flask</text>
+            <text x="250" y="435" text-anchor="middle" class="fill-[rgba(255,255,255,0.75)] font-tag text-xs font-bold">FFmpeg</text>
+            <text x="95" y="334" text-anchor="end" class="fill-[rgba(255,255,255,0.75)] font-tag text-xs font-bold">Git & Shell</text>
+            <text x="95" y="174" text-anchor="end" class="fill-[rgba(255,255,255,0.75)] font-tag text-xs font-bold">JavaScript</text>
+          </svg>
+        </div>
+
+        <!-- Legend -->
+        <div class="flex flex-wrap items-center justify-center gap-6 pt-4 border-t border-[rgba(255,255,255,0.1)] w-full text-xs font-tag">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#fe2c55]"></span>
+            <span class="text-white font-medium">Python 核心主导技术栈 (Core)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#25f4ee]"></span>
+            <span class="text-[rgba(255,255,255,0.7)]">多媒体与 Web 前端技术 (Ecosystem)</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 👤 TAB 5: 关于作者 (ABOUT & CONTACT)           -->
+    <!-- ============================================== -->
+    <div id="tab-about" class="tab-content space-y-6">
+      
+      <div class="p-6 sm:p-8 rounded-2xl bg-[#181818] border border-[rgba(255,255,255,0.1)] space-y-6">
+        
+        <div class="flex items-center gap-4">
+          <img src="avatar.png" alt="FjiNeko" class="w-14 h-14 rounded-full object-cover border border-[#fe2c55]/40">
           <div>
-            <h2 class="text-2xl font-bold text-[#f5f0ea] tracking-tight">开源仓库索引 (All 14 Repositories)</h2>
-            <p class="text-sm text-[#9e9182]">公开代码库完整列表与技术分类</p>
-          </div>
-
-          <!-- Filter Pills -->
-          <div class="flex flex-wrap items-center gap-1.5">
-            <button class="doc-filter-btn active" data-filter="all">全部 (14)</button>
-            <button class="doc-filter-btn" data-filter="crawler">Scrapy 爬虫</button>
-            <button class="doc-filter-btn" data-filter="web">全栈 & Web</button>
-            <button class="doc-filter-btn" data-filter="minecraft">Minecraft</button>
+            <h3 class="text-lg font-bold text-white">关于 FjiNeko (FujiNeko)</h3>
+            <p class="text-xs text-[rgba(255,255,255,0.5)] font-tag">Python Developer · Open Source Creator</p>
           </div>
         </div>
 
-        <div id="repositories-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <p class="text-sm text-[rgba(255,255,255,0.8)] leading-relaxed">
+          专注于用 Python 解决实际场景痛点，热爱 Scrapy 爬虫、前后端分离 Web 系统、OBS 直播挂件与本地自动化脚本。保持对新技术的好奇心与钻研精神。
+        </p>
 
-          <!-- 1. Scrapy Douban Movie -->
-          <div class="doc-repo-card" data-category="crawler">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-amber">Scrapy</span>
-                <i data-lucide="film" class="w-4 h-4 text-[#d8cca3]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
-                Scrapy_douban_movie250
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                豆瓣电影 Top250 数据采集、评分抽取与 Pipeline 清洗入库。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">Python</span>
-                <span class="doc-tag">Scrapy</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/Scrapy_douban_movie250" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
+        <div class="pt-4 border-t border-[rgba(255,255,255,0.1)] flex flex-wrap items-center gap-4">
+          <button id="about-copy-email-btn" data-email="murdermobai0605@outlook.com"
+                  class="px-5 py-2.5 rounded-md bg-[#fe2c55] hover:bg-[#e02449] text-white font-bold text-xs transition flex items-center gap-2 font-tag">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>复制邮箱 (murdermobai0605@outlook.com)</span>
+          </button>
 
-          <!-- 2. Scrapy Douban Books -->
-          <div class="doc-repo-card" data-category="crawler">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-amber">Scrapy</span>
-                <i data-lucide="book-open" class="w-4 h-4 text-[#d8cca3]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
-                Scrapy_Douban_Books
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                通过 Scrapy 框架针对豆瓣图书页面信息的结构化定向爬虫。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">Python</span>
-                <span class="doc-tag">Books</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/Scrapy_Douban_Books" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 3. Scrapy Guazi Car -->
-          <div class="doc-repo-card" data-category="crawler">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-amber">Scrapy</span>
-                <i data-lucide="car" class="w-4 h-4 text-[#d8cca3]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
-                Scrapy_Guazi_Car
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                瓜子二手车页面车源参数与价格趋势爬取解析工程。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">Python</span>
-                <span class="doc-tag">Auto Data</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/Scrapy_Guazi_Car" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 4. IQIYI Scrapy Json -->
-          <div class="doc-repo-card" data-category="crawler">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-amber">Scrapy & JSON</span>
-                <i data-lucide="tv" class="w-4 h-4 text-[#d8cca3]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
-                IQIYI_Scrapy_Json
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                爱奇艺风云榜榜单接口爬取，解析动态 JSON 流与视频指标。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">Python</span>
-                <span class="doc-tag">JSON API</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/IQIYI_Scrapy_Json" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 5. PandasBasic -->
-          <div class="doc-repo-card" data-category="crawler web">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-blue">Data Science</span>
-                <i data-lucide="bar-chart-2" class="w-4 h-4 text-[#4299e1]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#4299e1] transition-colors">
-                PandasBasic
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                Python Pandas 数据分析清洗与 DataFrame 实战学习笔记。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">Pandas</span>
-                <span class="doc-tag">Analytics</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/PandasBasic" target="_blank" rel="noopener noreferrer" class="text-[#4299e1] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 6. CO2 Vue -->
-          <div class="doc-repo-card" data-category="web">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-pink">Vue.js</span>
-                <i data-lucide="code" class="w-4 h-4 text-[#e8a5a5]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#e8a5a5] transition-colors">
-                CO2 (Vue App)
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                基于 Vue 框架的现代组件化 Web 应用实验项目。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">Vue.js</span>
-                <span class="doc-tag">Frontend</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/CO2" target="_blank" rel="noopener noreferrer" class="text-[#e8a5a5] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 7. Minecraft Murder Mystery -->
-          <div class="doc-repo-card" data-category="minecraft">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-blue">DataPack</span>
-                <i data-lucide="gamepad-2" class="w-4 h-4 text-[#4299e1]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#4299e1] transition-colors">
-                Murder-Mystery DataPack
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                Minecraft 自定义密室杀手玩法数据包与联机机制。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">Minecraft</span>
-                <span class="doc-tag">Game Logic</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/Murder-Mystery-DataPack-Downloading" target="_blank" rel="noopener noreferrer" class="text-[#4299e1] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 8. Server Resource Pack -->
-          <div class="doc-repo-card" data-category="minecraft">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-blue">ResourcePack</span>
-                <i data-lucide="package" class="w-4 h-4 text-[#4299e1]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#4299e1] transition-colors">
-                ServerResourePack
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                Minecraft 服务器专用材质贴图与音效资源包。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">Minecraft</span>
-                <span class="doc-tag">Textures</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/ServerResourePack" target="_blank" rel="noopener noreferrer" class="text-[#4299e1] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 9. html-css-js-website -->
-          <div class="doc-repo-card" data-category="web">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="doc-badge-amber">Web Native</span>
-                <i data-lucide="globe" class="w-4 h-4 text-[#d8cca3]"></i>
-              </div>
-              <h4 class="font-bold text-[#f5f0ea] text-sm hover:text-[#d8cca3] transition-colors">
-                html-css-js-website
-              </h4>
-              <p class="text-xs text-[#9e9182] line-clamp-2">
-                原生 HTML5/CSS3/JS 响应式网页与交互实验。
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="doc-tag">HTML5</span>
-                <span class="doc-tag">JavaScript</span>
-              </div>
-            </div>
-            <div class="pt-3 border-t border-[#3d342c] mt-3 flex items-center justify-between text-[11px] font-tag">
-              <span class="text-[#9e9182]">Public</span>
-              <a href="https://github.com/FjiNeko/html-css-js-website" target="_blank" rel="noopener noreferrer" class="text-[#d8cca3] hover:text-white transition-colors p-1" title="在 GitHub 查看源码">
-                <i data-lucide="github" class="w-4 h-4"></i>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= 05 TECH STACK (RADAR CHART) ================= -->
-      <section id="skills" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#3d342c]">
-        
-        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
-          <span>Docs</span>
-          <span>/</span>
-          <span>Specifications</span>
-          <span>/</span>
-          <span class="text-[#d8cca3] font-semibold">Tech Stack</span>
-        </div>
-
-        <div class="space-y-2">
-          <h2 class="text-2xl font-bold text-[#f5f0ea] tracking-tight">技术版图与工具规范</h2>
-          <p class="text-sm text-[#9e9182]">以 Python 为核心驱动的技术栈分布雷达</p>
-        </div>
-
-        <!-- Clean Radar Chart Card -->
-        <div class="p-6 sm:p-8 rounded-2xl bg-[#221e1a] border border-[#3d342c] flex flex-col items-center justify-center space-y-6">
-          
-          <!-- Radar Chart SVG Container -->
-          <div class="w-full max-w-[480px] aspect-square relative flex items-center justify-center">
-            
-            <!-- Ambient Glow -->
-            <div class="absolute inset-8 bg-[#d8cca3]/8 rounded-full blur-2xl pointer-events-none"></div>
-
-            <svg viewBox="0 0 500 460" class="w-full h-full drop-shadow-lg overflow-visible">
-              
-              <!-- Radar Background Grid (Hexagon Rings) -->
-              <!-- 100% -->
-              <polygon points="250,90 388.6,170 388.6,330 250,410 111.4,330 111.4,170"
-                       class="fill-[#14120f]/60 stroke-[#3d342c] stroke-[1.5]" />
-              
-              <!-- 75% -->
-              <polygon points="250,130 353.9,190 353.9,310 250,370 146.1,310 146.1,190"
-                       class="fill-none stroke-[#3d342c]/70 stroke-[1] stroke-dasharray-[3,3]" />
-              
-              <!-- 50% -->
-              <polygon points="250,170 319.3,210 319.3,290 250,330 180.7,290 180.7,210"
-                       class="fill-none stroke-[#3d342c]/50 stroke-[1] stroke-dasharray-[3,3]" />
-              
-              <!-- 25% -->
-              <polygon points="250,210 284.6,230 284.6,270 250,290 215.4,270 215.4,230"
-                       class="fill-none stroke-[#3d342c]/30 stroke-[1]" />
-
-              <!-- Axes Lines -->
-              <line x1="250" y1="250" x2="250" y2="90" class="stroke-[#3d342c] stroke-[1.5]" />
-              <line x1="250" y1="250" x2="388.6" y2="170" class="stroke-[#3d342c] stroke-[1.5]" />
-              <line x1="250" y1="250" x2="388.6" y2="330" class="stroke-[#3d342c] stroke-[1.5]" />
-              <line x1="250" y1="250" x2="250" y2="410" class="stroke-[#3d342c] stroke-[1.5]" />
-              <line x1="250" y1="250" x2="111.4" y2="330" class="stroke-[#3d342c] stroke-[1.5]" />
-              <line x1="250" y1="250" x2="111.4" y2="170" class="stroke-[#3d342c] stroke-[1.5]" />
-
-              <!-- Radar Data Polygon (Python Core - Highlighted Beige Tone) -->
-              <polygon points="250,93.2 377.5,176.4 371.9,320.4 250,386 130.8,318.8 136.4,184.4"
-                       class="fill-[#d8cca3]/25 stroke-[#d8cca3] stroke-2 hover:fill-[#d8cca3]/35 transition-all duration-300" />
-
-              <!-- Data Vertex Points -->
-              <!-- 1. Python (98%) -->
-              <circle cx="250" cy="93.2" r="5" class="fill-[#d8cca3] stroke-[#181512] stroke-2" />
-              
-              <!-- 2. Scrapy (92%) -->
-              <circle cx="377.5" cy="176.4" r="4.5" class="fill-[#d8cca3] stroke-[#181512] stroke-2" />
-
-              <!-- 3. Flask (88%) -->
-              <circle cx="371.9" cy="320.4" r="4.5" class="fill-[#d8cca3] stroke-[#181512] stroke-2" />
-
-              <!-- 4. FFmpeg (85%) -->
-              <circle cx="250" cy="386" r="4.5" class="fill-[#4299e1] stroke-[#181512] stroke-2" />
-
-              <!-- 5. Git & Shell (86%) -->
-              <circle cx="130.8" cy="318.8" r="4.5" class="fill-[#d8cca3] stroke-[#181512] stroke-2" />
-
-              <!-- 6. JavaScript (82%) -->
-              <circle cx="136.4" cy="184.4" r="4.5" class="fill-[#4299e1] stroke-[#181512] stroke-2" />
-
-              <!-- Axis Labels (Clean Tech Names) -->
-              <!-- Top: Python (Primary) -->
-              <text x="250" y="65" text-anchor="middle" class="fill-[#f5f0ea] font-tag text-sm font-bold tracking-wide">
-                Python <tspan class="fill-[#d8cca3] text-xs font-semibold">(Core)</tspan>
-              </text>
-              
-              <!-- Top-Right: Scrapy -->
-              <text x="405" y="174" text-anchor="start" class="fill-[#cfc4b6] font-tag text-xs font-bold">
-                Scrapy
-              </text>
-              
-              <!-- Bottom-Right: Flask -->
-              <text x="405" y="334" text-anchor="start" class="fill-[#cfc4b6] font-tag text-xs font-bold">
-                Flask
-              </text>
-              
-              <!-- Bottom: FFmpeg -->
-              <text x="250" y="435" text-anchor="middle" class="fill-[#cfc4b6] font-tag text-xs font-bold">
-                FFmpeg
-              </text>
-              
-              <!-- Bottom-Left: Git & Shell -->
-              <text x="95" y="334" text-anchor="end" class="fill-[#cfc4b6] font-tag text-xs font-bold">
-                Git & Shell
-              </text>
-              
-              <!-- Top-Left: JavaScript -->
-              <text x="95" y="174" text-anchor="end" class="fill-[#cfc4b6] font-tag text-xs font-bold">
-                JavaScript
-              </text>
-
-            </svg>
-
-          </div>
-
-          <!-- Clean Legend (图例) -->
-          <div class="flex flex-wrap items-center justify-center gap-6 pt-4 border-t border-[#3d342c] w-full text-xs font-tag">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-[#d8cca3] border border-[#181512]"></span>
-              <span class="text-[#f5f0ea] font-medium">Python 核心主导技术栈 (Core)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-[#4299e1] border border-[#181512]"></span>
-              <span class="text-[#cfc4b6]">多媒体与 Web 前端技术 (Ecosystem)</span>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= 06 ABOUT & CONTACT ================= -->
-      <section id="about" class="scroll-mt-24 space-y-6 pt-6 border-t border-[#3d342c]">
-        
-        <div class="flex items-center gap-2 text-xs font-tag text-[#9e9182] pb-2 border-b border-[#3d342c]">
-          <span>Docs</span>
-          <span>/</span>
-          <span>About</span>
-          <span>/</span>
-          <span class="text-[#d8cca3] font-semibold">Contact</span>
-        </div>
-
-        <div class="p-8 rounded-2xl bg-[#221e1a] border border-[#3d342c] space-y-6">
-          <div class="flex items-center gap-3">
-            <img src="avatar.png" alt="FjiNeko" class="w-12 h-12 rounded-xl object-cover border border-[#d8cca3]/40">
-            <div>
-              <h3 class="text-lg font-bold text-[#f5f0ea]">关于 FjiNeko (FujiNeko)</h3>
-              <p class="text-xs text-[#9e9182] font-tag">Python Developer · Open Source Enthusiast</p>
-            </div>
-          </div>
-
-          <p class="text-sm text-[#cfc4b6] leading-relaxed font-sans">
-            专注于用 Python 解决实际场景痛点，热爱 Scrapy 爬虫、前后端分离 Web 系统、OBS 直播挂件与本地自动化脚本。保持对新技术的好奇心与钻研精神。
-          </p>
-
-          <!-- GitBook Contact Callout -->
-          <div id="contact" class="pt-4 border-t border-[#3d342c] flex flex-wrap items-center gap-4">
-            <button id="main-copy-email-btn" data-email="murdermobai0605@outlook.com"
-                    class="px-5 py-2.5 rounded-xl bg-[#2b6cb0] hover:bg-[#3182ce] text-white font-semibold text-xs transition flex items-center gap-2 font-tag">
-              <i data-lucide="mail" class="w-4 h-4"></i>
-              <span>复制邮箱 (murdermobai0605@outlook.com)</span>
-            </button>
-
-            <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer"
-               class="px-5 py-2.5 rounded-xl bg-[#1e1a16] hover:bg-[#2a2520] text-[#cfc4b6] hover:text-white font-medium text-xs transition flex items-center gap-2 border border-[#3d342c] font-tag">
-              <i data-lucide="github" class="w-4 h-4 text-[#d8cca3]"></i>
-              <span>访问 GitHub 主页</span>
-            </a>
-
-            <div id="copy-toast" class="hidden text-xs font-tag text-[#d8cca3] bg-[#d8cca3]/10 border border-[#d8cca3]/30 px-3 py-1.5 rounded-lg animate-fade">
-              ✓ 邮箱地址已复制到剪贴板！
-            </div>
-          </div>
-        </div>
-
-        <!-- GitBook Pagination Footer Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
-          <a href="#overview" class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c] hover:border-[#d8cca3]/60 transition group">
-            <div class="text-[11px] font-tag text-[#9e9182] group-hover:text-[#d8cca3]">← PREVIOUS</div>
-            <div class="font-bold text-sm text-[#f5f0ea] mt-1">主页概览 Overview</div>
-          </a>
-          <a href="#cgbgear-forum" class="p-4 rounded-xl bg-[#221e1a] border border-[#3d342c] hover:border-[#d8cca3]/60 transition group text-right">
-            <div class="text-[11px] font-tag text-[#9e9182] group-hover:text-[#d8cca3]">NEXT →</div>
-            <div class="font-bold text-sm text-[#f5f0ea] mt-1">CGBGEAR 社区论坛全栈架构</div>
+          <a href="https://github.com/FjiNeko" target="_blank" rel="noopener noreferrer"
+             class="px-5 py-2.5 rounded-md bg-[#242424] hover:bg-[#303030] text-white font-medium text-xs transition flex items-center gap-2 font-tag">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current inline-block"><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+            <span>访问 GitHub 主页</span>
           </a>
         </div>
 
-        <!-- GitBook Document Footer -->
-        <footer class="pt-8 border-t border-[#3d342c] text-xs font-tag text-[#9e9182] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            Last modified on Aug 30, 2026 · Powered by GitBook Style
-          </div>
-          <div class="flex items-center gap-4">
-            <a href="https://github.com/FjiNeko/FjiNeko.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-[#f5f0ea] transition">Edit on GitHub</a>
-            <a href="#overview" class="hover:text-[#f5f0ea] transition">Back to top ↑</a>
-          </div>
-        </footer>
+      </div>
 
-      </section>
+    </div>
 
-    </main>
+    <!-- ============================================== -->
+    <!-- 📄 TIKTOK FOOTER                               -->
+    <!-- ============================================== -->
+    <footer class="pt-12 pb-8 text-center text-xs text-[rgba(255,255,255,0.4)] font-tag space-y-2 border-t border-[rgba(255,255,255,0.08)]">
+      <p>© 2026 FjiNeko. All rights reserved.</p>
+      <p>TikTok-Styled Developer Portfolio · Hosted on GitHub Pages</p>
+    </footer>
 
-  </div>
+  </main>
 
-  <!-- Scripts -->
+  <!-- JavaScript Interaction -->
   <script src="script.js"></script>
+  
+  <!-- Lucide Icon Renderer -->
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>

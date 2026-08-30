@@ -1,188 +1,129 @@
-// Initialize Lucide Icons & GitBook Doc Interactions
+// TikTok Profile Page Interactive JavaScript
+
 document.addEventListener('DOMContentLoaded', () => {
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
-  initScrollSpy();
-  initMobileSidebar();
-  initQuickSearch();
-  initRepositoryFilter();
-  initCopyActions();
-});
 
-// ====================================================
-// 🧭 ScrollSpy: Active Section Highlighting in GitBook Tree
-// ====================================================
-function initScrollSpy() {
-  const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('#sidebar-nav .doc-nav-link');
+  // 1. TikTok Tab Switching Logic
+  const tabButtons = document.querySelectorAll('.tiktok-tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
 
-  function updateActiveLink() {
-    let scrollPosition = window.scrollY + 180;
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
-
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        navLinks.forEach(link => {
-          if (link.getAttribute('data-section') === sectionId) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
-      }
-    });
-  }
-
-  window.addEventListener('scroll', updateActiveLink, { passive: true });
-  updateActiveLink();
-}
-
-// ====================================================
-// 🔍 Quick Search & Ctrl+K Shortcut
-// ====================================================
-function initQuickSearch() {
-  const searchInput = document.getElementById('quick-search');
-  if (!searchInput) return;
-
-  // Keyboard Shortcut: Ctrl + K or Cmd + K
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-      e.preventDefault();
-      searchInput.focus();
-    }
-  });
-
-  // Live client-side filtering on repositories & content
-  searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    const repoCards = document.querySelectorAll('#repositories-grid .doc-repo-card');
-
-    repoCards.forEach(card => {
-      const text = card.textContent.toLowerCase();
-      if (text.includes(query) || query === '') {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
-}
-
-// ====================================================
-// 📱 Mobile Sidebar Toggle
-// ====================================================
-function initMobileSidebar() {
-  const toggleBtn = document.getElementById('mobile-sidebar-toggle');
-  const sidebar = document.getElementById('sidebar');
-  const backdrop = document.getElementById('mobile-backdrop');
-  const navLinks = document.querySelectorAll('#sidebar-nav a');
-
-  function openSidebar() {
-    sidebar.classList.remove('-translate-x-full');
-    backdrop.classList.remove('hidden');
-  }
-
-  function closeSidebar() {
-    sidebar.classList.add('-translate-x-full');
-    backdrop.classList.add('hidden');
-  }
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', openSidebar);
-  }
-  if (backdrop) {
-    backdrop.addEventListener('click', closeSidebar);
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth < 1024) {
-        closeSidebar();
-      }
-    });
-  });
-}
-
-// ====================================================
-// 🗂️ Repositories Category Filter Tabs
-// ====================================================
-function initRepositoryFilter() {
-  const filterBtns = document.querySelectorAll('.doc-filter-btn');
-  const repoCards = document.querySelectorAll('#repositories-grid .doc-repo-card');
-
-  filterBtns.forEach(btn => {
+  tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      const targetTabId = btn.getAttribute('data-tab');
+
+      // Update Tab Button States
+      tabButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const filter = btn.getAttribute('data-filter');
-
-      repoCards.forEach(card => {
-        if (filter === 'all') {
-          card.style.display = 'flex';
-          card.classList.add('animate-fade');
+      // Update Tab Content Panels
+      tabContents.forEach(content => {
+        if (content.id === targetTabId) {
+          content.classList.add('active');
         } else {
-          const categories = card.getAttribute('data-category').split(' ');
-          if (categories.includes(filter)) {
-            card.style.display = 'flex';
-            card.classList.add('animate-fade');
-          } else {
-            card.style.display = 'none';
-          }
+          content.classList.remove('active');
+        }
+      });
+
+      // Refresh Lucide Icons if needed
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+  });
+
+  // 2. Repository Category Filter
+  const filterButtons = document.querySelectorAll('.doc-filter-btn');
+  const repoCards = document.querySelectorAll('.tiktok-card[data-category]');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+
+      // Toggle active filter styles
+      filterButtons.forEach(btn => {
+        btn.classList.remove('bg-white', 'text-[#121212]');
+        btn.classList.add('bg-[#242424]', 'text-[rgba(255,255,255,0.7)]');
+      });
+
+      button.classList.remove('bg-[#242424]', 'text-[rgba(255,255,255,0.7)]');
+      button.classList.add('bg-white', 'text-[#121212]');
+
+      // Filter Cards
+      repoCards.forEach(card => {
+        const category = card.getAttribute('data-category') || '';
+        if (filter === 'all' || category.includes(filter)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
         }
       });
     });
   });
-}
 
-// ====================================================
-// 📋 Copy Code & Email Actions
-// ====================================================
-function initCopyActions() {
-  // Copy Code Snippets
-  const codeBtns = document.querySelectorAll('.copy-code-btn');
-  codeBtns.forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const code = btn.getAttribute('data-code');
-      try {
-        await navigator.clipboard.writeText(code);
-        const originalHtml = btn.innerHTML;
-        btn.innerHTML = '<span class="text-[10px] text-emerald-400 font-mono">Copied!</span>';
-        setTimeout(() => {
-          btn.innerHTML = originalHtml;
-        }, 2000);
-      } catch (err) {
-        prompt('请手动复制命令：', code);
+  // 3. Search Bar Filter
+  const searchInput = document.getElementById('tiktok-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+
+      // Switch to Repositories tab if typing search
+      const repoTabBtn = document.querySelector('[data-tab="tab-repos"]');
+      if (query.length > 0 && repoTabBtn && !repoTabBtn.classList.contains('active')) {
+        repoTabBtn.click();
       }
+
+      repoCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     });
-  });
+  }
+
+  // 4. Toast & Copy Functions
+  const toast = document.getElementById('tiktok-toast');
+
+  function showToast(message) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.remove('hidden');
+
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 2400);
+  }
 
   // Copy Email Buttons
-  const copyButtons = [
-    document.getElementById('sidebar-copy-btn'),
-    document.getElementById('main-copy-email-btn')
+  const copyEmailBtns = [
+    document.getElementById('copy-email-btn'),
+    document.getElementById('about-copy-email-btn')
   ];
-  const copyToast = document.getElementById('copy-toast');
 
-  copyButtons.forEach(btn => {
+  copyEmailBtns.forEach(btn => {
     if (!btn) return;
-    btn.addEventListener('click', async () => {
+    btn.addEventListener('click', () => {
       const email = btn.getAttribute('data-email') || 'murdermobai0605@outlook.com';
-      try {
-        await navigator.clipboard.writeText(email);
-        if (copyToast) {
-          copyToast.classList.remove('hidden');
-          setTimeout(() => {
-            copyToast.classList.add('hidden');
-          }, 3000);
-        }
-      } catch (err) {
-        prompt('请手动复制邮箱：', email);
-      }
+      navigator.clipboard.writeText(email).then(() => {
+        showToast('✓ 邮箱地址已复制到剪贴板！');
+      }).catch(() => {
+        showToast('邮箱: ' + email);
+      });
     });
   });
-}
+
+  // Share Profile Button
+  const shareBtn = document.getElementById('header-share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('✓ 主页链接已复制到剪贴板！');
+      }).catch(() => {
+        showToast('已复制主页链接');
+      });
+    });
+  }
+
+});

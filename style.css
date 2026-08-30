@@ -1,208 +1,155 @@
-/* GitBook Documentation Stylesheet (Avatar Retro Beige & Cat Cream Tone) */
+/* TikTok Web Dark Mode Stylesheet */
 
-/* Global Font Rule: Microsoft YaHei for Chinese, Arial for English Tags */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+:root {
+  --tiktok-bg: #121212;
+  --tiktok-surface: #1e1e1e;
+  --tiktok-surface-hover: #2a2a2a;
+  --tiktok-border: rgba(255, 255, 255, 0.12);
+  --tiktok-red: #fe2c55;
+  --tiktok-red-hover: #e02449;
+  --tiktok-cyan: #25f4ee;
+  --tiktok-text-primary: #ffffff;
+  --tiktok-text-secondary: rgba(255, 255, 255, 0.75);
+  --tiktok-text-muted: rgba(255, 255, 255, 0.48);
+}
+
 body {
-  font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  color: #cfc4b6;
-  background-color: #181512;
+  font-family: "Microsoft YaHei", "微软雅黑", "Noto Sans SC", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  background-color: var(--tiktok-bg);
+  color: var(--tiktok-text-primary);
+  overflow-x: hidden;
 }
 
-/* Enforce Arial for English tags, badges, and code accents */
-.font-tag, .doc-tag, .doc-badge-amber, .doc-badge-blue, .doc-badge-pink, .doc-badge-emerald {
-  font-family: Arial, sans-serif !important;
+.font-tag, .font-stat {
+  font-family: Arial, "Plus Jakarta Sans", sans-serif !important;
 }
 
 /* ==================================================== */
-/* 📚 SIDEBAR TREE NAVIGATION                           */
+/* 📱 TIKTOK INTERACTIVE TAB BAR                        */
 /* ==================================================== */
 
-.doc-nav-link {
-  display: flex;
+.tiktok-tab-btn {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #9e9182;
-  text-decoration: none;
-  transition: all 0.15s ease;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--tiktok-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.doc-nav-link:hover {
-  color: #f5f0ea;
-  background: #221e1a;
+.tiktok-tab-btn:hover {
+  color: var(--tiktok-text-primary);
 }
 
-.doc-nav-link.active {
-  color: #d8cca3;
-  background: rgba(216, 204, 163, 0.12);
-  font-weight: bold;
-  border-right: 2px solid #d8cca3;
+.tiktok-tab-btn.active {
+  color: var(--tiktok-text-primary);
 }
 
-.doc-sub-link {
-  display: block;
-  padding: 0.35rem 0.75rem;
-  border-radius: 0.375rem;
-  color: #8c8072;
-  text-decoration: none;
-  font-size: 0.75rem;
-  transition: all 0.15s ease;
-}
-
-.doc-sub-link:hover {
-  color: #d8cca3;
-  background: rgba(34, 30, 26, 0.8);
+.tiktok-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--tiktok-text-primary);
+  border-radius: 2px;
 }
 
 /* ==================================================== */
-/* 💡 GITBOOK CALLOUT BLOCKS (Avatar Palette)           */
+/* 🎬 TIKTOK 3:4 VIDEO FEED CARDS                      */
 /* ==================================================== */
 
-.gitbook-callout {
-  padding: 1rem 1.25rem;
+.tiktok-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
   border-radius: 0.75rem;
-  border-left-width: 4px;
-}
-
-.callout-info {
-  background: rgba(43, 108, 176, 0.1);
-  border-left-color: #2b6cb0;
-  border-top: 1px solid rgba(43, 108, 176, 0.2);
-  border-right: 1px solid rgba(43, 108, 176, 0.2);
-  border-bottom: 1px solid rgba(43, 108, 176, 0.2);
-}
-
-.callout-purple {
-  background: rgba(216, 204, 163, 0.08);
-  border-left-color: #d8cca3;
-  border-top: 1px solid rgba(216, 204, 163, 0.2);
-  border-right: 1px solid rgba(216, 204, 163, 0.2);
-  border-bottom: 1px solid rgba(216, 204, 163, 0.2);
-}
-
-/* ==================================================== */
-/* 🏷️ REPOSITORY CARDS & BADGES                         */
-/* ==================================================== */
-
-.doc-repo-card {
-  background: #221e1a;
-  border: 1px solid #3d342c;
-  border-radius: 0.875rem;
-  padding: 1.25rem;
+  overflow: hidden;
+  background-color: #181818;
+  border: 1px solid var(--tiktok-border);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.doc-repo-card:hover {
-  border-color: #d8cca3;
-  background: #2a2520;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+.tiktok-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7);
 }
 
-.doc-badge-amber {
-  font-size: 0.6875rem;
-  font-family: Arial, sans-serif !important;
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.375rem;
-  background: rgba(216, 204, 163, 0.15);
-  color: #d8cca3;
-  border: 1px solid rgba(216, 204, 163, 0.3);
+/* Subtle video scanline & gradient */
+.tiktok-card-gradient {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.9) 100%);
 }
 
-.doc-badge-blue {
-  font-size: 0.6875rem;
-  font-family: Arial, sans-serif !important;
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.375rem;
-  background: rgba(43, 108, 176, 0.15);
-  color: #4299e1;
-  border: 1px solid rgba(43, 108, 176, 0.35);
-}
-
-.doc-badge-pink {
-  font-size: 0.6875rem;
-  font-family: Arial, sans-serif !important;
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.375rem;
-  background: rgba(232, 165, 165, 0.15);
-  color: #e8a5a5;
-  border: 1px solid rgba(232, 165, 165, 0.35);
-}
-
-.doc-tag {
+.tiktok-badge-pin {
   display: inline-flex;
   align-items: center;
-  padding: 0.15rem 0.45rem;
-  border-radius: 0.375rem;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
   font-size: 0.6875rem;
-  font-family: Arial, sans-serif !important;
-  font-weight: 500;
-  background: #181512;
-  color: #cfc4b6;
-  border: 1px solid #4a3f35;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  background-color: var(--tiktok-red);
+  color: #ffffff;
 }
 
-/* ==================================================== */
-/* 🎛️ FILTER BUTTONS                                    */
-/* ==================================================== */
-
-.doc-filter-btn {
-  padding: 0.35rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.75rem;
-  font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-weight: 500;
-  background: #221e1a;
-  border: 1px solid #3d342c;
-  color: #9e9182;
-  cursor: pointer;
-  transition: all 0.15s ease;
+.tiktok-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  background-color: var(--tiktok-cyan);
+  color: #121212;
 }
 
-.doc-filter-btn:hover {
-  color: #f5f0ea;
-  background: #2a2520;
-  border-color: #52463b;
-}
-
-.doc-filter-btn.active {
-  background: #d8cca3;
-  color: #181512;
-  font-weight: bold;
-  border-color: #d8cca3;
-  box-shadow: 0 2px 8px rgba(216, 204, 163, 0.25);
-}
-
-/* Custom Clean Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #14120f;
+  background: #121212;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2c251f;
+  background: #2b2b2b;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #42382f;
+  background: #444444;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Tab animations */
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+  animation: tiktokFadeIn 0.3s ease-out forwards;
 }
 
-.animate-fade {
-  animation: fadeIn 0.25s ease-out forwards;
+@keyframes tiktokFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
