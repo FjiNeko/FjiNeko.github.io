@@ -73,7 +73,10 @@ export default function PostCard({ post, index }: PostCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
     >
-      <Link href={`/posts/${post.slug}`}>
+      <Link
+        href={`/posts/_fallback?slug=${encodeURIComponent(post.slug)}`}
+        as={`/posts/${post.slug}`}
+      >
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}

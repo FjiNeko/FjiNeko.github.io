@@ -433,7 +433,7 @@ export default function TimelinePage() {
                     key={post.id}
                     className="cursor-pointer"
                     onClick={() => {
-                      if (!didDrag.current) router.push(`/posts/${post.slug}`);
+                      if (!didDrag.current) router.push(`/posts/_fallback?slug=${encodeURIComponent(post.slug)}`);
                     }}
                   >
                     {/* 连接线 */}

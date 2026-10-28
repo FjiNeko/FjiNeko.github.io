@@ -92,6 +92,12 @@ export default function PostDetailPage() {
   }, [params?.slug]);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && resolvedSlug && window.location.pathname.includes("_fallback")) {
+      window.history.replaceState(null, "", `/posts/${resolvedSlug}`);
+    }
+  }, [resolvedSlug]);
+
+  useEffect(() => {
     if (!resolvedSlug) return;
     let active = true;
     setLoading(true);

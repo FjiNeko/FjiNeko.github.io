@@ -43,7 +43,8 @@ export default function LatestPostsCarousel() {
     <div className="flex flex-col gap-3 h-full">
       {/* Hero 大图 */}
       <Link
-        href={`/posts/${hero.slug}`}
+        href={`/posts/_fallback?slug=${encodeURIComponent(hero.slug)}`}
+        as={`/posts/${hero.slug}`}
         className="relative flex-1 min-h-[160px] md:min-h-[160px] rounded-3xl overflow-hidden group cursor-pointer"
       >
         <Image
@@ -85,7 +86,8 @@ export default function LatestPostsCarousel() {
           {rest.map((post) => (
             <Link
               key={post.id}
-              href={`/posts/${post.slug}`}
+              href={`/posts/_fallback?slug=${encodeURIComponent(post.slug)}`}
+              as={`/posts/${post.slug}`}
               className="relative rounded-2xl overflow-hidden group cursor-pointer h-[80px]"
             >
               <Image
