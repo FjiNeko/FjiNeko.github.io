@@ -1,0 +1,95 @@
+1:"$Sreact.fragment"
+2:I[4376,["/_next/static/chunks/023vatzvbms-o.js","/_next/static/chunks/0vv~2o8u3uk3d.js","/_next/static/chunks/0p0y0.f2bzf~3.js","/_next/static/chunks/0c3z.1w0n3n1p.js","/_next/static/chunks/17ghzxp3kne0q.js"],"default"]
+8:I[36528,["/_next/static/chunks/023vatzvbms-o.js","/_next/static/chunks/0vv~2o8u3uk3d.js","/_next/static/chunks/0p0y0.f2bzf~3.js","/_next/static/chunks/0c3z.1w0n3n1p.js"],"OutletBoundary"]
+9:"$Sreact.suspense"
+:HL["/images/2.webp","image"]
+:HL["https://avatars.githubusercontent.com/u/151485147?v=4","image"]
+:HL["/_next/static/chunks/15cahw4d8-wp1.css","style"]
+3:Td1d,
+              .prose pre {
+                background-color: #282c34 !important;
+                color: #abb2bf !important;
+                padding: 1.25rem !important;
+                border-radius: 0.75rem !important;
+                overflow-x: auto !important;
+                box-shadow: inset 0 0 10px rgba(0,0,0,0.3) !important;
+                margin-top: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+              }
+              .prose pre code {
+                background-color: transparent !important;
+                padding: 0 !important;
+                color: inherit !important;
+                font-size: 0.9em !important;
+                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+              }
+              .prose code::before, .prose code::after { content: none !important; }
+              .prose p code, .prose li code {
+                background-color: rgba(99, 102, 241, 0.1) !important;
+                color: #6366f1 !important;
+                padding: 0.2rem 0.4rem !important;
+                border-radius: 0.375rem !important;
+                font-weight: 600 !important;
+              }
+              .dark .prose p code, .dark .prose li code {
+                background-color: rgba(99, 102, 241, 0.2) !important;
+                color: #818cf8 !important;
+              }
+              .prose h2 {
+                font-size: 1.75rem !important;
+                font-weight: 800 !important;
+                margin-bottom: 1rem !important;
+                margin-top: 2.5rem !important;
+                color: inherit !important;
+              }
+              .prose h3 {
+                font-size: 1.25rem !important;
+                font-weight: 700 !important;
+                margin-bottom: 0.75rem !important;
+                color: inherit !important;
+              }
+              .prose p {
+                font-size: 1.05rem !important;
+                line-height: 1.85 !important;
+                color: inherit !important;
+              }
+              .prose ul {
+                list-style-type: disc !important;
+                padding-left: 1.5rem !important;
+              }
+              .prose blockquote {
+                border-left: 4px solid #6366f1 !important;
+                padding-left: 1rem !important;
+                margin: 1.5rem 0 !important;
+                color: #64748b !important;
+                font-style: italic !important;
+              }
+              .dark .prose blockquote {
+                color: #94a3b8 !important;
+              }
+              .prose img {
+                display: block !important;
+                margin: 2rem auto !important;
+                border-radius: 1.5rem !important;
+                box-shadow: 0 20px 50px rgba(0,0,0,0.15) !important;
+                max-width: 100% !important;
+                height: auto !important;
+              }
+              .prose a {
+                color: #6366f1 !important;
+                text-decoration: underline !important;
+                text-underline-offset: 3px !important;
+              }
+              .dark .prose a {
+                color: #818cf8 !important;
+              }
+              .prose strong {
+                color: inherit !important;
+                font-weight: 700 !important;
+              }
+            0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"className":"w-full max-w-4xl mx-auto py-6 md:py-12 px-4 sm:px-10 relative z-10","children":["$","div",null,{"className":"bg-white/40 dark:bg-slate-800/50 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/40 dark:border-white/10 overflow-hidden transition-colors duration-700","children":[["$","div",null,{"className":"w-full h-36 md:h-64 relative bg-slate-200 dark:bg-slate-700 overflow-hidden group","children":[["$","img",null,{"src":"/images/2.webp","alt":"About Hero","className":"w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105"}],["$","div",null,{"className":"absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"}]]}],["$","div",null,{"className":"px-4 md:px-16 pb-8 md:pb-16 relative","children":[["$","div",null,{"className":"w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white dark:border-slate-800 shadow-2xl overflow-hidden -mt-12 md:-mt-16 relative z-20 bg-white","children":["$","img",null,{"src":"https://avatars.githubusercontent.com/u/151485147?v=4","alt":"avatar","className":"w-full h-full object-cover"}]}],["$","div",null,{"className":"mt-4 md:mt-6 mb-5 md:mb-8 border-b border-slate-300/50 dark:border-slate-700 pb-5 md:pb-8","children":[["$","h1",null,{"className":"text-2xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-2 md:mb-3 transition-colors duration-700","children":"关于我"}],["$","p",null,{"className":"text-sm md:text-lg text-indigo-600 dark:text-indigo-400 font-bold tracking-widest uppercase transition-colors duration-700","children":["Hello World, I'm ","FjiNeko"]}]]}],["$","div",null,{"className":"relative","children":[["$","style",null,{"children":"$3"}],"$L4"]}]]}]]}]}],["$L5","$L6"],"$L7"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"mfc_pyWqRXBjAoK0FPoi-"}
+4:["$","div",null,{"className":"prose prose-sm md:prose-lg prose-slate dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 transition-colors duration-700 leading-relaxed","dangerouslySetInnerHTML":{"__html":"<h2>你好，我是 FjiNeko</h2>\n<p>喜欢折腾技术，记录生活与代码实践。</p>\n<h2>关于这个博客</h2>\n<p>这个博客使用 <strong>Next.js 16 + React 19 + Tailwind CSS 4</strong> 构建，采用玻璃拟态（Glassmorphism）设计风格。在这里你可以看到我写的技术文章、日常说说、一起聊天的杂谈，还有照片墙和内置的一些实用小工具。</p>\n<h2>技术栈</h2>\n<ul>\n<li><strong>主力：</strong> Python, Vue, React, Next.js, Flask, Spring Boot</li>\n<li><strong>略懂：</strong> TypeScript, Scrapy, Docker, Linux, Tailwind CSS</li>\n</ul>\n<h2>兴趣爱好</h2>\n<ul>\n<li>写代码，折腾各种好玩的技术与项目</li>\n<li>听音乐，探索开放 Web 体验</li>\n</ul>\n<h2>联系我</h2>\n<ul>\n<li><strong>GitHub：</strong> <a href=\"https://github.com/FjiNeko\">github.com/FjiNeko</a></li>\n</ul>\n<blockquote>\n<p>Stay hungry, stay foolish. —— 求知若饥，虚心若愚。</p>\n</blockquote>"}}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/15cahw4d8-wp1.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/17ghzxp3kne0q.js","async":true}]
+7:["$","$L8",null,{"children":["$","$9",null,{"name":"Next.MetadataOutlet","children":"$@a"}]}]
+a:null

@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fnovel\u002F[bookUrl]","\u002Fnovel\u002F[bookUrl]\u002F[chapter]","\u002Fposts\u002F[slug]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
