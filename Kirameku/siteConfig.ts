@@ -36,6 +36,9 @@ export const siteConfig = {
   // 后端 API 地址（留空则同源相对路径；部署到 GitHub Pages 时可通过 NEXT_PUBLIC_API_URL 指向 Cloudflare Worker）
   apiBaseUrl: process.env.NEXT_PUBLIC_API_URL || "https://kirameku-worker.murdermobai0605.workers.dev",
 
+  // GitHub OAuth App Client ID（配置后前台登录直跳 GitHub 官方授权许可页，无需 Worker 中转）
+  githubClientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID || "Ov23lidsdGIEDz3sTMD0",
+
   // 社交链接
   social: {
     github: "https://github.com/FjiNeko",
