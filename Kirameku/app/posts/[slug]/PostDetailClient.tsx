@@ -21,6 +21,7 @@ import dockerfile from "highlight.js/lib/languages/dockerfile";
 import makefile from "highlight.js/lib/languages/makefile";
 import plaintext from "highlight.js/lib/languages/plaintext";
 import { X } from "lucide-react";
+import { parseTimelines } from "@/lib/timeline";
 
 hljs.registerLanguage("typescript", typescript);
 hljs.registerLanguage("ts", typescript);
@@ -387,11 +388,234 @@ export default function PostDetailPage() {
               .dark .post-content th {
                 background-color: #1e293b !important;
               }
+
+              /* ========== Markdown Timelines 样式 ========== */
+              .post-content .timeline {
+                position: relative !important;
+                margin: 2.5rem 0 !important;
+                width: 100% !important;
+              }
+              .post-content .timeline .wrapper-timeline {
+                display: flex !important;
+                flex-direction: column !important;
+                position: relative !important;
+                gap: 1.5rem !important;
+              }
+              .post-content .timeline .wrapper-item {
+                display: grid !important;
+                grid-template-columns: 1fr 40px 1fr !important;
+                align-items: flex-start !important;
+                position: relative !important;
+              }
+              .post-content .timeline.squish-left .wrapper-item {
+                grid-template-columns: 140px 40px 1fr !important;
+              }
+              .post-content .timeline.squish-right .wrapper-item {
+                grid-template-columns: 1fr 40px 140px !important;
+              }
+              .post-content .timeline .divider {
+                position: relative !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: flex-start !important;
+                min-height: 100% !important;
+                height: 100% !important;
+              }
+              .post-content .timeline .divider::before {
+                content: "" !important;
+                position: absolute !important;
+                top: 0 !important;
+                bottom: -1.5rem !important;
+                left: 50% !important;
+                width: 2px !important;
+                transform: translateX(-50%) !important;
+                background-color: #D8C99F !important;
+              }
+              .dark .post-content .timeline .divider::before {
+                background-color: #383228 !important;
+              }
+              .post-content .timeline .wrapper-item:last-child .divider::before {
+                bottom: 0 !important;
+              }
+              .post-content .timeline .dot {
+                position: relative !important;
+                z-index: 2 !important;
+                width: 14px !important;
+                height: 14px !important;
+                margin-top: 0.5rem !important;
+                border-radius: 50% !important;
+                background-color: #FFF9EF !important;
+                border: 3px solid #A89573 !important;
+                box-shadow: 0 0 0 2px #F3EBDD !important;
+                transition: transform 0.2s ease, border-color 0.2s ease !important;
+              }
+              .dark .post-content .timeline .dot {
+                background-color: #2B2822 !important;
+                border-color: #D8C99F !important;
+                box-shadow: 0 0 0 2px #211F1A !important;
+              }
+              .post-content .timeline .wrapper-item:hover .dot {
+                transform: scale(1.2) !important;
+                border-color: #332D25 !important;
+              }
+              .dark .post-content .timeline .wrapper-item:hover .dot {
+                border-color: #F3EBDD !important;
+              }
+              .post-content .timeline .year-item {
+                display: flex !important;
+                align-items: flex-start !important;
+                padding-top: 0.25rem !important;
+              }
+              .post-content .timeline .wrapper-item > .year-item:first-child {
+                justify-content: flex-end !important;
+                text-align: right !important;
+                padding-right: 0.75rem !important;
+              }
+              .post-content .timeline .wrapper-item > .year-item:last-child {
+                justify-content: flex-start !important;
+                text-align: left !important;
+                padding-left: 0.75rem !important;
+              }
+              .post-content .timeline .year {
+                font-size: 1.15rem !important;
+                font-weight: 700 !important;
+                color: #332D25 !important;
+                letter-spacing: -0.01em !important;
+              }
+              .dark .post-content .timeline .year {
+                color: #F3EBDD !important;
+              }
+              .post-content .timeline .timeline-item {
+                position: relative !important;
+                padding: 1rem 1.25rem !important;
+                border-radius: 1rem !important;
+                background-color: #FFF9EF !important;
+                border: 1px solid #D8C99F !important;
+                box-shadow: 0 2px 8px rgba(51, 45, 37, 0.05) !important;
+                transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+              }
+              .dark .post-content .timeline .timeline-item {
+                background-color: #2B2822 !important;
+                border-color: #383228 !important;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+              }
+              .post-content .timeline .timeline-item:hover {
+                transform: translateY(-2px) !important;
+                border-color: #A89573 !important;
+                box-shadow: 0 6px 16px rgba(51, 45, 37, 0.08) !important;
+              }
+              .dark .post-content .timeline .timeline-item:hover {
+                border-color: #725D3E !important;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+              }
+              .post-content .timeline .timeline-item .toc-header,
+              .post-content .timeline .timeline-item h3 {
+                margin: 0.25rem 0 0.5rem 0 !important;
+                font-size: 1.1rem !important;
+                font-weight: 700 !important;
+                color: #332D25 !important;
+                line-height: 1.4 !important;
+              }
+              .dark .post-content .timeline .timeline-item .toc-header,
+              .dark .post-content .timeline .timeline-item h3 {
+                color: #F3EBDD !important;
+              }
+              .post-content .timeline .timeline-item p {
+                margin: 0.35rem 0 !important;
+                font-size: 0.925rem !important;
+                line-height: 1.6 !important;
+                color: #514638 !important;
+              }
+              .dark .post-content .timeline .timeline-item p {
+                color: #D8D0C2 !important;
+              }
+              .post-content .timeline .item-date {
+                display: inline-block !important;
+                font-size: 0.75rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.05em !important;
+                padding: 0.15rem 0.5rem !important;
+                border-radius: 0.375rem !important;
+                margin-bottom: 0.35rem !important;
+                background-color: #F3EBDD !important;
+                color: #A89573 !important;
+                border: 1px solid #D8C99F !important;
+              }
+              .dark .post-content .timeline .item-date {
+                background-color: #211F1A !important;
+                color: #D8C99F !important;
+                border: 1px solid #383228 !important;
+              }
+              .post-content .timeline .break {
+                position: relative !important;
+                text-align: center !important;
+                margin: 1.5rem 0 !important;
+                padding: 0 1rem !important;
+              }
+              .post-content .timeline .break hr {
+                border: 0 !important;
+                border-top: 1px dashed #D8C99F !important;
+                margin: 0 !important;
+              }
+              .dark .post-content .timeline .break hr {
+                border-top-color: #725D3E !important;
+              }
+              .post-content .timeline .break .title {
+                position: relative !important;
+                top: -0.65rem !important;
+                display: inline-block !important;
+                padding: 0.25rem 1rem !important;
+                font-size: 0.85rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.05em !important;
+                border-radius: 9999px !important;
+                background-color: #FFF9EF !important;
+                border: 1px solid #D8C99F !important;
+                color: #A89573 !important;
+              }
+              .dark .post-content .timeline .break .title {
+                background-color: #2B2822 !important;
+                border-color: #725D3E !important;
+                color: #D8C99F !important;
+              }
+
+              @media (max-width: 767px) {
+                .post-content .timeline .wrapper-item {
+                  display: flex !important;
+                  flex-direction: column !important;
+                  position: relative !important;
+                  padding-left: 2rem !important;
+                  gap: 0.5rem !important;
+                }
+                .post-content .timeline .divider {
+                  position: absolute !important;
+                  left: 0 !important;
+                  top: 0 !important;
+                  bottom: 0 !important;
+                  width: 24px !important;
+                  min-height: 100% !important;
+                }
+                .post-content .timeline .divider::before {
+                  left: 11px !important;
+                  bottom: -1rem !important;
+                }
+                .post-content .timeline .dot {
+                  margin-top: 0.35rem !important;
+                }
+                .post-content .timeline .year-item {
+                  justify-content: flex-start !important;
+                  text-align: left !important;
+                  padding: 0 !important;
+                }
+                .post-content .timeline .timeline-item {
+                  width: 100% !important;
+                }
+              }
             `}</style>
             <div
               className="post-content prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 leading-relaxed"
               onClick={handleContentClick}
-              dangerouslySetInnerHTML={{ __html: marked.parse(post.content) as string }}
+              dangerouslySetInnerHTML={{ __html: marked.parse(parseTimelines(post.content)) as string }}
             />
           </div>
         </div>

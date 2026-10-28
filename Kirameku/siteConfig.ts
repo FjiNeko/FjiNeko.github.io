@@ -3,7 +3,7 @@
 export const siteConfig = {
   // 网站标题与博主信息
   title: "FjiNekoの小站",
-  url: "https://boke.hiromu.top",
+  url: "https://fjineko.github.io",
   authorName: "FjiNeko",
   bio: "Stay curious, keep smiling, and write code that makes you happy.",
 
