@@ -34,7 +34,7 @@ export const siteConfig = {
   cloudMusicIds: [],                     // 歌曲 ID 列表（歌单为空时使用）
 
   // 后端 API 地址（留空则同源相对路径；部署到 GitHub Pages 时可通过 NEXT_PUBLIC_API_URL 指向 Cloudflare Worker）
-  apiBaseUrl: process.env.NEXT_PUBLIC_API_URL || "",
+  apiBaseUrl: process.env.NEXT_PUBLIC_API_URL || "https://kirameku-worker.murdermobai0605.workers.dev",
 
   // 社交链接
   social: {

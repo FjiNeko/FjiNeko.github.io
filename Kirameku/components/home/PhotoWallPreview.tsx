@@ -3,12 +3,13 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { getAlbums, getAlbumPhotos } from "@/app/api";
+import { getAlbums, getAlbumPhotos, getAllPhotos } from "@/app/api";
 
 interface Photo {
   id: number;
   url: string;
   caption: string;
+  orientation?: string;
 }
 
 export default function PhotoWallPreview() {
@@ -23,14 +24,33 @@ export default function PhotoWallPreview() {
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     const targetTitle = isMobile ? "2" : "1";
+    const targetOrientation = isMobile ? "portrait" : "landscape";
+
     getAlbums()
-      .then((albums) => {
-        const target = albums.find((a) => a.title === targetTitle);
-        if (!target) return;
-        return getAlbumPhotos(target.id);
+      .then(async (albums) => {
+        if (!albums || !albums.length) return [];
+        // 1. 优先寻找专门为首页卡片指定的相册（如标题为 "1" 或 "2"）
+        const designated = albums.find((a) => a.title === targetTitle);
+        if (designated) {
+          return getAlbumPhotos(designated.id);
+        }
+        // 2. 否则获取全站照片，或者回退到第一个有照片的相册
+        try {
+          const all = await getAllPhotos();
+          if (all && all.length) return all;
+        } catch {
+          // ignore and fallback
+        }
+        const firstWithPhotos = albums.find((a) => (a.photo_count ?? 0) > 0) || albums[0];
+        return getAlbumPhotos(firstWithPhotos.id);
       })
       .then((data) => {
-        if (data?.length) setPhotos(data.reverse());
+        if (data && data.length) {
+          // 优先筛选符合屏幕方向的照片（移动端竖屏 portrait，桌面端横屏 landscape）
+          const matched = data.filter((p) => p.orientation === targetOrientation);
+          const listToUse = matched.length > 0 ? matched : data;
+          setPhotos(listToUse.slice().reverse());
+        }
       })
       .catch(() => {});
   }, []);
@@ -47,8 +67,10 @@ export default function PhotoWallPreview() {
   useEffect(() => {
     if (photos.length < 2) return;
     const next = (currentIndex + 1) % photos.length;
-    const img = new Image();
-    img.src = photos[next].url;
+    if (photos[next]?.url) {
+      const img = new Image();
+      img.src = photos[next].url;
+    }
   }, [currentIndex, photos]);
 
   const goNext = useCallback(() => {
@@ -116,6 +138,8 @@ export default function PhotoWallPreview() {
     );
   }
 
+  const currentPhoto = photos[currentIndex] || photos[0];
+
   return (
     <div
       onClick={handleClick}
@@ -134,7 +158,7 @@ export default function PhotoWallPreview() {
       {/* 只渲染当前一张图，通过 JS 预加载下一张，AnimatePresence 做交叉渐隐 */}
       <AnimatePresence>
         <motion.div
-          key={photos[currentIndex].id}
+          key={currentPhoto.id}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -142,10 +166,10 @@ export default function PhotoWallPreview() {
           className="absolute inset-0"
         >
           <img
-            src={photos[currentIndex].url}
+            src={currentPhoto.url}
             draggable={false}
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 pointer-events-none"
-            alt=""
+            alt={currentPhoto.caption || "照片墙"}
           />
         </motion.div>
       </AnimatePresence>

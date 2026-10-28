@@ -1,6 +1,6 @@
 import HomeClient from "./HomeClient";
 
-const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:19010";
+const API = process.env.NEXT_PUBLIC_API_URL || "https://kirameku-worker.murdermobai0605.workers.dev";
 
 async function fetchProfileData() {
   try {
