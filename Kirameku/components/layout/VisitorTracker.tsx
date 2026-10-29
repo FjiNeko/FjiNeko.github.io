@@ -1,17 +1,24 @@
 "use client";
 
 import { useEffect } from "react";
+import { siteConfig } from "@/siteConfig";
 
 export default function VisitorTracker() {
   useEffect(() => {
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || "";
+    const apiBase = (process.env.NEXT_PUBLIC_API_URL || siteConfig.apiBaseUrl || "").replace(/\/+$/, "");
+    if (!apiBase) return;
+
     // 访客记录
     if (!sessionStorage.getItem("visitor_recorded")) {
       fetch(`${apiBase}/api/visitors/record`, {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           "x-path": window.location.pathname,
         },
+        body: JSON.stringify({
+          path: window.location.pathname,
+        }),
       })
         .then(() => {
           sessionStorage.setItem("visitor_recorded", "1");

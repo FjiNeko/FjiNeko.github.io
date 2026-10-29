@@ -212,3 +212,24 @@ export const projects: Project[] = [
     sort: 12,
   },
 ];
+
+import type { ProjectItem } from "@/app/api/projects";
+
+export const fallbackProjects: ProjectItem[] = projects.map((p, index) => ({
+  id: index + 1,
+  name: p.name,
+  slug: p.id,
+  description: p.description,
+  long_description: p.longDescription || p.description,
+  cover_image: p.coverImage || "",
+  tech_stack: p.techStack || [],
+  link_github: p.links.github || "",
+  link_gitee: p.links.gitee || "",
+  link_live: p.links.live || "",
+  link_docs: p.links.docs || "",
+  status: p.status,
+  status_label: p.statusLabel,
+  is_featured: Boolean(p.featured),
+  sort: p.sort || index + 1,
+  created_at: new Date().toISOString(),
+}));
