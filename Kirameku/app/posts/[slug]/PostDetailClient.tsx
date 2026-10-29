@@ -522,38 +522,50 @@ export default function PostDetailPage() {
               }
               .post-content .timeline .item-header {
                 display: flex !important;
-                flex-direction: column !important;
                 width: fit-content !important;
                 max-width: 100% !important;
                 margin-bottom: 0.35rem !important;
               }
+              /* 内容在右：标题与日期同排并列，日期小字号紧随标题右下侧（基线对齐），不下沉到下划线下方 */
               .post-content .timeline .item-right .item-header {
-                align-items: flex-start !important;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                align-items: baseline !important;
+                gap: 0.6rem !important;
               }
               .post-content .timeline .item-right .item-header .toc-header {
-                order: 1 !important;
+                margin: 0.2rem 0 !important;
               }
               .post-content .timeline .item-right .item-header .item-date {
-                order: 2 !important;
-                align-self: flex-end !important;
                 font-size: 0.75rem !important;
-                margin: 0.15rem 0 0.25rem 0 !important;
+                margin: 0 !important;
+                white-space: nowrap !important;
               }
+
+              /* 内容在左（空间适合）：日期排在标题左下侧（基线对齐），不下沉到下划线下方 */
               .post-content .timeline .item-left .item-header {
-                align-items: flex-start !important;
+                flex-direction: row-reverse !important;
+                justify-content: flex-end !important;
+                flex-wrap: wrap !important;
+                align-items: baseline !important;
+                gap: 0.6rem !important;
               }
               .post-content .timeline .item-left .item-header .toc-header {
-                order: 1 !important;
+                margin: 0.2rem 0 !important;
               }
               .post-content .timeline .item-left .item-header .item-date {
-                order: 2 !important;
-                align-self: flex-start !important;
                 font-size: 0.75rem !important;
-                margin: 0.15rem 0 0.25rem 0 !important;
+                margin: 0 !important;
+                white-space: nowrap !important;
+              }
+
+              /* 内容在左（遇到 width 较小情况，如 squish-left 或移动端）：日期置顶到标题上方 */
+              .post-content .timeline.squish-left .item-left .item-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
               }
               .post-content .timeline.squish-left .item-left .item-header .item-date {
                 order: 1 !important;
-                align-self: flex-start !important;
                 margin: 0 0 0.25rem 0 !important;
               }
               .post-content .timeline.squish-left .item-left .item-header .toc-header {
@@ -682,6 +694,17 @@ export default function PostDetailPage() {
                 }
                 .post-content .timeline .timeline-item {
                   width: 100% !important;
+                }
+                .post-content .timeline .item-header {
+                  flex-direction: column !important;
+                  align-items: flex-start !important;
+                }
+                .post-content .timeline .item-header .item-date {
+                  order: 1 !important;
+                  margin: 0 0 0.25rem 0 !important;
+                }
+                .post-content .timeline .item-header .toc-header {
+                  order: 2 !important;
                 }
               }
             `}</style>
