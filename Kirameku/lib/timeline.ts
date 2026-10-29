@@ -83,13 +83,13 @@ export function parseTimelines(markdown: string): string {
       }
     }
 
-    function renderItem(item: TimelineItem): string {
+    function renderItem(item: TimelineItem, position: "left" | "right"): string {
       if (item.type === "date") {
         const renderedDate =
           item.content === "&nbsp;"
             ? "&nbsp;"
             : (marked.parseInline(item.content) as string);
-        return `<div class="year-item"><span class="year">${renderedDate}</span></div>`;
+        return `<div class="year-item year-${position}"><span class="year">${renderedDate}</span></div>`;
       }
       if (item.type === "event") {
         const slug = item.title
@@ -104,7 +104,7 @@ export function parseTimelines(markdown: string): string {
           .map((p) => `<p>${marked.parseInline(p) as string}</p>`)
           .join("");
 
-        return `<section class="timeline-item">${labelHtml}<h3 class="toc-header" id="${slug}">${renderedTitle}</h3>${descHtml}</section>`;
+        return `<section class="timeline-item item-${position}"><div class="item-header"><h3 class="toc-header" id="${slug}">${renderedTitle}</h3>${labelHtml}</div>${descHtml}</section>`;
       }
       return "";
     }
@@ -114,11 +114,11 @@ export function parseTimelines(markdown: string): string {
 
     function flushPair() {
       if (pendingPair.length === 0) return;
-      const left = renderItem(pendingPair[0]);
+      const left = renderItem(pendingPair[0], "left");
       const right =
         pendingPair.length > 1
-          ? renderItem(pendingPair[1])
-          : `<div class="year-item"><span class="year">&nbsp;</span></div>`;
+          ? renderItem(pendingPair[1], "right")
+          : `<div class="year-item year-right"><span class="year">&nbsp;</span></div>`;
 
       html += `<div class="wrapper-item">${left}<section class="divider"><span class="dot"></span></section>${right}</div>`;
       pendingPair = [];

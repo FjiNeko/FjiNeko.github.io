@@ -520,13 +520,52 @@ export default function PostDetailPage() {
                 border: none !important;
                 box-shadow: none !important;
               }
+              .post-content .timeline .item-header {
+                display: flex !important;
+                flex-direction: column !important;
+                width: fit-content !important;
+                max-width: 100% !important;
+                margin-bottom: 0.35rem !important;
+              }
+              .post-content .timeline .item-right .item-header {
+                align-items: flex-start !important;
+              }
+              .post-content .timeline .item-right .item-header .toc-header {
+                order: 1 !important;
+              }
+              .post-content .timeline .item-right .item-header .item-date {
+                order: 2 !important;
+                align-self: flex-end !important;
+                font-size: 0.75rem !important;
+                margin: 0.15rem 0 0.25rem 0 !important;
+              }
+              .post-content .timeline .item-left .item-header {
+                align-items: flex-start !important;
+              }
+              .post-content .timeline .item-left .item-header .toc-header {
+                order: 1 !important;
+              }
+              .post-content .timeline .item-left .item-header .item-date {
+                order: 2 !important;
+                align-self: flex-start !important;
+                font-size: 0.75rem !important;
+                margin: 0.15rem 0 0.25rem 0 !important;
+              }
+              .post-content .timeline.squish-left .item-left .item-header .item-date {
+                order: 1 !important;
+                align-self: flex-start !important;
+                margin: 0 0 0.25rem 0 !important;
+              }
+              .post-content .timeline.squish-left .item-left .item-header .toc-header {
+                order: 2 !important;
+              }
               .post-content .timeline .timeline-item .toc-header,
               .post-content .timeline .timeline-item h3 {
                 position: relative !important;
                 display: inline-block !important;
                 width: fit-content !important;
-                margin: 0.25rem 0 0.5rem 0 !important;
-                padding-bottom: 0.4rem !important;
+                margin: 0.2rem 0 0.35rem 0 !important;
+                padding-bottom: 0.5rem !important;
                 font-size: 1.15rem !important;
                 font-weight: 700 !important;
                 color: #0f172a !important;
@@ -541,18 +580,18 @@ export default function PostDetailPage() {
                 content: "" !important;
                 position: absolute !important;
                 left: 0 !important;
-                bottom: 0 !important;
+                bottom: -2px !important;
                 width: 100% !important;
-                height: 6px !important;
+                height: 10px !important;
                 background-repeat: no-repeat !important;
                 background-size: 100% 100% !important;
                 background-position: center bottom !important;
                 pointer-events: none !important;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 9.5 C 20 4.5, 45 10.5, 75 6.5 C 88 4.5, 96 6.5, 99 7.5 C 78 9.5, 42 11.5, 3 10.5 Z' fill='%230ea5e9' opacity='0.85'/%3E%3Cpath d='M5 10 C 25 6, 60 11, 95 7' stroke='%230284c7' stroke-width='1.2' stroke-linecap='round' fill='none' opacity='0.9'/%3E%3C/svg%3E") !important;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 16' preserveAspectRatio='none'%3E%3Cpath d='M2 10 C 25 4, 55 13, 78 7 C 88 4.5, 95 8, 98 8.5' stroke='%230ea5e9' stroke-width='3.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M4 12 C 28 7, 62 13.5, 96 9' stroke='%230284c7' stroke-width='2' stroke-linecap='round' fill='none' opacity='0.85'/%3E%3C/svg%3E") !important;
               }
               .dark .post-content .timeline .timeline-item .toc-header::after,
               .dark .post-content .timeline .timeline-item h3::after {
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 9.5 C 20 4.5, 45 10.5, 75 6.5 C 88 4.5, 96 6.5, 99 7.5 C 78 9.5, 42 11.5, 3 10.5 Z' fill='%2338bdf8' opacity='0.85'/%3E%3Cpath d='M5 10 C 25 6, 60 11, 95 7' stroke='%237dd3fc' stroke-width='1.2' stroke-linecap='round' fill='none' opacity='0.9'/%3E%3C/svg%3E") !important;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 16' preserveAspectRatio='none'%3E%3Cpath d='M2 10 C 25 4, 55 13, 78 7 C 88 4.5, 95 8, 98 8.5' stroke='%2338bdf8' stroke-width='3.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M4 12 C 28 7, 62 13.5, 96 9' stroke='%237dd3fc' stroke-width='2' stroke-linecap='round' fill='none' opacity='0.85'/%3E%3C/svg%3E") !important;
               }
               .post-content .timeline .timeline-item p {
                 margin: 0.35rem 0 !important;
@@ -565,11 +604,10 @@ export default function PostDetailPage() {
               }
               .post-content .timeline .item-date {
                 display: inline-block !important;
-                font-size: 0.8rem !important;
+                font-size: 0.75rem !important;
                 font-weight: 600 !important;
                 letter-spacing: 0.025em !important;
                 padding: 0 !important;
-                margin-bottom: 0.25rem !important;
                 background: transparent !important;
                 background-color: transparent !important;
                 border: none !important;
