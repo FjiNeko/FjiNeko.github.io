@@ -42,8 +42,8 @@ export default function ProjectsPage() {
     getProjects()
       .then((data) => {
         if (!isMounted) return;
-        if (Array.isArray(data) && data.length > 0) {
-          // 对接后台真实数据
+        if (Array.isArray(data)) {
+          // 直接使用后端返回的最新项目列表
           setProjectsList(data);
         }
       })
@@ -85,42 +85,42 @@ export default function ProjectsPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 relative z-10">
       {/* 页头 */}
-      <div className="mb-6 md:mb-10 text-center md:text-left">
-        <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3 justify-center md:justify-start">
-          <FolderGit2 className="w-5 h-5 md:w-7 md:h-7 text-[#A89573] dark:text-[#D8C99F]" />
-          <h1 className="text-xl md:text-4xl font-black text-[#332D25] dark:text-[#F3EBDD] tracking-tight">
-            项目工坊
+      <div className="mb-5 md:mb-10 text-center md:text-left">
+        <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-4 justify-center md:justify-start">
+          <FolderGit2 className="w-5 h-5 md:w-7 md:h-7 text-sky-500" />
+          <h1 className="text-xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+            项目
           </h1>
         </div>
-        <p className="text-[#514638] dark:text-[#D8D0C2] font-medium text-xs md:text-sm">
-          代码沉淀与作品集锦，记录技术思考与工程实践
+        <p className="text-slate-600 dark:text-slate-300 font-medium text-xs md:text-sm">
+          从零到一，用代码构建的每一份作品
         </p>
       </div>
 
-      {/* 搜索栏 */}
-      <div className="mb-6 md:mb-10 flex justify-center w-full">
+      {/* 搜索框 */}
+      <div className="mb-5 md:mb-10 flex justify-center w-full">
         <div className="relative w-full max-w-lg">
           <input
             type="text"
-            placeholder="搜索项目名称、介绍、技术栈或状态..."
+            placeholder="搜索项目名称、描述或技术栈..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#FFF9EF]/80 dark:bg-[#2B2822]/80 backdrop-blur-md border border-[#D8C99F]/50 dark:border-[#725D3E]/40 rounded-full px-4 py-2 md:px-6 md:py-3 pl-10 md:pl-12 text-[#332D25] dark:text-[#F3EBDD] font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-[#A89573] dark:focus:ring-[#D8C99F] transition-all placeholder-[#514638]/60 dark:placeholder-[#D8D0C2]/50 text-xs md:text-sm"
+            className="w-full bg-white/40 dark:bg-slate-800/50 backdrop-blur-md border border-white/40 dark:border-white/10 rounded-full px-4 py-2 md:px-6 md:py-3 pl-10 md:pl-12 text-slate-900 dark:text-white font-medium shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder-slate-500 dark:placeholder-slate-400 text-xs md:text-sm"
           />
-          <Search className="w-4 h-4 md:w-5 md:h-5 absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-[#A89573] dark:text-[#D8C99F]" />
+          <Search className="w-4 h-4 md:w-5 md:h-5 absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400" />
         </div>
       </div>
 
-      {/* 加载指示器 */}
+      {/* 加载中提示 */}
       {loading && (
-        <div className="flex items-center justify-center py-6 text-xs text-[#514638] dark:text-[#D8D0C2] gap-2">
-          <Loader2 className="w-4 h-4 animate-spin text-[#A89573]" />
-          <span>正在同步最新项目数据...</span>
+        <div className="flex items-center justify-center py-4 text-xs text-slate-500 dark:text-slate-400 gap-2 mb-4">
+          <Loader2 className="w-4 h-4 animate-spin text-sky-500" />
+          <span>正在连接后台同步项目数据...</span>
         </div>
       )}
 
       {/* 项目网格 */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
         <AnimatePresence>
           {filtered.map((project) => {
             const isExpanded = expandedIds.has(project.id);
@@ -129,30 +129,33 @@ export default function ProjectsPage() {
               project.long_description.trim() !== "" &&
               project.long_description.trim() !== project.description?.trim();
 
-            const statusText = project.status_label || (
-              project.status === "active"
+            const statusText =
+              project.status_label ||
+              (project.status === "active"
                 ? "已上线"
                 : project.status === "developing"
                 ? "开发中"
                 : project.status === "archived"
                 ? "已归档"
-                : "进行中"
-            );
+                : "进行中");
 
             return (
               <motion.div
                 layout
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.96, y: 16 }}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: -16 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 className="h-full"
               >
-                <div className="flex flex-col h-full rounded-2xl md:rounded-3xl bg-[#FFF9EF]/85 dark:bg-[#2B2822]/85 backdrop-blur-md border border-[#D8C99F]/60 dark:border-[#383228] shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden relative group">
+                <div className="flex flex-col h-full rounded-2xl md:rounded-3xl bg-white/40 dark:bg-slate-800/50 backdrop-blur-md border border-white/40 dark:border-white/10 shadow-xl overflow-hidden transition-all duration-700 hover:scale-[1.01] relative p-4 md:p-8 group">
+                  {/* 装饰性光晕 */}
+                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl group-hover:bg-sky-500/20 transition-colors duration-700 pointer-events-none" />
+
                   {/* 封面图展示 */}
                   {project.cover_image && (
-                    <div className="w-full h-36 md:h-44 overflow-hidden bg-[#F3EBDD] dark:bg-[#211F1A] border-b border-[#D8C99F]/40 dark:border-[#383228] relative">
+                    <div className="w-full h-36 md:h-44 -mx-4 -mt-4 md:-mx-8 md:-mt-8 mb-4 overflow-hidden bg-slate-100 dark:bg-slate-900 border-b border-white/40 dark:border-white/10 relative">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={project.cover_image}
@@ -161,7 +164,7 @@ export default function ProjectsPage() {
                         loading="lazy"
                       />
                       {project.is_featured && (
-                        <div className="absolute top-3 right-3 bg-[#A89573] dark:bg-[#725D3E] text-[#FFF9EF] dark:text-[#F3EBDD] text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                        <div className="absolute top-3 right-3 bg-sky-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-md">
                           <Sparkles className="w-3 h-3" />
                           <span>精选</span>
                         </div>
@@ -169,38 +172,46 @@ export default function ProjectsPage() {
                     </div>
                   )}
 
-                  <div className="p-4 md:p-6 flex-1 flex flex-col justify-between">
+                  <div className="flex-1 flex flex-col justify-between relative z-10">
                     <div>
                       {/* 标题栏与链接组 */}
-                      <div className="flex items-start justify-between gap-3 mb-2.5">
+                      <div className="flex items-start justify-between gap-3 mb-3 md:mb-4">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h2 className="text-base md:text-xl font-bold text-[#332D25] dark:text-[#F3EBDD]">
+                          <h2 className="text-lg md:text-2xl font-bold text-slate-900 dark:text-white">
                             {project.name}
                           </h2>
                           {/* 精选徽章（无封面图时置于标题旁） */}
                           {!project.cover_image && project.is_featured && (
-                            <span className="bg-[#A89573]/20 dark:bg-[#D8C99F]/20 text-[#514638] dark:text-[#D8C99F] border border-[#A89573]/30 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <span className="bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
                               <Sparkles className="w-3 h-3" />
                               <span>精选</span>
                             </span>
                           )}
                           {/* 状态TAG */}
                           {statusText && (
-                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#D8C99F]/30 dark:bg-[#383228] text-[#514638] dark:text-[#D8D0C2] border border-[#D8C99F]/50 dark:border-[#725D3E]/30">
+                            <span
+                              className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                                project.status === "active" || statusText === "已上线"
+                                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
+                                  : project.status === "developing" || statusText === "开发中"
+                                  ? "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20"
+                                  : "bg-slate-500/10 text-slate-600 dark:text-slate-400 border-slate-500/20"
+                              }`}
+                            >
                               {statusText}
                             </span>
                           )}
                         </div>
 
-                        {/* 四大外链图标组 */}
-                        <div className="flex items-center gap-2 flex-shrink-0">
+                        {/* 链接图标组 */}
+                        <div className="flex items-center gap-2 md:gap-2.5 flex-shrink-0">
                           {project.link_github && (
                             <a
                               href={project.link_github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-[#514638] dark:text-[#D8D0C2] hover:text-[#332D25] dark:hover:text-[#F3EBDD] transition-colors p-1"
-                              title="GitHub 仓库"
+                              className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 p-1"
+                              title="GitHub"
                             >
                               <GithubIcon className="w-4 h-4 md:w-5 md:h-5" />
                             </a>
@@ -210,8 +221,8 @@ export default function ProjectsPage() {
                               href={project.link_gitee}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-[#514638] dark:text-[#D8D0C2] hover:text-[#332D25] dark:hover:text-[#F3EBDD] transition-colors p-1"
-                              title="Gitee 仓库"
+                              className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 p-1"
+                              title="Gitee"
                             >
                               <GiteeIcon className="w-4 h-4 md:w-5 md:h-5" />
                             </a>
@@ -221,8 +232,8 @@ export default function ProjectsPage() {
                               href={project.link_live}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-[#514638] dark:text-[#D8D0C2] hover:text-[#332D25] dark:hover:text-[#F3EBDD] transition-colors p-1"
-                              title="线上体验地址"
+                              className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 p-1"
+                              title="在线预览"
                             >
                               <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                             </a>
@@ -232,8 +243,8 @@ export default function ProjectsPage() {
                               href={project.link_docs}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-[#514638] dark:text-[#D8D0C2] hover:text-[#332D25] dark:hover:text-[#F3EBDD] transition-colors p-1"
-                              title="项目文档"
+                              className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 p-1"
+                              title="文档地址"
                             >
                               <BookOpen className="w-4 h-4 md:w-5 md:h-5" />
                             </a>
@@ -242,17 +253,17 @@ export default function ProjectsPage() {
                       </div>
 
                       {/* 简介 */}
-                      <p className="text-xs md:text-sm text-[#514638] dark:text-[#D8D0C2] font-normal leading-relaxed mb-3">
+                      <p className="text-xs md:text-sm text-slate-700 dark:text-slate-200 font-medium leading-relaxed line-clamp-3 mb-3 relative min-h-[42px]">
                         {project.description || "暂无项目简短介绍"}
                       </p>
 
-                      {/* 详细介绍折叠展开区 */}
+                      {/* 详细介绍折叠展开 */}
                       {hasLongDesc && (
                         <div className="mb-3">
                           <button
                             type="button"
                             onClick={() => toggleExpand(project.id)}
-                            className="inline-flex items-center gap-1 text-xs font-semibold text-[#A89573] dark:text-[#D8C99F] hover:underline"
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline"
                           >
                             <span>{isExpanded ? "收起详细介绍" : "查看详细介绍"}</span>
                             {isExpanded ? (
@@ -268,7 +279,7 @@ export default function ProjectsPage() {
                                 animate={{ opacity: 1, height: "auto" }}
                                 exit={{ opacity: 0, height: 0 }}
                                 transition={{ duration: 0.2 }}
-                                className="mt-2 text-xs leading-relaxed text-[#514638]/90 dark:text-[#D8D0C2]/90 bg-[#F3EBDD]/60 dark:bg-[#211F1A]/60 p-3 rounded-xl border border-[#D8C99F]/40 dark:border-[#383228]"
+                                className="mt-2 text-xs leading-relaxed text-slate-700 dark:text-slate-300 bg-slate-100/60 dark:bg-slate-900/40 p-3 rounded-xl border border-slate-200/60 dark:border-slate-800/60"
                               >
                                 {project.long_description}
                               </motion.div>
@@ -280,13 +291,13 @@ export default function ProjectsPage() {
 
                     {/* 技术栈标签区 */}
                     {Array.isArray(project.tech_stack) && project.tech_stack.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#D8C99F]/30 dark:border-[#383228]">
-                        {project.tech_stack.map((tech) => (
+                      <div className="flex flex-wrap gap-1.5 md:gap-2 pt-3 border-t border-slate-200/40 dark:border-slate-700/40">
+                        {project.tech_stack.map((tag) => (
                           <span
-                            key={tech}
-                            className="text-[10px] md:text-[11px] font-medium tracking-wide text-[#514638] dark:text-[#D8C99F] bg-[#F3EBDD] dark:bg-[#383228] px-2.5 py-0.5 rounded-md border border-[#D8C99F]/60 dark:border-[#725D3E]/40"
+                            key={tag}
+                            className="text-[9px] md:text-[10px] font-bold tracking-wider uppercase text-sky-600 dark:text-sky-400 bg-sky-500/10 px-2 py-0.5 md:px-3 md:py-1 rounded-md border border-sky-500/20"
                           >
-                            {tech}
+                            {tag}
                           </span>
                         ))}
                       </div>
@@ -302,9 +313,9 @@ export default function ProjectsPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="col-span-full text-center py-12 md:py-20 text-[#514638] dark:text-[#D8D0C2] font-medium text-xs md:text-sm"
+            className="col-span-full text-center py-12 md:py-20 text-slate-600 dark:text-slate-300 font-medium text-xs md:text-sm"
           >
-            未检索到与 [{searchQuery}] 匹配的项目内容
+            没有找到匹配 [{searchQuery}] 的项目...
           </motion.div>
         )}
       </motion.div>
